@@ -8,7 +8,9 @@ export class AbstractModel {
    */
   constructor(data = undefined) {
     if (data) {
-      Object.assign(this, data);
+      for (const field of this.constructor.fields) {
+        this[field] = data[field];
+      }
     } else {
       for (const field of this.constructor.fields) {
         this[field] = null;
@@ -77,6 +79,18 @@ export class AbstractModel {
         return true;
       })
       .map((item) => new this(item));
+  }
+
+  /**
+   * Find the first instance that matches the given filter
+   *
+   * Values in the filter that are RegExp instances are matched as regular
+   * expressions, all other values are matched by equality
+   *
+   * @param {{[p: string]: RegExp | string | number | boolean }} filters
+   */
+  static findFirst(filters) {
+    return this.find(filters)[0];
   }
 
   /**

@@ -16,6 +16,7 @@ console.assert(User.get(id) !== null);
 console.assert(User.find({ firstName: "Ford", lastName: "Prefect" }).length === 1)
 
 user.firstName = "Perfect";
+user.save();
 console.assert(User.get(id).firstName === "Perfect");
 
 user.delete();
