@@ -1,5 +1,5 @@
 export const baseData = {
-  user: [
+  user: Object.fromEntries([
     {
       id: 2,
       credentials: "0",
@@ -670,8 +670,8 @@ export const baseData = {
       email: "giacinta.mikkelsen@it.uu.se",
       phone: "0703913087",
     },
-  ],
-  bought: [
+  ].map((item) => [item.id, item])),
+  bought: Object.fromEntries([
     {
       transaction_id: 328,
       admin_id: 25,
@@ -784,8 +784,8 @@ export const baseData = {
       price: "22.50",
       timestamp: "2014-10-02 16:07:46",
     },
-  ],
-  sold: [
+  ].map((item, index) => [index, item])),
+  sold: Object.fromEntries([
     {
       transaction_id: 1186,
       user_id: 2,
@@ -912,8 +912,8 @@ export const baseData = {
       beer_id: 151503,
       timestamp: "2014-10-15 22:57:38",
     },
-  ],
-  account: [
+  ].map((item, index) => [index, item])),
+  account: Object.fromEntries([
     {
       user_id: 2,
       creditSEK: "300",
@@ -1182,5 +1182,5 @@ export const baseData = {
       user_id: 83,
       creditSEK: "450",
     },
-  ],
+  ].map((item, index) => [index, item])),
 };
