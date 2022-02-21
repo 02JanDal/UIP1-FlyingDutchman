@@ -1,0 +1,174 @@
+* {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  position: absolute;
+  width: 100%;
+  height: 100vh;
+  margin: 0;
+  padding: 0;
+}
+
+.container {
+  background-color: white;
+  height: 90%;
+}
+
+.sidebar {
+  float: left;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  background-color: thistle;
+  height: 100%;
+  width: 30%;
+}
+
+/* NOT WORKING */
+.sidebar>button {
+  background-color: rgb(255, 240, 240);
+  border: 0;
+}
+
+.content {
+  overflow: auto;
+  background-color: rgba(230, 230, 230, 0.938);
+  height: 100%;
+  width: 70%;
+  float: right;
+  display: inline-grid;
+  grid-template-columns: 1fr 1fr;
+  grid-template-rows: 1fr 1fr;
+  grid-gap: 3px;
+  align-self: center;
+  justify-self: center;
+  font-size: 325%;
+  text-align: center;
+  text-
+}
+
+.footer {
+  position: fixed;
+  height: 10%;
+  width: 100%;
+  background-color: white;
+}
+
+.cart {
+  position: fixed;
+  height: 8%;
+  width: 95%;
+  border-radius: 12px;
+  margin-top: 1%;
+  margin-left: 2.5%;
+  background-color: #42251C;
+  text-align: center;
+  vertical-align: middle;
+  line-height: 90px;
+  color: white;
+  font-size: 250%;
+}
+
+button {
+  background-color: rgb(255, 240, 240);
+  border: 0;
+  /* margin-top: 275%; */
+  width: 75%;
+}
+
+button:not(:last-child) { 
+  margin-top: 270%;
+}
+
+button:active {
+  background-color:gainsboro;
+}
+
+img {
+  height: 100%;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.card {
+  background-color: #fff;
+  border: 2px black;
+  margin-left: 20%;
+  margin-right: 20%;
+  margin-top: 20%;
+  height: 50%;
+  padding: 5%;
+  border-radius: 20%;
+}
+
+.selected {
+  background-color: gray;
+}
+
+.selected:active {
+  background-color: gray;
+}
+
+ul {
+  height: 97%;
+  list-style-type: none;
+  padding-left: 20%;
+  padding-right: 20%;
+  padding-top: 20%;
+  background-color:rgba(202, 202, 202, 0.938);
+  margin: 0;
+}
+
+li:not(:last-child) { 
+  margin-bottom: 10%;
+}
+
+a {
+  display: block;
+  color: #000;
+  text-decoration: none;
+}
+
+li {
+  font-size: 200%;
+}
+
+a:hover {
+  background-color: #555;
+  color: white;
+}
+
+.fa-solid {
+  color: #42251C;
+  margin-right: 20%;
+  width: 5%;
+}
+
+.searchbar {
+  height: 3%;
+}
+
+.content {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+.content::-webkit-scrollbar { 
+  display: none;
+}
+
+.dropbtn {
+  background-color: #4CAF50;
+  color: white;
+  padding: 16px;
+  font-size: 16px;
+  border: none;
+  cursor: pointer;
+
+/* https://www.w3schools.com/css/css_dropdowns.asp */
