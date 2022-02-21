@@ -3,8 +3,9 @@
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
-    <title>Database Base Document</title>
+    <title>Main home page</title>
 
+    <link rel="stylesheet" type="text/css" href="main.css">
     <script type="module" src="index.js"></script>
     <script type="module" src="test.js"></script>
   </head>
@@ -14,7 +15,20 @@
 
 The html-file is just for loading the javascript files. If you go to the console under the "Inspect" of the popup menu,
 then you can enter javascript calls, to test the functions.
-
 -->
+
+<!--- Main page -->
+  <div class ="main-container">
+    <!--- Title -->
+    <div class="title-container">
+      <h1 id="title">Flying <br> Dutchman</h1>
+    </div>
+      <!--- Buttons -->
+    <div class="elements-container">
+      <!--TODO: To put the onclick function on a javascript file.  -->
+      <button class="button-style" id ="button-left" type="button" onclick="window.location.href = '/customer.html'">I am a <br> Customer</button>
+      <button class="button-style" id = "button-right" type="button" onclick="">I am a <br> Bartender</button>
+    </div>
+  </div>
   </body>
 </html>

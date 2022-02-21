@@ -1,0 +1,78 @@
+body{
+    font-family:-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+}
+
+.main-container{
+    border: 2px solid;
+    width: 834px;
+    height: 1194px;
+    margin-left: auto;
+    margin-right:auto;
+    background-color:#E5D4CB;
+}
+
+.title-container{
+    text-align: center;
+    margin-right:auto;
+    margin-left:auto;
+    width:500px;   
+    padding-top:300px;
+}
+
+#title{
+    font-size: 80px;
+    line-height:100px;
+    font-weight: bold;
+}
+
+#customer-title{
+    font-size: 65px;
+    font-weight: normal;
+}
+
+.elements-container{
+    margin-left:auto;
+    margin-right:auto;
+    text-align:center;
+}
+
+.button-style{
+    width:250px;
+    border-radius:20px;
+    font-size:25px;
+    color: #FFF;
+    background: #291509;
+    font-weight: 600;
+    border: 5px solid #291509;
+    box-sizing: border-box;
+    box-shadow: 6px 6px 15px rgba(0, 0, 0, 0.25);
+}
+
+.button-style:hover{
+    background: #FFF;
+    color: #291509;
+}
+
+#button-left{
+    height:200px;
+    margin-right:20px;
+}
+
+#button-right{
+    height:200px;
+    margin-right:20px;
+}
+
+#sign-in-button{
+    height:60px;
+    font-size:20px;
+}
+
+#guest-container{
+    margin-top:50px;
+    font-size:20px;
+}
+
+#guest-style{
+    text-decoration: underline;
+}
