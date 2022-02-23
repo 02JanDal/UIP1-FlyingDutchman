@@ -8,11 +8,152 @@ html {
 
 body {
   position: absolute;
+  /*** I was thinking maybe we can just use this 11inch width and height!  ***/
+  /*width: 834px;*/
+  /*height: 1194px;*/
   width: 100%;
   height: 100vh;
   margin: 0;
   padding: 0;
+  font-family:-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
 }
+
+/****************************
+MAIN HOME PAGE
+ *****************************/
+
+.main-container{
+  margin-left: auto;
+  margin-right:auto;
+  background-color:#E5D4CB;
+  height: 100%;
+}
+
+.title-container{
+  text-align:center;
+  margin-right:auto;
+  margin-left:auto;
+  width:500px;
+}
+
+.homepage-container{
+  padding-top:40%;
+  padding-bottom:5%;
+}
+
+#title{
+  font-size: 80px;
+  line-height:100px;
+  font-weight: bold;
+}
+
+#customer-title{
+  font-size: 65px;
+  font-weight: normal;
+}
+
+.elements-container{
+  margin-left:auto;
+  margin-right:auto;
+  text-align:center;
+}
+
+.button-style{
+  width:250px;
+  border-radius:20px;
+  font-size:25px;
+  color: #FFF;
+  background: #291509;
+  font-weight: 600;
+  border: 5px solid #291509;
+  box-sizing: border-box;
+  box-shadow: 6px 6px 15px rgba(0, 0, 0, 0.25);
+}
+
+.button-style:hover{
+  background: #FFF;
+  color: #291509;
+}
+
+#button-left{
+  height:200px;
+  margin-right:20px;
+}
+
+#button-right{
+  height:200px;
+  margin-right:20px;
+}
+
+#sign-in-button{
+  height:60px;
+  font-size:20px;
+}
+
+#guest-container{
+  margin-top:50px;
+  font-size:20px;
+}
+
+#guest-style{
+  text-decoration: underline;
+}
+
+
+/***************************
+CUSTOMER HOME PAGE
+ ***************************/
+.parent-navbar{
+  display: flex;
+}
+
+.child-navbar{
+  flex:1;
+  margin-top:100px;
+}
+
+.left-navbar{
+  margin-left:100px;
+}
+
+.right-navbar{
+  margin-right:100px;
+}
+
+.logo-right-navbar{
+  width:40%;
+  float:right;
+}
+
+.backward-logo{
+  font-size:55px !important; /*Not a very good practice to do this*/
+}
+
+.title-navbar-container{
+  padding-top:20%;
+  padding-bottom:0%;
+}
+
+/***************************
+SIGN IN PAGE
+ ***************************/
+#uname{
+  font-size:30px;
+}
+
+#password{
+  font-size:30px;
+}
+
+.form-container{
+  text-align:center;
+  padding-bottom:8%;
+  font-size:30px;
+}
+
+/***************************
+MENU PAGE
+ ***************************/
 
 .container {
   background-color: white;
@@ -49,7 +190,6 @@ body {
   justify-self: center;
   font-size: 325%;
   text-align: center;
-  text-
 }
 
 .footer {
@@ -81,9 +221,10 @@ button {
   width: 75%;
 }
 
-button:not(:last-child) { 
-  margin-top: 270%;
-}
+/* Commenting on this now due to styling problem, but will fix later. */
+/*button:not(:last-child) { */
+/*  margin-top: 270%;*/
+/*}*/
 
 button:active {
   background-color:gainsboro;
@@ -131,7 +272,7 @@ li:not(:last-child) {
 }
 
 a {
-  display: block;
+  /*display: block;*/
   color: #000;
   text-decoration: none;
 }
@@ -140,10 +281,11 @@ li {
   font-size: 200%;
 }
 
-a:hover {
-  background-color: #555;
-  color: white;
-}
+/* Commenting on this now due to styling problem, but will fix later. */
+/*a:hover {*/
+/*  background-color: #555;*/
+/*  color: white;*/
+/*}*/
 
 .fa-solid {
   color: #42251C;
@@ -170,5 +312,6 @@ a:hover {
   font-size: 16px;
   border: none;
   cursor: pointer;
+}
 
 /* https://www.w3schools.com/css/css_dropdowns.asp */
