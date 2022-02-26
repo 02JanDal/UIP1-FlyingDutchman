@@ -1,0 +1,108 @@
+<!--
+This version of the demo 1 shows how the drag'n'drop update is performed using a database/model approach. In this
+version the state of the system is stored in two variables, rather than in the HTML code. This means that the change
+resulting from the dragging is updated in the view from the model, rather than by the "physical" final position
+of the HTML element.
+-->
+
+<!DOCTYPE HTML>
+<html lang="en">
+<head>
+    <title>Drag and Drop Demo - MVC</title>
+    <style>
+        #div1 {width:350px;height:350px;padding:10px;border:1px solid #aaaaaa;}
+        #div2 {width:350px;height:350px;padding:10px;border:1px solid #aaaaaa;}
+    </style>
+    <script>
+
+        // We want to prevent the standard handling of drag and drop and use
+        // our own solution.
+        //
+        function allowDrop(ev) {
+            ev.preventDefault();
+        }
+
+        // Note that the drag() function target is pointing to the image itself,
+        // but we want the current container id for this.
+        //
+        // Therefore we use parentElement, rather than the target element itself.
+        //
+        function drag(ev) {
+            ev.dataTransfer.setData("text", ev.target.parentElement.id);
+        }
+
+        // We call our own function for making the drag event. In the
+        // version 1 the update is made here directly.
+        //
+        function drop(ev) {
+            make_drag(ev.target.id);
+        }
+
+        // This function is used to change the image in the div1.
+        //
+        function set_content(target, content) {
+            target.innerHTML = content;
+        }
+
+        // When the view is updated, the image block is inserted into
+        // the HTML at the proper place. Note that it is not moved on
+        // the view surface, but is using the document DOM, i.e., the
+        // to propagate the possible changes.
+        //
+        function update_view() {
+            set_content(document.getElementById("div1"), div1Content);
+            set_content(document.getElementById("div2"), div2Content);
+        }
+
+        // This function changes the model (the database) and then it calls
+        // 0for an update of the view with the change implemented.
+        //
+        function make_drag(to) {
+
+            if (to == "div2") {
+
+                div2Content = div1Content;
+                div1Content = "";
+
+            } else {
+                div1Content = div2Content;
+                div2Content = "";
+            }
+            update_view();
+        }
+
+        // ==============================================================
+        // MODEL
+        // This is the (rudimentary) model. Note that the image location
+        // is stored here in the variables and not in the HTML code.
+        //
+        let div1Content = "";
+        let div2Content = "<img id=\"drag1\" src=\"anykey.jpg\" draggable=\"true\" " +
+            "ondragstart=\"drag(event)\" " + "width=\"336\" height=\"350\" " +
+            "alt='Picture of ANY key'>\n";
+
+        // We have to wait for the document to load completely before updating the view. Note that
+        // the image is loaded in the HTML code only when the view is updated. No text is stored in the HTML
+        // from the beginning.
+        //
+        document.addEventListener("DOMContentLoaded", function(event) {
+            update_view();
+        });
+
+    </script>
+</head>
+<body>
+
+<p>Drag the Drag and Drop image into the rectangle:</p>
+
+<!-- The view here, does not know anything about the content of the divs -->
+
+<div id="div1" ondrop="drop(event)" ondragover="allowDrop(event)">
+
+</div>
+<br>
+<div id="div2" ondrop="drop(event)" ondragover="allowDrop(event)">
+
+</div>
+</body>
+</html>

@@ -1,0 +1,85 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Delay Examples</title>
+<style>
+outerWrapper {
+	width: 960px;
+}
+.transEx {
+	margin: 2em;
+	width: 120px;
+	height: 40px;
+	border: 2px dotted;
+	border-color: #666;
+	background-color: #066882;
+	color: #fff;
+	line-height: 40px;
+	text-align: center;
+	-webkit-border-radius: .5em;
+	-moz-border-radius: .5em;
+	border-radius: .5em;
+	-webkit-transition: all 3s .5s;
+	-moz-transition: all 3s .5s;
+	-o-transition: all 3s .5s;
+	transition: all 3s .5s;
+}
+#default {
+	-webkit-transition-timing-function: ease;	
+	-moz-transition-timing-function: ease;	
+	-o-transition-timing-function: ease;	
+	transition-timing-function: ease;	
+}
+#linear {
+	-webkit-transition-timing-function: linear;	
+	-moz-transition-timing-function: linear;	
+	-o-transition-timing-function: linear;	
+	transition-timing-function: linear;	
+}
+#ease-in {
+	-webkit-transition-timing-function: ease-in;	
+	-moz-transition-timing-function: ease-in;	
+	-o-transition-timing-function: ease-in;	
+	transition-timing-function: ease-in;	
+}
+#ease-out {
+	-webkit-transition-timing-function: ease-out;	
+	-moz-transition-timing-function: ease-out;	
+	-o-transition-timing-function: ease-out;	
+	transition-timing-function: ease-out;	
+}
+#ease-in-out {
+	-webkit-transition-timing-function: ease-in-out;	
+	-moz-transition-timing-function: ease-in-out;	
+	-o-transition-timing-function: ease-in-out;	
+	transition-timing-function: ease-in-out;	
+}
+#cubic-bezier {
+	-webkit-transition-timing-function: cubic-bezier(0.950, 0.050, 0.795, 0.035);	
+	-moz-transition-timing-function: cubic-bezier(0.950, 0.050, 0.795, 0.035);	
+	-o-transition-timing-function: cubic-bezier(0.950, 0.050, 0.795, 0.035);	
+	transition-timing-function: cubic-bezier(0.950, 0.050, 0.795, 0.035);	
+}
+.transEx:hover {
+	background-color: #FC8F30;
+	color: #000;
+	-webkit-transform: translate(900px, 0);
+	-moz-transform: translate(900px, 0);
+	-o-transform: translate(900px, 0);
+	transform: translate(900px, 0);
+}
+</style>
+</head>
+
+<body>
+<div id="outerWrapper">
+  <div id="default" class="transEx">Ease (Default)</div>
+  <div id="linear" class="transEx">Linear</div>
+  <div id="ease-in" class="transEx">Ease-In</div>
+  <div id="ease-out" class="transEx">Ease-Out</div>
+  <div id="ease-in-out" class="transEx">Ease-In-Out</div>
+  <div id="cubic-bezier" class="transEx">Cubic-Bezier</div>
+</div>
+</body>
+</html>

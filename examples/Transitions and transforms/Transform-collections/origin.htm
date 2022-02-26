@@ -1,0 +1,30 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Origin Example</title>
+<style type="text/css">
+body { 
+	text-align: center;
+}
+p {
+	font-family: "Courier New", Courier, monospace;
+	font-size: 18px;	
+}
+.rotate {
+	width: 264px;
+	margin: 20px auto;
+}
+.rotate:hover {
+	-webkit-transform-origin:bottom left;
+	-webkit-transform: rotate(60deg);
+}
+</style>
+</head>
+
+<body>
+<p>transform: rotate(60deg)<br>
+transform-origin: bottom right</p>
+<div class="rotate"><img src="baseball.png" width="264" height="255"></div>
+</body>
+</html>

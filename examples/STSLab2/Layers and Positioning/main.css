@@ -1,0 +1,50 @@
+/* This is a header that is fixed at the top. The heading floats above all other items on the page. */
+
+body {
+    background-color: antiquewhite;
+}
+p {
+    background-color: antiquewhite;
+    padding: 4px;
+}
+
+header {
+    position: fixed;  /* The header does not move with the scrolling. */
+    top: 20px;
+
+    width: 95%;
+
+    background-color: rgba(255, 100, 125, 0.75); /* The rgba colouring scheme allows for transparency: last argument. */
+
+    font-family: "Arial Black", Gadget, sans-serif; /* Setting the font properties */
+    font-size: 24px;
+
+    padding: 20px;    /* The header text will be surrounded by a 20 px wide padding.  */
+
+    z-index: 1;  /* z-index moves the header over all other elements. */
+}
+
+
+.sidefloat {
+    -webkit-transform: rotate(7deg);
+    border-color: black;
+    border: 2pt;
+    width: 30%;
+    position: fixed;
+    top: 150px;
+    right: 15px;
+    margin-left: 10px;
+    padding: 10px;
+    background-color: lightblue;
+    transition-duration: 1s;
+}
+
+.sidefloat:hover {
+    z-index: -1;
+}
+
+#canvasOne {
+    float: left;
+    border: dotted 2px black;
+    margin: 4px;
+}

@@ -1,0 +1,86 @@
+/*
+The definitions are listed in order of superceeding power. The element
+level is the weakest of the style levels, and will be superceeded by both
+class and identity definitions.
+
+ELEMENT LEVEL DEFINITIONS
+*/
+div {
+    padding: 4px;
+}
+
+/*
+CLASS LEVEL DEFINITIONS
+*/
+
+/*
+We use flex-boxes for some more advanced layouts.
+*/
+.flxbx1 {
+    display : flex;
+    justify-content: space-between;
+}
+
+.flxbx {
+    display : flex;
+    justify-content: center;
+}
+
+/*
+All keys have similar properties.
+*/
+.key {
+    cursor : pointer;
+    padding: 2px;
+    margin : 2px;
+    border : 1px solid;
+    border-radius: 7px;
+}
+
+.numkey {
+    width : 40px;
+    background-color: lightgoldenrodyellow;
+}
+
+.funkey {
+    margin-top : 10px;
+    background-color: greenyellow;
+}
+/*
+IDENTITY LEVEL DEFINITIONS
+*/
+
+#numkeys, #funkeys {
+    border : 2px solid green;
+    text-align: center;
+    margin-top: 1px;
+    background-color: azure;
+}
+
+#resultpan {
+    background-color: yellow;
+}
+
+#numkeys {
+    width : 200px;
+    margin-right : auto;
+    margin-left: auto;
+    margin-top : 10px;
+    background-color: azure;
+}
+
+#calculator {
+    border : 2px solid;
+    width : 400px;
+    margin-left : auto;
+    margin-right : auto;
+    background-color: lightpink;
+}
+
+#sum-tag {
+    border : 2px;
+    border-bottom-color: blue;
+}
+/* ==========================================================================
+END OF FILE
+==========================================================================n*/

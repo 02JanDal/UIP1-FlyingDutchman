@@ -1,0 +1,17 @@
+/*
+
+File: Spirograph.css
+
+Version 0.5
+Author: Lars Oestreicher
+
+We only have one type of object in the HTML, so the style sheet will be very small.
+*/
+#myCanvas {
+
+    border : 2px solid darkred;
+
+}
+/*
+END of file Spirograph.css
+*/

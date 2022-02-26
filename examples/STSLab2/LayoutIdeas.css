@@ -1,0 +1,31 @@
+#lp {
+    position:relative;
+    left: 100px;
+}
+
+
+.shortP {
+    border : solid blue 2px;
+    width: 50%;
+}
+
+
+.longP {
+    border : solid red 2px;
+    width: 80%;
+    float:right;
+    background-color: #b0e0e6;
+    padding: 10px;
+    spacing: 20px;
+
+}
+
+.outer {
+    border : solid green 2px;
+     width : 80%;
+}
+
+body {
+    padding: 20px;
+    margin: auto ;
+}

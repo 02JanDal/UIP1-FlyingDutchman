@@ -1,0 +1,127 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Perspective</title>
+<style>
+body {
+	background: #fff;
+}
+.container {
+	overflow: visible;
+	text-align: center;
+}
+.display {
+	width: 600px;
+	position: relative;
+	margin: 30px auto;
+}
+.display div {
+	background: #fff;
+}
+ @-webkit-keyframes live-view {
+ 0% {
+ -webkit-perspective: 1000px;
+}
+ 100% {
+ -webkit-perspective: 100px;
+}
+}
+.live-view {
+	position: relative;
+	display: block;
+	overflow: hidden;
+	height: 198px;
+	width: 250px;
+	border: 1px solid #000;
+	margin: 30px auto;
+	-webkit-perspective: 100px;
+	-webkit-perspective-origin: 50% 50%;
+	-webkit-animation: live-view 6s ease-in-out infinite alternate;
+}
+.live-view .objects {
+	-webkit-transform-style: preserve-3d;
+}
+.live-view .objects .box1 {
+	display: block;
+	position: absolute;
+	height: 50px;
+	width: 50px;
+	background: rgb(200,0,0);
+	left: 5px;
+	top: 74px;
+	-webkit-transform-style: preserve-3d;
+}
+.live-view .objects .box1:before {
+	display: block;
+	content: " ";
+	position: absolute;
+	height: 50px;
+	width: 50px;
+	background: rgb(255,0,0);
+	left: 50px;
+	top: 0px;
+	-webkit-transform: rotateY(90deg);
+	-webkit-transform-origin: 0% 0%;
+}
+.live-view .objects .box2 {
+	display: block;
+	position: absolute;
+	height: 50px;
+	width: 50px;
+	background: rgb(0,150,0);
+	left: 81px;
+	top: 74px;
+	-webkit-transform: rotateY(-45deg);
+	-webkit-transform-style: preserve-3d;
+}
+.live-view .objects .box2:before {
+	display: block;
+	content: " ";
+	position: absolute;
+	height: 50px;
+	width: 50px;
+	background: rgb(0,200,0);
+	left: 50px;
+	top: 0px;
+	-webkit-transform: rotateY(90deg);
+	-webkit-transform-origin: 0% 0%;
+}
+.live-view .objects .box3 {
+	display: block;
+	position: absolute;
+	height: 50px;
+	width: 50px;
+	background: rgb(0,0,200);
+	left: 193px;
+	top: 74px;
+	-webkit-transform-style: preserve-3d;
+}
+.live-view .objects .box3:before {
+	display: block;
+	content: " ";
+	position: absolute;
+	height: 50px;
+	width: 50px;
+	background: rgb(0,0,150);
+	left: 0px;
+	top: 0px;
+	-webkit-transform: rotateY(90deg);
+	-webkit-transform-origin: 0% 0%;
+}
+</style>
+</head>
+
+<body>
+<div class="container">
+<div class="display"> <h1>Perspective: 1000 to 100 in 6 seconds</h1>
+  <div class="live-view">
+    <div class="objects">
+      <div class="box1"></div>
+      <div class="box2"></div>
+      <div class="box3"></div>
+    </div>
+  </div>
+</div>
+</body>
+</html>

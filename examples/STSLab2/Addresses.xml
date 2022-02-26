@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<addresses>
+    <address>
+        <name> Mary Poppins </name>
+        <street> Sunset Boulevard 512 </street>
+        <city> Santa Monica </city>
+        <country> United States of America </country>
+    </address>
+    <address>
+        <name> Ove </name>
+        <street> Spjutvägen 16 </street>
+        <city> Vittinge </city>
+    </address>
+</addresses>

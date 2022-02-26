@@ -1,0 +1,33 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Transition Transofrm Example</title>
+<style type="text/css">
+body { 
+	text-align: center;
+}
+p {
+	font-family: "Courier New", Courier, monospace;
+	font-size: 18px;	
+}
+.translateY {
+	width: 255px;
+	height: 255px;
+	background-color: green;
+	margin: 20px auto;
+	-webkit-transition: all 2s cubic-bezier(0.175, 0.885, 0.320, 1.275); 
+	border-radius: 200px;
+}
+.translateY:hover {
+	-webkit-transform: translateY(300px);
+}
+</style>
+</head>
+
+<body>
+<p>transform: translateY(300px)<br>
+transition: all 2s cubic-bezier(0.175, 0.885, 0.320, 1.275)</p>
+<div class="translateY"></div>
+</body>
+</html>

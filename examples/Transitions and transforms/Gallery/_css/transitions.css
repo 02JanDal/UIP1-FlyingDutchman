@@ -1,0 +1,69 @@
+.container {
+	width: 303px;
+	height: 198px;
+	position: relative;
+	margin: 150px auto 30px;
+	-webkit-perspective: 1000px;
+	-moz-perspective: 1000px;
+	-ms-perspective: 1000px;
+	-o-perspective: 1000px;
+	perspective: 1000px;
+}
+#carousel {
+	width: 100%;
+	height: 100%;
+	position: absolute;
+	-webkit-transform-style: preserve-3d;
+	-moz-transform-style: preserve-3d;
+	-ms-transform-style: preserve-3d;
+	-o-transform-style: preserve-3d;
+	transform-style: preserve-3d;
+}
+.ready #carousel, .ready #carousel figure {
+	-webkit-transition: -webkit-transform 1s;
+	-moz-transition: -moz-transform 1s;
+	-ms-transition: -ms-transform 1s;
+	-o-transition: -o-transform 1s;
+	transition: transform 1s;
+}
+#carousel figure {
+	display: block;
+	position: absolute;
+	width: 279px;
+	height: 174px;
+	left: 10px;
+	top: 10px;
+	line-height: 116px;
+	font-size: 80px;
+	font-weight: bold;
+	color: white;
+	text-align: center;
+}
+#carousel figure img {
+	-webkit-box-shadow: 0 0 0 #000;
+	-moz-box-shadow: 0 0 0 #000;
+	-ms-box-shadow: 0 0 0 #000;
+	-o-box-shadow: 0 0 0 #000;
+	box-shadow: 0 0 0 #000;
+	-webkit-transition: all 1s;
+	-moz-transition: all 1s;
+	-o-transition: all 1s;
+	transition: all 1s;
+}
+#carousel figure.showFig img:hover {
+	-webkit-box-shadow: 3px 3px 5px #000;
+	-moz-box-shadow: 3px 3px 5px #000;
+	-ms-box-shadow: 3px 3px 5px #000;
+	-o-box-shadow: 3px 3px 5px #000;
+	box-shadow: 3px 3px 5px #000;
+	-webkit-transform: scale(2);
+	-moz-transform: scale(2);
+	-o-transform: scale(2);
+	transform: scale(2);
+}
+.no-csstransforms3d #carousel figure, .no-csstransforms3d #toggle {
+	display: none;
+}
+.no-csstransforms3d #carousel figure.showFig {
+	display: block;
+}

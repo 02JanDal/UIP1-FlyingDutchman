@@ -1,0 +1,14 @@
+{"addresses": [
+    {
+        "name": "Mary Poppins",
+        "street": "Sunset Boulevard 512",
+        "city": "Santa Monica",
+        "country": "United States of America"
+    },
+    {
+        "name": "Ove",
+        "street": "Spjutvägen 16",
+        "city": "Vittinge",
+        "country": ""
+    }
+]}

@@ -1,0 +1,42 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Skew Example</title>
+<style type="text/css">
+body { 
+	text-align: center;
+}
+p {
+	font-family: "Courier New", Courier, monospace;
+	font-size: 18px;	
+}
+div {
+	width: 300px;
+	margin: 20px auto 80px auto;
+	padding: 10px;
+	border: 1px #03F solid;
+	background: #9CC;
+}
+.skewX:hover {
+	-webkit-transform: skewX(-25deg);
+}
+.skewY:hover {
+	-webkit-transform: skewY(10deg);
+}
+span {
+	text-align: right;
+	font-style: italic;	
+}
+</style>
+</head>
+
+<body>
+<p>transform: skewX(-25deg) </p>
+<div class="skewX"><p>A use has been found for everything but snoring.<br />
+<span>- Mark Twain</span></p></div>
+<p>transform: skewY(10deg) </p>
+<div class="skewY"><p>Man is the only animal that blushes. Or needs to.<br />
+<span>- Mark Twain</span></p></div>
+</body>
+</html>

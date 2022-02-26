@@ -1,0 +1,38 @@
+div {
+    border: 1px solid black;
+    padding: 2px;
+    spacing: 2px;
+}
+/* By using float:left the divs seem to behave like any other text components. However, they are still divs */
+
+.n1 {
+    float:left;
+    border: 1px solid red;
+}
+
+.n2 {
+    float:right;
+    border: 1px solid green;
+}
+
+.n3 {
+    float: none;
+    border: 1px solid cyan;
+}
+
+.n4 {
+    position: fixed;
+    bottom: 0;
+    right: 0;
+    width: 300px;
+    border: 3px solid #73AD21;
+}
+
+.n5 {
+    position: absolute;
+    top: 400px;
+    left: 600px;
+    width: 200px;
+    height: 100px;
+    border: 3px solid #73AD21;
+}

@@ -1,0 +1,80 @@
+/*
+Created by LOe 2022-02-11
+Used by "Layers and positioning.html"
+
+ */
+
+body {
+    background-color: antiquewhite;
+}
+p {
+    background-color: antiquewhite;
+    padding: 4px;
+}
+
+header, footer {
+
+    position: fixed;
+    width: 100%;
+
+    background: linear-gradient(rgba(0,0,0,1),rgba(0,0,0,0));
+
+    font-family: "Arial Black", Gadget, sans-serif; /* Setting the font properties */
+    font-size: 20px;
+
+    padding: 40px;    /* The header text will be surrounded by a 20 px wide padding.  */
+
+    z-index: 1;  /* z-index moves the header over all other elements. */
+
+}
+
+/*
+Here we use the cascading property of CSS, the specific details for each are over-riding the common
+ background definition (if they are placed after).
+ */
+header {
+
+    top: 0;
+
+    /* Overrides the definition in the common clause above.*/
+    background: linear-gradient(rgba(0,130,170,1),rgba(0,130,170,0));
+}
+
+
+footer {
+
+    bottom: 0;
+
+    /* Overrides the definition in the common clause above.*/
+    background: linear-gradient(rgba(100,0,170,0),rgba(100,0,170,1));
+}
+
+
+.sidefloat {
+    transform: rotate(7deg);
+    border: 2pt black;
+    width: 30%;
+
+    /*
+    Here we specify the position to be completely fixed with respect to the
+    surrounding container (!)
+    */
+    position: fixed;
+    top: 150px;
+    right: 15px;
+
+    margin-left: 10px;
+    padding: 10px;
+    background-color: lightblue;
+    transition-duration: 1s;
+}
+
+.sidefloat:hover {
+    z-index: -1;
+}
+
+#canvasOne {
+    float: left;
+    border: dotted 2px black;
+    margin: 4px;
+}

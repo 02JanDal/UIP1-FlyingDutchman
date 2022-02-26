@@ -1,0 +1,46 @@
+<!---
+File: Spirograph.html
+
+This file contains the basic HTML structure in order to draw a small graphic application which is supposed to mimic
+the classic spirograph toy, where cogwheels are used to draw symmetric graphic patterns.
+
+Version 0.5
+Author: Lars Oestreicher
+
+Requires the following files:
+
+Spirograph.js
+Spirograph.css
+
+-->
+
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title>My Spirograph</title>
+
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
+
+
+    <link href="Spirograph.css" rel="stylesheet">
+</head>
+<body>
+
+<!---
+The drawing will be made using two canvases, one for the pattern, and on for the mechanism (in order to show
+how it works. The drawing is made with JavaScript.
+-->
+
+<div id="canvases">
+    <canvas id="Spiro1" width="600" height="600" style="border:1px solid"></canvas>
+    <canvas id="myCanvas" width="600" height="600" style="border:1px solid"></canvas>
+    <script src="Spirograph.js"></script>
+</div>
+
+</body>
+</html>
+
+<!---
+END of file Spirograph.html
+-->

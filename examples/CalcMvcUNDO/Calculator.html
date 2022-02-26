@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+<!--
+The head contains the title of the application window, and the various
+imports that are needed.
+
+First we link to the style sheet that we will use for the project.
+This is still fairly small, as compared to what may be needed for a
+larger project. In such cases it might be useful to divide the css file
+into a number of smaller css files.
+
+One such division could be to have one file for the overall theme of
+the whole system, and then separate css files for the pecularities of
+different modules and pages. It is important to remember that css
+definitions override each other. This means that we can define partial
+styles, which are refined or overridden in later loaded style sheets.
+
+Next we import all the javascript files that are needed for the project.
+Among the javascript files is also the jQuery library that will be used.
+
+Also note that the order of loading is important, in that javascript is
+a script (yes!) language, and the functions will be defined and
+run in the order of loading.
+-->
+<head>
+    <meta charset="UTF-8">
+    <title>Simple calculator</title>
+    <link rel="stylesheet" type="text/css" href="calculator.css">
+    <script type="text/javascript" src="Dictionary.js"></script>
+    <!-- Try loading "Dictionary1.js" instead. --->
+    <script type="text/javascript" src="jquery-1.11.1.js"></script>
+    <script type="text/javascript" src="Model.js"></script>
+    <script type="text/javascript" src="MathFuncUD.js"></script>
+    <script type="text/javascript" src="UNDOmanager.js"></script>
+    <script type="text/javascript" src="Control.js"></script>
+</head>
+<!--
+
+The body is the place where all the action takes place. Well, action might
+be a bit too strong word. The body defines the containers that will contain
+the information, in order to present it to the user.
+
+As you can see, the containers in most cases have an element name
+(e.g., span or div), an optional class name (e.g., b-wid) and an
+identification tag (e.g., fun1 or arg2).
+
+Items belonging to the control-view have a javascript call to the
+corresponding function that will perform the action. The input fields
+have the contenteditable property set to "true", which means that we
+can use them as form fields.
+
+The sum-tag is a fixed div, producing a label. The display tag denotes
+div where the results are displayed after the action has been performed.
+
+Note here that there are no strings in the HTML code here. All the
+information is created and inserted by javascript functions when the
+page has been loaded (see the bottom part of the file "Control.js").
+The HTML structure thus turns into a framework that needs to be populated.
+-->
+
+<body>
+
+<div id="calculator">                   <!-- Calculator main container -->
+    <div id="resultpan" class="flxbx1">
+        <div>                           <!-- the result -->
+            <span id="sum-tag"></span>
+            <span class="numfield" id="display"></span>
+        </div>
+        <div>                           <!-- undo-redo -->
+            <span id="undo" class="key"  onclick="undoit()"></span>
+            <span id="redo" class="key" onclick="redoit()"></span>
+        </div>
+    </div>
+    <div id="argpan">                   <!-- the argument collector -->
+        <span id="arg-tag"></span>
+        <span class="numfield" id="argument"></span>
+    </div>
+
+    <div id="numberpad">                <!-- The control view -->
+        <div id="funkeys">              <!-- The function keys -->
+            <span class="key funkey" id="fun1" onclick="doInit('fun1')"></span>
+            <span class="key funkey" id="fun2" onclick="doInit('fun2')"></span>
+            <span class="key funkey" id="fun3" onclick="doInit('fun3')"></span>
+            <span class="key funkey" id="fun4" onclick="doInit('fun4')"></span>
+            <span class="key funkey" id="fun5" onclick="doInit('fun5')"></span>
+        </div>
+        <div id="numkeys">              <!-- The number keypad -->
+            <div class="flxbx">         <!-- Each row is a flexbox div. -->
+                <div class="key numkey" id="k1" onclick="add('k1')"></div>
+                <div class="key numkey" id="k2" onclick="add('k2')"></div>
+                <div class="key numkey" id="k3" onclick="add('k3')"></div>
+            </div>
+            <br>
+            <div class="flxbx">
+                <div class="key numkey" id="k4" onclick="add('k4')"></div>
+                <div class="key numkey" id="k5" onclick="add('k5')"></div>
+                <div class="key numkey" id="k6" onclick="add('k6')"></div>
+            </div>
+            <br>
+            <div class="flxbx">
+                <div class="key numkey" id="k7" onclick="add('k7')"></div>
+                <div class="key numkey" id="k8" onclick="add('k8')"></div>
+                <div class="key numkey" id="k9" onclick="add('k9')"></div>
+            </div>
+            <br>
+            <div class="flxbx">
+                <div class="key numkey" id="k0" onclick="add('k0')"></div>
+            </div>
+        </div>
+    </div>
+</div>
+
+</body>
+</html>
+
+<!-- =========================================================================
+END OF FILE
+========================================================================== -->

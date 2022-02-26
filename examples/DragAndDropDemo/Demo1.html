@@ -1,0 +1,49 @@
+<!DOCTYPE HTML>
+<html lang="en">
+<head>
+    <title>Drag and Drop Demo - Simple</title>
+    <style>
+        #div1 {width:350px;height:350px;padding:10px;border:1px solid #aaaaaa;}
+        #div2 {width:350px;height:350px;padding:10px;border:1px solid #aaaaaa;}
+        #div3 {width:350px;height:350px;padding:10px;border:1px solid #aaaaaa;}
+    </style>
+    <script>
+        // We want to prevent the standard handling of drag and drop and use
+        // our own solution.
+        //
+        function allowDrop(ev) {
+            ev.preventDefault();
+        }
+
+        function drag(ev) {
+            ev.dataTransfer.setData("text", ev.target.id);
+        }
+
+        function drop(ev) {
+            ev.preventDefault();
+            var data = ev.dataTransfer.getData("text");
+            ev.target.appendChild(document.getElementById(data));
+        }
+    </script>
+</head>
+<body>
+
+<p>Drag the Drag'n'Drop image into the rectangle:</p>
+
+<div id="div1" ondrop="drop(event)" ondragover="allowDrop(event)">
+
+    <img id="drag1" src="anykey.jpg" draggable="true" ondragstart="drag(event)"
+         width="336" height="336" alt="Picture of an ANY key">
+
+</div>
+<br>
+
+<div id="div2" ondrop="drop(event)" ondragover="allowDrop(event)">
+
+</div>
+<br>
+<div id="div3" ondrop="drop(event)" ondragover="allowDrop(event)">
+
+</div>
+</body>
+</html>

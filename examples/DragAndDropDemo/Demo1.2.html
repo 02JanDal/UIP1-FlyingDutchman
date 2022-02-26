@@ -1,0 +1,210 @@
+<!--
+
+This version of the demo 1 shows how the drag'n'drop update is performed using a database/model approach. In this
+version the state of the system is stored in two variables, rather than in the HTML code. This means that the change
+resulting from the dragging is updated in the view from the model, rather than by the "physical" final position
+of the HTML element.
+
+In this version, we have also added a string dictionary.
+
+-->
+
+<!DOCTYPE HTML>
+<html lang="en">
+<head>
+    <title>Drag and Drop Demo - MVC</title>
+    <style>
+        #div1 {
+            width: 350px;
+            height: 350px;
+            padding: 10px;
+            border: 1px solid #aaaaaa;
+        }
+
+        #div2 {
+            width: 350px;
+            height: 350px;
+            padding: 10px;
+            border: 1px solid #aaaaaa;
+        }
+    </style>
+    <script>
+
+        // ===================================================
+        // =================== START OF SCRIPT ===============
+        // ===================================================
+        // We want to prevent the standard handling of drag and drop and use
+        // our own solution.
+        //
+        // VIEW PROPERTY
+        //
+        function allowDrop(ev) {
+            ev.preventDefault();
+        }
+
+        // Note that the drag() function target is pointing to the image itself,
+        // but we want the current container id for this.
+        //
+        // Therefore we use parentElement, rather than the target element itself.
+        //
+        // VIEW --> CONTROL
+        //
+        function drag(ev) {
+            ev.dataTransfer.setData("text", ev.target.parentElement.id);
+        }
+
+        // We call our own function for making the drag event. In the
+        // version 1 the update is made here directly.
+        //
+        // VIEW --> CONTROL
+        //
+        function drop(ev) {
+            make_drag(ev.target.id);
+        }
+
+        // This function is used to change the content of any div.
+        //
+        // CONTROL --> VIEW
+        //
+        function set_content(target, content) {
+            target.innerHTML = content;
+        }
+
+        // =============== VIEW UPDATE ===============
+        // When the view is updated, the image block is inserted into the
+        // HTML at the proper place. Note that it is not moved on the
+        // surface, but is using the document DOM.
+        //
+        // The code for the picture(s) are first created from the current content of the MODEL and then replaced in the view.
+        // Then the Instruction string is collected from the dictionary.
+        //
+        // MODEL --> CONTROL
+        // CONTROL --> VIEW
+        //
+        function update_view() {
+
+            set_content(document.getElementById("div1"),
+                create_pic_element(div1Content, dict[lang]["altpic"]));
+            set_content(document.getElementById("div2"),
+                create_pic_element(div2Content), dict[lang]["altpic"]);
+
+            document.getElementById("instr").innerHTML = dict[lang]["instr"];
+
+        }
+
+        // ===================================================
+        // This function changes the model (the database) and then it calls
+        // for an update of the view with the change implemented.
+        //
+        // CONTROL --> MODEL
+        // CONTROL--> VIEW
+        //
+        function make_drag(to) {
+
+            if (to == "div2") {
+
+                div2Content = div1Content;
+                div1Content = "";
+
+            } else {
+
+                div1Content = div2Content;
+                div2Content = "";
+
+            }
+
+            update_view();
+        }
+
+        //
+        // =================== DICTIONARY ====================
+        //
+        // CONTROL --> MODEL
+        // CONTROL --> VIEW
+        //
+        function change_lang() {
+            if (lang == 'eng') {
+                lang = 'swe';
+            } else {
+                lang = 'eng'
+            }
+            ;
+            update_view();
+        }
+
+        // SYSTEM STATE MODEL
+        //
+        lang = 'eng';
+
+        var dict = {
+            "eng": {
+                "instr": "Drag the Drag and Drop image into the rectangle",
+                "altpic": "Picture of ANY KEY"
+            },
+            "swe": {
+                "instr": "Dra Drag and Drop-bilden till den andra rektangeln.",
+                "altpic": "Bild av en ANY KEY"
+            }
+        };
+
+        // =================== MODEL =========================
+        //
+        // This is the (rudimentary) model. Note that the image location
+        // is stored here in the variables and not in the HTML code. Note
+        // very intricate combination of single and double qoutes that can
+        // result when defining it this way.
+        //
+        // Note that now the alt text is also changed when the language changes.
+        // Well, actually it did not initially, since the data base was only created once,
+        // during the loading of the page. It was necessary to create a special
+        // function to solve the problem.
+        //
+        // MODEL --> CONTROL
+        //
+        function create_pic_element(alt_text, alt_pic) {
+
+            if (alt_text == "") {return ""}
+            else {
+                // We use a template string here, and the alt_text is retrieved from the dictionary and inserted at the right place.
+                //
+                return `<img id="drag1" src="anykey.jpg" draggable="true" ondragstart="drag(event)" width="336" height="350" alt="${alt_pic}" onclick="change_lang()">`;
+            }
+        }
+
+        // MODEL
+        //
+        let div1Content = "";
+        let div2Content = "anykey.jpg";
+
+        // =================== END MODEL =====================
+
+        // We have to wait for the document to load completely before updating the view. Note that
+        // the image is loaded in the HTML code only when the view is updated. No text is stored in the HTML
+        // from the beginning.
+        //
+        document.addEventListener("DOMContentLoaded", function () {
+            update_view();
+        });
+
+    </script>
+</head>
+<body>
+
+
+<p id="instr"></p>
+
+<!--- The view here, does not know anything about the content of the divs
+When we have the img element stored in here, the view will contain some
+knowledge about the content of the model.
+-->
+
+<div id="div1" ondrop="drop(event)" ondragover="allowDrop(event)"></div>
+<br>
+<div id="div2" ondrop="drop(event)" ondragover="allowDrop(event)"></div>
+</body>
+</html>
+<!---
+// ===========================================================
+// =========================== END OF FILE ===================
+// ===========================================================
+-->

@@ -1,0 +1,79 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Student Spotlight</title>
+<!--[if lt IE 9]>
+<script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+<![endif]-->
+<!--[if lt IE 9]>
+<script src="../_scripts/respond.min.js"></script>
+<![endif]-->
+<link href="_css/main.css" rel="stylesheet" media="screen, projection">
+<link href="_css/transitions.css" rel="stylesheet" media="screen, projection">
+<script type="text/javascript" src="_scripts/modernizr.2.5.3.min.js"></script>
+<script type="text/javascript" src="_scripts/utils.js"></script>
+<script type="text/javascript" src="_scripts/gallery.js"></script>
+<script type="text/javascript" src="http://code.jquery.com/jquery.js"></script>
+<script type="text/javascript">
+	var inc=1;
+	$(function () {
+			$('#next').click(
+				function () {
+					var currentFig = "#fig" + inc;
+					if (inc == 10) {
+						nextFig = "#fig1";
+					} else {
+						nextFig = "#fig" + (inc + 1);
+					}
+					$(nextFig).addClass('showFig');
+					$(currentFig).removeClass('showFig');	
+					inc++;
+					if (inc == 11) { inc = 1; } 
+				}
+			);	
+			$('#previous').click(
+				function () {
+					var currentFig = "#fig" + inc;
+					if (inc == 1) {
+						prevFig = "#fig10";
+					} else {
+						prevFig = "#fig" + (inc - 1);
+					}
+					$(prevFig).addClass('showFig');
+					$(currentFig).removeClass('showFig');	
+					inc--;
+					if (inc == 0) { inc = 10; } 
+			}
+			);	
+	});
+	</script>
+</head>
+<body>
+<header class="spotlightHeader pageHeader">
+   <div id="gallery">
+    <section class="container">
+      <div id="carousel">
+        <figure id="fig1" class="showFig"><img src="_images/artwork1.jpg" width="274" height="174"></figure>
+        <figure id="fig2"><img src="_images/artwork2.jpg" width="274" height="174"></figure>
+        <figure id="fig3"><img src="_images/artwork3.jpg" width="274" height="174"></figure>
+        <figure id="fig4"><img src="_images/artwork4.jpg" width="274" height="174"></figure>
+        <figure id="fig5"><img src="_images/artwork5.jpg" width="274" height="174"></figure>
+        <figure id="fig6"><img src="_images/artwork6.jpg" width="274" height="174"></figure>
+        <figure id="fig7"><img src="_images/artwork7.jpg" width="274" height="174"></figure>
+        <figure id="fig8"><img src="_images/artwork8.jpg" width="274" height="174"></figure>
+        <figure id="fig9"><img src="_images/artwork9.jpg" width="274" height="174"></figure>
+        <figure id="fig10"><img src="_images/artwork10.jpg" width="274" height="174"></figure>
+      </div>
+    </section>
+    <section id="options">
+       <p id="toggle"><button id="toggle-axis">Toggle Axis</button></p> 
+        <p id="navigation">
+        <input type="hidden" id="panel-count" value="10"/>
+        <button id="previous" data-increment="-1">Previous</button>
+        <button id="next" data-increment="1">Next</button>
+        </p>
+    </section>
+  </div>
+</body>
+</html>

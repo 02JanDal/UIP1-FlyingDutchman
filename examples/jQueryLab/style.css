@@ -1,0 +1,16 @@
+p {
+    font-size: large;
+}
+
+.borded {
+    border : green 3px solid;
+}
+
+.c3 {
+    width : 40%;
+    border : dotted red 1px;
+}
+
+.danger {
+    background-color: red;
+}

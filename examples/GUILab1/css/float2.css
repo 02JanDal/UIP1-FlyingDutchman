@@ -1,0 +1,13 @@
+#floater {
+    position:fixed;
+    top:10px;
+}
+
+#bodyfloat {
+    background-color: yellow;
+    position : fixed;
+    top : 40px;
+    width : 80%;
+    height:400px;
+    overflow:scroll;
+}

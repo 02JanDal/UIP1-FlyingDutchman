@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>jQuery Intro</title>
+    <link rel="stylesheet" href="style.css"/>
+
+    <!-- insert the script to reference jQuery here -->
+    <script type="text/javascript" src="jquery-1.12.0.min.js"></script>
+
+    <script>
+        window.addEventListener("DOMContentLoaded", function(evt) {
+            var elem = document.getElementsByTagName("body")[0];
+            var para = document.createElement("p");
+            var text = document.createTextNode("The page just loaded!");
+            para.appendChild(text);
+            elem.appendChild(para);
+        });
+    </script>
+
+</head>
+<body>
+<!-- we start with an empty document -->
+</body>
+</html>

@@ -1,0 +1,17 @@
+table {
+    border: 2px solid darkred;
+    border-spacing: 10px;
+    }
+
+th {
+    border: 1px dashed green;
+    border-collapse: collapse;
+
+}
+tr {
+
+}
+
+td {
+    border: 1px dashed blue;
+   }
