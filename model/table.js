@@ -1,5 +1,5 @@
 import { AbstractModel } from "./abstract.js";
-import Party from "./party";
+import Party from "./party.js";
 
 export default class Table extends AbstractModel {
   static type = "table";

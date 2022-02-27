@@ -1,6 +1,6 @@
 import { AbstractModel } from "./abstract.js";
 import Table from "./table.js";
-import OrderBill from "./order_bill";
+import OrderBill from "./order_bill.js";
 
 export default class Party extends AbstractModel {
   static type = "party";

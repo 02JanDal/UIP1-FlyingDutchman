@@ -1,5 +1,5 @@
 import { AbstractModel } from "./abstract.js";
-import Account from "./account";
+import Account from "./account.js";
 
 export default class User extends AbstractModel {
   static type = "user";
