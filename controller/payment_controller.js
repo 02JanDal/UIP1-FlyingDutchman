@@ -15,4 +15,17 @@ export default class PaymentController {
             )
         }
     }
+
+    /**
+     * Customer top up payment -- once paid, cant be undo
+     * @param {account} account
+     */
+    customerTopUpPay(account){
+        undo.push(
+            new UndoCommand(()=> {
+                account.topUpStatus = "paid";
+                account.save();
+            }, undefined)
+        )
+    }
 }
