@@ -39,4 +39,13 @@ export default class OrderBillController {
       );
     }
   }
+
+    /***
+     * To count the number of items in the cart
+     * @param order
+     */
+  totalItem(order){
+      const len = order.products.length
+      console.log(len)
+  }
 }
