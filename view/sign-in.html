@@ -6,27 +6,26 @@
             <a href="home.html"><i class="fa fa-chevron-left backward-logo"></i></a>
         </div>
         <div class="child-navbar right-navbar">
-            <img src="/images/flying-dutchman-logo.png" class="logo-right-navbar">
+            <img src="/images/flying-dutchman-logo.png" class="logo-right-navbar" />
         </div>
     </div>
     <!---VIP Customer title--->
     <div class="title-container title-navbar-container">
-        <h4 id="customer-title">VIP Customer</h4>
+        <h4 id="customer-title" data-i18n="vip-customer"></h4>
     </div>
     <!--- Username and password input -->
     <form class="form-container">
-        <label for="uname">Username:
+        <label for="uname"><span data-i18n="username">:</span>
             <input type="text" id="uname" name="uname"><br><br>
         </label>
-        <label for="password">Password:
+        <label for="password"><span data-i18n="password"></span>:
             <input type="text" id="password" name="password"><br>
         </label>
     </form>
     <!--- Sign in button -->
     <!--TODO: Will change this form later into something submittable!--->
     <div class="elements-container">
-        <!--TODO: To put the onclick function on a javascript file.--->
-        <a href="menu.html"><button class="button-style" id="sign-in-button" type="button">Sign in</button>
+        <a href="menu.html"><button class="button-style" id="sign-in-button" type="button" data-i18n="signin"></button>
         </a>
     </div>
 </div>

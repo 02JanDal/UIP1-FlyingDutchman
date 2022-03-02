@@ -1,4 +1,5 @@
 import { loadView, setMainView } from "./view/helpers.js";
+import { updateUILocale } from "./controller/languages.js";
 
 window.addEventListener("load", async () => {
   await Promise.all([
@@ -7,5 +8,6 @@ window.addEventListener("load", async () => {
     loadView("sign-in", "#sign-in"),
     loadView("menu", "#menu"),
   ]);
+  updateUILocale();
   setMainView("home");
 });
