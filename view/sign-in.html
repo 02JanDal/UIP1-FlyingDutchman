@@ -3,7 +3,7 @@
     <!--- Nav bar -->
     <div class="parent-navbar">
         <div class="child-navbar left-navbar">
-            <a href="home.html"><i class="fa fa-chevron-left backward-logo"></i></a>
+            <a href="#" id="back-customer-home"><i class="fa fa-chevron-left backward-logo"></i></a>
         </div>
         <div class="child-navbar right-navbar">
             <img src="/images/flying-dutchman-logo.png" class="logo-right-navbar" />
@@ -15,17 +15,21 @@
     </div>
     <!--- Username and password input -->
     <form class="form-container">
-        <label for="uname"><span data-i18n="username">:</span>
+        <label for="uname"><span data-i18n="username"></span>:
             <input type="text" id="uname" name="uname"><br><br>
         </label>
         <label for="password"><span data-i18n="password"></span>:
-            <input type="text" id="password" name="password"><br>
+            <input type="password" id="password" name="password"><br>
         </label>
     </form>
     <!--- Sign in button -->
-    <!--TODO: Will change this form later into something submittable!--->
     <div class="elements-container">
-        <a href="menu.html"><button class="button-style" id="sign-in-button" type="button" data-i18n="signin"></button>
+        <a href="#" id="login"><button class="button-style" id="sign-in-button" type="button" data-i18n="signin"></button>
         </a>
+    </div>
+    <!---- Language switching buttons --->
+    <div class="language-container">
+        <input type="image" id="swedish-button" class="language-button" src="/images/sweden.png" onclick="changeLanguage()">
+        <input type="image" id="english-button" class="language-button" src="/images/united-kingdom.png" onclick="changeLanguage()">
     </div>
 </div>

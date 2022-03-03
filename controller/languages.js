@@ -42,6 +42,15 @@ const strings = {
  */
 export function updateUILocale() {
   const locale = getCurrentLocale();
+  const swe = document.getElementById('swedish-button');
+  const eng = document.getElementById('english-button');
+  if (locale == "sv"){
+    swe.src = "/images/sweden-activated.png";
+    eng.src = "/images/united-kingdom.png";
+  } else {
+    swe.src = "/images/sweden.png";
+    eng.src = "/images/united-kingdom-activated.png";
+  }
   for (const el of document.querySelectorAll("[data-i18n]")) {
     const key = el.attributes.getNamedItem("data-i18n").value;
     if (!strings.hasOwnProperty(key)) {
@@ -71,6 +80,16 @@ export function getCurrentLocale() {
  * @param {"en"|"sv"} locale
  */
 export function setCurrentLocale(locale) {
+  localStorage.setItem("flyingdutchman_locale", locale);
+  updateUILocale();
+}
+
+/***
+ * Change locale whatever
+ * This works better for some weird reason!
+ *
+ */
+window.setLanguage = function(locale){
   localStorage.setItem("flyingdutchman_locale", locale);
   updateUILocale();
 }

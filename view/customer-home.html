@@ -1,24 +1,55 @@
-<!--- Customer main page -->
-<div class="main-container">
-    <!--- Nav bar -->
-    <div class="parent-navbar">
-        <div class="child-navbar left-navbar">
-            <a href="home.html"><i class="fa fa-chevron-left backward-logo"></i></a>
-        </div>
-        <div class="child-navbar right-navbar">
-            <img src="/images/flying-dutchman-logo.png" class="logo-right-navbar">
-        </div>
+<!--- Nav bar -->
+<div class="parent-navbar">
+    <div class="child-navbar left-navbar">
+        <a href="#" id="back-home"><i class="fa fa-chevron-left backward-logo"></i></a>
     </div>
-    <!--- Title -->
-    <div class="title-container title-navbar-container">
-        <h4 id="customer-title" data-i18n="welcome"></h4>
-    </div>
-    <!--- Buttons -->
-    <div class="elements-container">
-        <!--TODO: To put the onclick function on a javascript file.-->
-        <button class="button-style" id="button-sign-in" type="button" data-i18n="signin"></button>
-    </div>
-    <div class="elements-container" id="guest-container">
-        <p><span data-i18n="or"></span> <a href="#" id="link-guest" data-i18n="continue-as-guest"></a></p>
+    <div class="child-navbar right-navbar">
+        <img src="/images/flying-dutchman-logo.png" class="logo-right-navbar">
     </div>
 </div>
+<!--- Title -->
+<div class="title-container title-navbar-container">
+    <h4 id="customer-title" data-i18n="welcome"></h4>
+</div>
+<!--- Buttons -->
+<div class="elements-container">
+    <!--TODO: To put the onclick function on a javascript file.-->
+    <button class="button-style" id="button-sign-in" type="button" data-i18n="signin"></button>
+</div>
+<div class="elements-container" id="guest-container">
+    <p><span data-i18n="or"></span> <a href="#" id="link-guest" data-i18n="continue-as-guest"></a></p>
+</div>
+<!---- Language switching buttons --->
+<div class="language-container">
+    <input type="image" id="swedish-button" class="language-button" src="/images/sweden.png" onclick="setLanguage('sv')">
+    <input type="image" id="english-button" class="language-button" src="/images/united-kingdom.png" onclick="setLanguage('en')">
+</div>
+
+<!--&lt;!&ndash;- Customer main page &ndash;&gt;-->
+<!--<div class="main-container">-->
+<!--    &lt;!&ndash;- Nav bar &ndash;&gt;-->
+<!--    <div class="parent-navbar">-->
+<!--        <div class="child-navbar left-navbar">-->
+<!--            <a href="#" id="back-home"><i class="fa fa-chevron-left backward-logo"></i></a>-->
+<!--        </div>-->
+<!--        <div class="child-navbar right-navbar">-->
+<!--            <img src="/images/flying-dutchman-logo.png" class="logo-right-navbar">-->
+<!--        </div>-->
+<!--    </div>-->
+<!--    &lt;!&ndash;- Title &ndash;&gt;-->
+<!--    <div class="title-container title-navbar-container">-->
+<!--        <h4 id="customer-title" data-i18n="welcome"></h4>-->
+<!--    </div>-->
+<!--    &lt;!&ndash;- Buttons &ndash;&gt;-->
+<!--    <div class="elements-container">-->
+<!--        &lt;!&ndash;TODO: To put the onclick function on a javascript file.&ndash;&gt;-->
+<!--        <button class="button-style" id="button-sign-in" type="button" data-i18n="signin"></button>-->
+<!--    </div>-->
+<!--    <div class="elements-container" id="guest-container">-->
+<!--        <p><span data-i18n="or"></span> <a href="#" id="link-guest" data-i18n="continue-as-guest"></a></p>-->
+<!--    </div>-->
+<!--    <div>-->
+<!--        <p>HELLOO</p>-->
+<!--    </div>-->
+
+<!--</div>-->
