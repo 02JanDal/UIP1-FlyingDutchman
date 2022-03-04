@@ -1,13 +1,13 @@
 <div class="container">
   <div class="sidebar">
-    <div class="searchbar"><i class="fa-solid fa-magnifying-glass"></i><input type="text" placeholder="Search.."></div>
+    <div class="searchbar"><input id="searchbar" type="search" placeholder="Search.."><span><button id="searchbutton" onclick=submitHandler(this)><i id="searchglass" class="fa-solid fa-magnifying-glass"></i></button></span></div>
     <ul>
       <li><a href="#all" onclick="clickHandler(this)"><i class="fa-solid fa-book"></i>All</a></li>
       <li><a href="#beer" onclick="clickHandler(this)"><i class="fa-solid fa-beer-mug-empty"></i>Beer</a></li>
       <li><a href="#wine" onclick="clickHandler(this)"><i class="fa-solid fa-wine-glass"></i>Wine</a></li>
       <li><a href="#cocktail" onclick="clickHandler(this)"><i class="fa-solid fa-martini-glass-citrus"></i>Cocktail</a></li>
       <li><a href="#cartl" onclick="clickHandler(this)"><i class="fa-solid fa-cart-shopping"></i>Cart</a></li>
-      <button class="dropdownbutton"><i class="fa-solid fa-globe"></i>English <i class="fa-solid fa-angle-down"></i></button>
+      <button type="button" onclick="languageHandler(this)"><i class="fa-solid fa-globe"></i>English</button>
       <button type="button" onclick="logoutHandler(this)"><i class="fa-solid fa-arrow-right-from-bracket"></i>Sign out</button>
     </ul>
 </div>

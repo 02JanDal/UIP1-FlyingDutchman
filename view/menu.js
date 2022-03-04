@@ -8,8 +8,9 @@
 
 function clickHandler(element) {
   //element.properties/id
-  for (let i = 0; i < element.parentElement.children.length; i++) {
-    element.parentElement.children[i].classList.remove("selected");
+  var parent = element.parentElement.parentElement
+  for (let i = 0; i < parent.length; i++) {
+    parent.children[i].children[0].classList.remove("selected")
   }
 
   if (!element.classList.contains("selected")) {
@@ -17,6 +18,13 @@ function clickHandler(element) {
   }
 }
 window.clickHandler = clickHandler;
+
+function submitHandler(element) {
+  // for (let i = 0; i < element.children.length; i++) {
+  //   element.children[i].classList.remove("selected")
+  // }
+  getElementById
+}
 
 function logoutHandler(element) {
   // for (let i = 0; i < element.children.length; i++) {

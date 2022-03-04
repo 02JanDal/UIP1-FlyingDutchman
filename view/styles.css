@@ -166,15 +166,14 @@ MENU PAGE
   list-style: none;
   margin: 0;
   padding: 0;
-  background-color: thistle;
+  background-color: rgba(202, 202, 202, 0.938);
   height: 100%;
   width: 30%;
+  position: fixed;
 }
 
-/* NOT WORKING */
 .sidebar>button {
-  background-color: rgb(255, 240, 240);
-  border: 0;
+  background-color: rgba(202, 202, 202, 0.938);
 }
 
 .content {
@@ -198,6 +197,7 @@ MENU PAGE
   height: 10%;
   width: 100%;
   background-color: white;
+  bottom: 0;
 }
 
 .cart {
@@ -210,14 +210,14 @@ MENU PAGE
   background-color: #42251C;
   text-align: center;
   vertical-align: middle;
-  line-height: 90px;
+  line-height: 175%;
   color: white;
   font-size: 250%;
 }
 
 button {
-  background-color: rgb(255, 240, 240);
   border: 0;
+  background-color: rgba(202, 202, 202, 0.938);
   /* margin-top: 275%; */
   width: 75%;
 }
@@ -237,6 +237,10 @@ img {
   display: flex;
   justify-content: center;
   align-items: center;
+}
+
+input {
+  width: 50%;
 }
 
 .card {
@@ -266,6 +270,7 @@ ul {
   padding-top: 20%;
   background-color:rgba(202, 202, 202, 0.938);
   margin: 0;
+  color: #42251C;
 }
 
 li:not(:last-child) {
@@ -280,6 +285,7 @@ a {
 
 li {
   font-size: 200%;
+  color: #42251C;
 }
 
 /* Commenting on this now due to styling problem, but will fix later. */
@@ -296,6 +302,16 @@ li {
 
 .searchbar {
   height: 3%;
+  width: 100%;
+  margin-top: 8%;
+  text-align: center;
+}
+
+#searchbutton {
+  width: 20%;
+  height: 80%;
+  margin-left: 2%;
+  border-radius: 10%;
 }
 
 .content {
@@ -304,15 +320,6 @@ li {
 }
 .content::-webkit-scrollbar {
   display: none;
-}
-
-.dropbtn {
-  background-color: #4CAF50;
-  color: white;
-  padding: 16px;
-  font-size: 16px;
-  border: none;
-  cursor: pointer;
 }
 
 /* https://www.w3schools.com/css/css_dropdowns.asp */
