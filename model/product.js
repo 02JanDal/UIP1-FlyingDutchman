@@ -1,10 +1,12 @@
 import { beverages } from "./data/beverages.js";
 
+/** @typedef {"beer" | "wine" | "cider" | "spirit" | "non-alcoholic"} ProductCategory
+
 /**
  * Classify from the detailed Swedish "varugrupp" to a more generic category
  *
  * @param {string} category
- * @returns {"non-alcoholic"|"cider"|"beer"|"wine"|"spirit"}
+ * @returns {ProductCategory}
  */
 function classify(category) {
   if (category.startsWith("Alkoholfritt")) {
@@ -82,7 +84,7 @@ export default class Product {
    *
    * @param {{
    *  [p: string]: RegExp | string | number | boolean | [number, number],
-   *  category: "beer" | "wine" | "cider" | "spirit" | "non-alcoholic"
+   *  category: ProductCategory
    * }} filters
    * @returns {Product[]}
    */
@@ -125,7 +127,7 @@ export default class Product {
    *
    * @param {{
    *  [p: string]: RegExp | string | number | boolean | [number, number],
-   *  category: "beer" | "wine" | "cider" | "spirit" | "non-alcoholic"
+   *  category: ProductCategory
    * }} filters
    * @returns {Product|null}
    */
