@@ -35,6 +35,30 @@ const strings = {
     en: "Password",
     sv: "Lösenord",
   },
+  "all-items": {
+    en: "   All items",
+    sv: "   Alla objekt",
+  },
+  "beer": {
+    en: "   Beer",
+    sv: "   Öl",
+  },
+  "wine": {
+    en: "   Wine",
+    sv: "   Vin",
+  },
+  "cocktail": {
+    en: "   Cocktail",
+    sv: "   Cocktail",
+  },
+  "log-out": {
+    en: "   Log out",
+    sv: "   Logga ut"
+  },
+  "cart": {
+    en: "   Cart",
+    sv: "   Vagn",
+  }
 };
 
 /**

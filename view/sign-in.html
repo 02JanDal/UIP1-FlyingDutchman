@@ -16,10 +16,10 @@
     <!--- Username and password input -->
     <form class="form-container">
         <label for="uname"><span data-i18n="username"></span>:
-            <input type="text" id="uname" name="uname"><br><br>
+            <input type="text" id="uname" name="uname" class="login"><br><br>
         </label>
         <label for="password"><span data-i18n="password"></span>:
-            <input type="password" id="password" name="password"><br>
+            <input type="password" id="password" name="password" class="login"><br>
         </label>
     </form>
     <!--- Sign in button -->
@@ -29,7 +29,7 @@
     </div>
     <!---- Language switching buttons --->
     <div class="language-container">
-        <input type="image" id="swedish-button" class="language-button" src="/images/sweden.png" onclick="changeLanguage()">
-        <input type="image" id="english-button" class="language-button" src="/images/united-kingdom.png" onclick="changeLanguage()">
+        <input type="image" id="swedish-button" class="language-button" src="/images/sweden.png" onclick="setLanguage('sv')">
+        <input type="image" id="english-button" class="language-button" src="/images/united-kingdom.png" onclick="setLanguage('en')">
     </div>
 </div>

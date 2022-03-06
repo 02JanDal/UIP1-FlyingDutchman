@@ -1,41 +1,67 @@
 <div class="container">
   <div class="sidebar">
-    <div class="searchbar"><input id="searchbar" type="search" placeholder="Search.."><span><button id="searchbutton" onclick=submitHandler(this)><i id="searchglass" class="fa-solid fa-magnifying-glass"></i></button></span></div>
-    <ul>
-      <li><a href="#all" onclick="clickHandler(this)"><i class="fa-solid fa-book"></i>All</a></li>
-      <li><a href="#beer" onclick="clickHandler(this)"><i class="fa-solid fa-beer-mug-empty"></i>Beer</a></li>
-      <li><a href="#wine" onclick="clickHandler(this)"><i class="fa-solid fa-wine-glass"></i>Wine</a></li>
-      <li><a href="#cocktail" onclick="clickHandler(this)"><i class="fa-solid fa-martini-glass-citrus"></i>Cocktail</a></li>
-      <li><a href="#cartl" onclick="clickHandler(this)"><i class="fa-solid fa-cart-shopping"></i>Cart</a></li>
-      <button type="button" onclick="languageHandler(this)"><i class="fa-solid fa-globe"></i>English</button>
-      <button type="button" onclick="logoutHandler(this)"><i class="fa-solid fa-arrow-right-from-bracket"></i>Sign out</button>
-    </ul>
+    <div class="logo-sidebar">
+      <img src="/images/flying-dutchman-logo.png" class="logo-img-sidebar">
+    </div>
+    <div class="searchbar"><input id="searchbar" type="search" placeholder="Search.."><span><button id="searchbutton"><i id="searchglass" class="fa fa-search"></i></button></span></div>
+    <div>
+      <ul>
+        <li><a href="#all"><i class="fa fa-book" aria-hidden="true"></i><span data-i18n="all-items"></span></a></li>
+        <li><a href="#beer"><i class="fa fa-beer" aria-hidden="true"></i><span data-i18n="beer"></span></a></li>
+        <li><a href="#wine"><i class="fa fa-glass" aria-hidden="true"></i><span data-i18n="wine"></span></a></li>
+        <li><a href="#cocktail"><i class="fa fa-glass" aria-hidden="true"></i><span data-i18n="cocktail"></span></a></li>
+        <li><a href="#cartl" id="to-cart"><i class="fa fa-shopping-cart" aria-hidden="true"></i><span data-i18n="cart"></span></a></li>
+        <li><a href="#" id="sign-out-button"><i class="fa fa-sign-out" aria-hidden="true"></i><span data-i18n="log-out"></span></a></li>
+        <!--- BROKEN ->
+        <li class="menu-language-li"><a href="#" onclick="menuLanguage()"><img class="img-language" src="\images\united-kingdom.png"><span class="menu-language-text"> English</span></a></li>-->
+      </ul>
+    </div>
+    <!---- Language switching buttons --->
+    <div class="menu-language-container">
+      <div class="language-left">
+        <input type="image" id="swedish-button" class="language-button" src="/images/sweden.png" onclick="setLanguage('sv')">
+      </div>
+      <div>
+        <input type="image" id="english-button" class="language-button" src="/images/united-kingdom.png" onclick="setLanguage('en')">
+      </div>
+    </div>
 </div>
-  <div class="content">
-    <div>All items</div>
+  <div class="content" id="insertMenu">
+    <div class="menu-title">All items</div>
     <div></div>
-    <div class="card"><img src="../images/Beer.png" draggable="true" ondragstart="drag(event)"></div>
-    <div class="card"><img src="../images/Beer.png" draggable="true" ondragstart="drag(event)"></div>
-    <div class="card"><img src="../images/Wine.png" draggable="true" ondragstart="drag(event)"></div>
-    <div class="card"><img src="../images/Wine.png" draggable="true" ondragstart="drag(event)"></div>
-    <div class="card"><img src="../images/Cocktail.png" draggable="true" ondragstart="drag(event)"></div>
-    <div class="card"><img src="../images/Cocktail.png" draggable="true" ondragstart="drag(event)"></div>
-    <div class="card"><img src="../images/Cocktail.png" draggable="true" ondragstart="drag(event)"></div>
-    <div class="card"><img src="../images/Cocktail.png" draggable="true" ondragstart="drag(event)"></div>
-    <div class="card"><img src="../images/Cocktail.png" draggable="true" ondragstart="drag(event)"></div>
-    <div class="card"><img src="../images/Cocktail.png" draggable="true" ondragstart="drag(event)"></div>
-    <div class="card"><img src="../images/Cocktail.png" draggable="true" ondragstart="drag(event)"></div>
-    <div class="card"><img src="../images/Cocktail.png" draggable="true" ondragstart="drag(event)"></div>
-    <div class="card"><img src="../images/Cocktail.png" draggable="true" ondragstart="drag(event)"></div>
-    <div class="card"><img src="../images/Cocktail.png" draggable="true" ondragstart="drag(event)"></div>
-    <div class="card"><img src="../images/Cocktail.png" draggable="true" ondragstart="drag(event)"></div>
-    <div class="card"><img src="../images/Cocktail.png" draggable="true" ondragstart="drag(event)"></div>
-    <div class="card"><img src="../images/Cocktail.png" draggable="true" ondragstart="drag(event)"></div>
-    <div class="card"><img src="../images/Cocktail.png" draggable="true" ondragstart="drag(event)"></div>
-    <div class="card"><img src="../images/Cocktail.png" draggable="true" ondragstart="drag(event)"></div>
-    <div class="card"><img src="../images/Cocktail.png" draggable="true" ondragstart="drag(event)"></div>
+    <div class="filter-box">
+      <label for="filter" class="filter-text-style">Filter:</label>
+      <select name="filter" id="filter" class="filter-dropdown">
+        <option value="none">None</option>
+        <option value="content-50">Alcohol content <50%</option>
+        <option value="content-30">Alcohol content <30%</option>
+        <option value="gluten-free">Gluten-free</option>
+      </select>
+    </div>
+
+<!--    <div class="card"><img src="../images/Beer.png" draggable="true" ondragstart="drag(event)"></div>-->
+<!--    <div class="card"><img src="../images/Wine.png" draggable="true" ondragstart="drag(event)"></div>-->
+<!--    <div class="card"><img src="../images/Wine.png" draggable="true" ondragstart="drag(event)"></div>-->
+<!--    <div class="card"><img src="../images/Cocktail.png" draggable="true" ondragstart="drag(event)"></div>-->
+<!--    <div class="card"><img src="../images/Cocktail.png" draggable="true" ondragstart="drag(event)"></div>-->
+<!--    <div class="card"><img src="../images/Cocktail.png" draggable="true" ondragstart="drag(event)"></div>-->
+<!--    <div class="card"><img src="../images/Cocktail.png" draggable="true" ondragstart="drag(event)"></div>-->
+<!--    <div class="card"><img src="../images/Cocktail.png" draggable="true" ondragstart="drag(event)"></div>-->
+<!--    <div class="card"><img src="../images/Cocktail.png" draggable="true" ondragstart="drag(event)"></div>-->
+<!--    <div class="card"><img src="../images/Cocktail.png" draggable="true" ondragstart="drag(event)"></div>-->
+<!--    <div class="card"><img src="../images/Cocktail.png" draggable="true" ondragstart="drag(event)"></div>-->
+<!--    <div class="card"><img src="../images/Cocktail.png" draggable="true" ondragstart="drag(event)"></div>-->
+<!--    <div class="card"><img src="../images/Cocktail.png" draggable="true" ondragstart="drag(event)"></div>-->
+<!--    <div class="card"><img src="../images/Cocktail.png" draggable="true" ondragstart="drag(event)"></div>-->
+<!--    <div class="card"><img src="../images/Cocktail.png" draggable="true" ondragstart="drag(event)"></div>-->
+<!--    <div class="card"><img src="../images/Cocktail.png" draggable="true" ondragstart="drag(event)"></div>-->
+<!--    <div class="card"><img src="../images/Cocktail.png" draggable="true" ondragstart="drag(event)"></div>-->
+<!--    <div class="card"><img src="../images/Cocktail.png" draggable="true" ondragstart="drag(event)"></div>-->
+<!--    <div class="card"><img src="../images/Cocktail.png" draggable="true" ondragstart="drag(event)"></div>-->
   </div>
 </div>
 <div class="footer">
-  <div class="cart" ondrop="drop(event)" ondragover="allowDrop(event)">Cart</div>
+  <div class="cart">
+    <p class="cart-title">Cart</p>
+  </div>
 </div>

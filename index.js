@@ -7,6 +7,8 @@ window.addEventListener("load", async () => {
     loadView("customer-home", "#customer-home"),
     loadView("sign-in", "#sign-in"),
     loadView("menu", "#menu"),
+    loadView("product", "#product"),
+    loadView("cart", "#cart"),
   ]);
   updateUILocale();
   setMainView("home");

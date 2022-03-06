@@ -16,3 +16,6 @@ findOneOrFail('#back-customer-home').addEventListener("click", () =>
 findOneOrFail("#login").addEventListener("click", () =>
     setMainView("menu")
 );
+findOneOrFail('#sign-out-button').addEventListener("click", () =>
+    setMainView("customer-home")
+);

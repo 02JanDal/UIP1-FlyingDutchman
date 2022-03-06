@@ -1,0 +1,58 @@
+<div class="container">
+    <div class="sidebar">
+        <div class="logo-sidebar">
+            <img src="/images/flying-dutchman-logo.png" class="logo-img-sidebar">
+        </div>
+        <div class="searchbar"><input id="searchbar" type="search" placeholder="Search.."><span><button id="searchbutton"><i id="searchglass" class="fa fa-search"></i></button></span></div>
+        <div>
+            <ul>
+                <li><a href="#all"><i class="fa fa-book" aria-hidden="true"></i><span data-i18n="all-items"></span></a></li>
+                <li><a href="#beer"><i class="fa fa-beer" aria-hidden="true"></i><span data-i18n="beer"></span></a></li>
+                <li><a href="#wine"><i class="fa fa-glass" aria-hidden="true"></i><span data-i18n="wine"></span></a></li>
+                <li><a href="#cocktail"><i class="fa fa-glass" aria-hidden="true"></i><span data-i18n="cocktail"></span></a></li>
+                <li><a href="#cartl" id="to-cart"><i class="fa fa-shopping-cart" aria-hidden="true"></i><span data-i18n="cart"></span></a></li>
+                <li><a href="#" id="sign-out-button"><i class="fa fa-sign-out" aria-hidden="true"></i><span data-i18n="log-out"></span></a></li>
+            </ul>
+        </div>
+        <!---- Language switching buttons --->
+        <div class="menu-language-container">
+            <div class="language-left">
+                <input type="image" id="swedish-button" class="language-button" src="/images/sweden.png" onclick="setLanguage('sv')">
+            </div>
+            <div>
+                <input type="image" id="english-button" class="language-button" src="/images/united-kingdom.png" onclick="setLanguage('en')">
+            </div>
+        </div>
+    </div>
+    <div class="product-content">
+        <div class="parent-navbar product-image" style="background-image: url('/images/wine-real.jpeg');">
+            <div class="child-navbar left-navbar">
+                <a href="#" id="back-to-menu"><i class=" menu-back fa fa-arrow-left backward-logo"></i></a>
+            </div>
+        </div>
+        <div class="product-title-container">
+            <h1 class="product-title">Rose wine</h1>
+            <h1>400 SEK</h1>
+        </div>
+        <div class="product-information">
+            <h3>Stock available:</h3>
+            <p>Additional information:</p>
+            <ul class="ul-list">
+                <li class="li-list">Producer:</li>
+                <li class="li-list">Country:</li>
+                <li class="li-list">Type:</li>
+                <li class="li-list">Strength:</li>
+            </ul>
+        </div>
+        <form class="increase-decrease-container">
+            <div class="value-button" id="decrease" onclick="decreaseValue()" value="Decrease Value">-</div>
+            <input type="number" id="number" value="0" />
+            <div class="value-button" id="increase" onclick="increaseValue()" value="Increase Value">+</div>
+        </form>
+    </div>
+</div>
+<div class="footer">
+    <div class="cart" ondrop="drop(event)" ondragover="allowDrop(event)">
+        <p class="cart-title">Add to cart</p>
+    </div>
+</div>

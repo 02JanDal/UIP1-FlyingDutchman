@@ -1,0 +1,54 @@
+<div class="container">
+    <div class="sidebar">
+        <div class="logo-sidebar">
+            <img src="/images/flying-dutchman-logo.png" class="logo-img-sidebar">
+        </div>
+        <div class="searchbar"><input id="searchbar" type="search" placeholder="Search.."><span><button id="searchbutton"><i id="searchglass" class="fa fa-search"></i></button></span></div>
+        <div>
+            <ul>
+                <li><a href="#all"><i class="fa fa-book" aria-hidden="true"></i><span data-i18n="all-items"></span></a></li>
+                <li><a href="#beer"><i class="fa fa-beer" aria-hidden="true"></i><span data-i18n="beer"></span></a></li>
+                <li><a href="#wine"><i class="fa fa-glass" aria-hidden="true"></i><span data-i18n="wine"></span></a></li>
+                <li><a href="#cocktail"><i class="fa fa-glass" aria-hidden="true"></i><span data-i18n="cocktail"></span></a></li>
+                <li><a href="#cartl"><i class="fa fa-shopping-cart" aria-hidden="true"></i><span data-i18n="cart"></span></a></li>
+                <li><a href="#" id="to-sign-out"><i class="fa fa-sign-out" aria-hidden="true"></i><span data-i18n="log-out"></span></a></li>
+            </ul>
+        </div>
+        <!---- Language switching buttons --->
+        <div class="menu-language-container">
+            <div class="language-left">
+                <input type="image" id="swedish-button" class="language-button" src="/images/sweden.png" onclick="setLanguage('sv')">
+            </div>
+            <div>
+                <input type="image" id="english-button" class="language-button" src="/images/united-kingdom.png" onclick="setLanguage('en')">
+            </div>
+        </div>
+    </div>
+    <div class="product-content">
+        <div class="parent-navbar">
+            <div class="child-navbar left-navbar">
+                <a href="#" id="back-to-menu"><i class="backward-color fa fa-arrow-left backward-logo"></i></a>
+            </div>
+        </div>
+        <div class="product-title-container">
+            <h1>Order summary</h1>
+        </div>
+        <div class="split-bill-links">
+            <a class="split-bill-link-left">Edit split bills</a>
+            <a>Cancel split bills</a>
+        </div>
+        <div class="order-table">
+            <table class="full-table-width">
+                <tr>
+                    <td class="order-product-title">Rose Wine</td>
+                    <td class="order-product-price">400 SEK</td>
+                </tr>
+            </table>
+        </div>
+    </div>
+</div>
+<div class="footer">
+    <div class="cart" ondrop="drop(event)" ondragover="allowDrop(event)">
+        <p class="cart-title">Add to cart</p>
+    </div>
+</div>

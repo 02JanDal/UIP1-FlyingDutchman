@@ -6,6 +6,23 @@
 //element. create child
 //}
 
+import { beverages } from "../model/data/beverages.js";
+import {findOneOrFail, setMainView} from "./helpers.js";
+
+window.menuLanguage = function(){
+    const menulang = document.getElementsByClassName('menu-language-li');
+    const langimg = document.getElementsByClassName('img-language');
+    menulang.addEventListener("click", () =>{
+        if (langimg.src === "\"/images/sweden.png\""){
+            return langimg.src = "/images/united-kingdom.png";
+            setLanguage('en');
+        } else {
+            return langimg.src = "/images/sweden.png";
+            setLanguage('sv');
+        }
+    });
+}
+
 function clickHandler(element) {
   //element.properties/id
   var parent = element.parentElement.parentElement
@@ -49,5 +66,33 @@ function drop(ev) {
   ev.target.appendChild(document.getElementById(data));
 }
 window.drop = drop;
+
+const menu = document.getElementById('insertMenu');
+
+for (var i = 0; i < beverages.length; i++){
+  let name = beverages[i]['namn'];
+  let price = beverages[i]['prisinklmoms'];
+  let html = `
+    <div class="card">
+    <a href="#" id="to-product-page">
+          <div class="card-container">
+            <h4 class="item-title">${name}
+            </h4>
+            <p class="item-price">
+              ${price} SEK
+            </p>
+          </div>      
+          </a>
+        </div>`;
+  menu.insertAdjacentHTML('beforeend', html);
+}
+
+findOneOrFail('#to-product-page').addEventListener("click", () =>
+    setMainView("product")
+);
+
+findOneOrFail("#to-cart").addEventListener("click", () =>
+    setMainView("cart")
+);
 
 export {}; // needed so that we can import as a module
