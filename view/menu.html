@@ -1,15 +1,19 @@
 <div class="container">
+  <!--- SIDEBAR --->
   <div class="sidebar">
+    <!---- Logo --->
     <div class="logo-sidebar">
       <img src="/images/flying-dutchman-logo.png" class="logo-img-sidebar">
     </div>
+    <!---- Search Bar --->
     <div class="searchbar"><input id="searchbar" type="search" placeholder="Search.."><span><button id="searchbutton"><i id="searchglass" class="fa fa-search"></i></button></span></div>
+    <!---- Menu Selection --->
     <div>
       <ul>
-        <li><a href="#all"><i class="fa fa-book" aria-hidden="true"></i><span data-i18n="all-items"></span></a></li>
-        <li><a href="#beer"><i class="fa fa-beer" aria-hidden="true"></i><span data-i18n="beer"></span></a></li>
-        <li><a href="#wine"><i class="fa fa-glass" aria-hidden="true"></i><span data-i18n="wine"></span></a></li>
-        <li><a href="#cocktail"><i class="fa fa-glass" aria-hidden="true"></i><span data-i18n="cocktail"></span></a></li>
+        <li><a href="#all" onclick="onClickAllMenu()"><i class="fa fa-book" aria-hidden="true"></i><span data-i18n="all-items"></span></a></li>
+        <li><a href="#beer" onclick="onClickBeer()"><i class="fa fa-beer" aria-hidden="true"></i><span data-i18n="beer"></span></a></li>
+        <li><a href="#wine" onclick="onClickWine()"><i class="fa fa-glass" aria-hidden="true"></i><span data-i18n="wine"></span></a></li>
+        <li><a href="#nonalcohol" onclick="onClickNonAlcohol()"><i class="fa fa-coffee" aria-hidden="true"></i><span data-i18n="non-alcohol"></span></a></li>
         <li><a href="#cartl" id="to-cart"><i class="fa fa-shopping-cart" aria-hidden="true"></i><span data-i18n="cart"></span></a></li>
         <li><a href="#" id="sign-out-button"><i class="fa fa-sign-out" aria-hidden="true"></i><span data-i18n="log-out"></span></a></li>
       </ul>
@@ -24,20 +28,28 @@
       </div>
     </div>
 </div>
-  <div class="content" id="insertMenu">
-    <div class="menu-title">All items</div>
+  <!-- Content Menu Home -->
+  <div class="content-container"id="menu-home">
+    <h4> Click on the menu to see the menu and start ordering!</h4>
+  </div>
+  <!-- Content Products List -->
+  <div class="content display-none" id="insertMenu">
+    <!-- Title -->
+    <div id="menu-title">All items</div>
     <div></div>
+    <!---Filter--->
     <div class="filter-box">
       <label for="filter" class="filter-text-style">Filter:</label>
-      <select name="filter" id="filter" class="filter-dropdown">
+      <select name="filter" id="filter" class="filter-dropdown" onchange="changeFilter()">
         <option value="none">None</option>
-        <option value="content-50">Alcohol content <50%</option>
-        <option value="content-30">Alcohol content <30%</option>
-        <option value="gluten-free">Gluten-free</option>
+        <option value="content-30-50">Alcohol content 30-50%</option>
+        <option value="content-10-30">Alcohol content 10-30%</option>
+        <option value="content-10">Alcohol content 10%</option>
       </select>
     </div>
   </div>
 </div>
+<!--- FOOTER/CART --->
 <div class="footer">
   <div class="cart" ondrop="drop(event)" ondragover="allowDrop(event)">
     <p id="cart-title">Cart</p>

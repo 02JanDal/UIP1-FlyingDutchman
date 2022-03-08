@@ -59,6 +59,10 @@ const strings = {
     en: "   Cart",
     sv: "   Vagn",
   },
+  "non-alcohol": {
+    en: "   Non-Alcoholic",
+    sv: "   Alkoholfritt",
+  },
   "manage-stock": {
     en: "   Manage stock",
     sv: "   Hantera lager",
