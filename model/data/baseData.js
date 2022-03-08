@@ -1191,50 +1191,81 @@ export const baseData = {
       },
     ].map((item, index) => [index, item])
   ),
-
-table: Object.fromEntries(
-  [
-    {
-      table_id: 1,
-      status: "Reserved",
-      party_id: "3",
-    },
-    {
-      table_id: 2,
-      status: "Vacant",
-      party_id: "",
-      
-    },
-    {
-      table_id: 3,
-      status: "Vacant",
-      party_id: "",
-      
-    },
-    {
-      table_id: 4,
-      status: "Vacant",
-      party_id: "",
-      
-    },
-    {
-      table_id: 5,
-      status: "Vacant",
-      party_id: "",
-      
-    },
-    {
-      table_id: 6,
-      status: "Vacant",
-      party_id: "",
-      
-    },
-    {
-      table_id: 7,
-      status: "Vacant",
-      party_id: "",
-      
-    }
-  ].map((item, index) => [index, item])
-),
 };
+
+const table = 
+  [
+  {
+    table_id: "1",
+    status: "Reserved",
+    party_id: "3",
+  },
+  {
+    table_id: "2",
+    status: "Vacant",
+    party_id: "",
+    
+  },
+  {
+    table_id: "3",
+    status: "Vacant",
+    party_id: "",
+    
+  },
+  {
+    table_id: "4",
+    status: "Vacant",
+    party_id: "",
+    
+  },
+  {
+    table_id: "5",
+    status: "Vacant",
+    party_id: "",
+    
+  },
+  {
+    table_id: "6",
+    status: "Vacant",
+    party_id: "",
+    
+  },
+  {
+    table_id: "7",
+    status: "Vacant",
+    party_id: "",
+      
+  },
+  {
+    table_id: "8",
+    status: "Vacant",
+    party_id: "",
+      
+  },
+  {
+    table_id: "9",
+    status: "Vacant",
+    party_id: "",
+      
+  },
+  {
+    table_id: "10",
+    status: "Vacant",
+    party_id: "",
+      
+  },
+  {
+    table_id: "11",
+    status: "Vacant",
+    party_id: "",
+      
+  },
+  {
+    table_id: "12",
+    status: "Vacant",
+    party_id: "",
+      
+  }
+  ];
+
+export{table};

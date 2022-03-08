@@ -6,7 +6,7 @@
 //element. create child
 //}
 
-import { beverages } from "../model/data/beverages.js";
+import { table } from "../model/data/baseData.js";
 import {findOneOrFail, setMainView} from "./helpers.js";
 
 window.menuLanguage = function(){
@@ -70,43 +70,23 @@ window.drop = drop;
 
 const menu = document.getElementById('insertMenuBartender');
 
-for (var i = 0; i < beverages.length; i++){
-  let name = beverages[i]['namn'];
-  let price = beverages[i]['prisinklmoms'];
+for (var i = 0; i < table.length; i++){
+  let table_id = table[i]['table_id'];
+  let status = table[i]['status'];
   let html = `
     <div class="bartender-card">
     <a href="#" id="to-product-page">
           <div class="card-container">
-            <h4 class="item-title">${name}
+            <h4 class="item-title">${table_id}
             </h4>
             <p class="item-price">
-              ${price} SEK
+              ${status}
             </p>
           </div>      
           </a>
         </div>`;
   menu.insertAdjacentHTML('beforeend', html);
 }
-
-const table = document.getElementById('insertMenuBartender');
-
-// for (var i = 0; i < beverages.length; i++){
-//   let name = beverages[i]['namn'];
-//   let price = beverages[i]['prisinklmoms'];
-//   let html = `
-//     <div class="bartender-card">
-//     <a href="#" id="to-product-page">
-//           <div class="card-container">
-//             <h4 class="item-title">${name}
-//             </h4>
-//             <p class="item-price">
-//               ${price} SEK
-//             </p>
-//           </div>      
-//           </a>
-//         </div>`;
-//   menu.insertAdjacentHTML('beforeend', html);
-// }
 
 findOneOrFail('#to-product-page').addEventListener("click", () =>
     setMainView("product")
