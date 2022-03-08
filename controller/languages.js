@@ -47,9 +47,9 @@ const strings = {
     en: "   Wine",
     sv: "   Vin",
   },
-  "cocktail": {
-    en: "   Cocktail",
-    sv: "   Cocktail",
+  "non-alcohol": {
+    en: "   Non-alcoholic",
+    sv: "   Alkoholfritt",
   },
   "log-out": {
     en: "   Log out",
@@ -58,10 +58,6 @@ const strings = {
   "cart": {
     en: "   Cart",
     sv: "   Vagn",
-  },
-  "non-alcohol": {
-    en: "   Non-Alcoholic",
-    sv: "   Alkoholfritt",
   },
   "manage-stock": {
     en: "   Manage stock",
@@ -74,12 +70,7 @@ const strings = {
   "security": {
     en: "   Security",
     sv: "   Säkerhet",
-  },
-  "search": {
-    en: "   Search",
-    sv: "   Sök",
   }
-
 };
 
 /**
