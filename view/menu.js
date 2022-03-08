@@ -276,12 +276,10 @@ window.onClickContent10 = () => {
 window.changeFilter = () => {
     var filter = document.getElementById("filter");
     if (filter.selectedIndex == 1){
-        onClickContent50();
-    } else if (filter.selectedIndex == 2){
         onClickContent3050();
-    } else if (filter.selectedIndex == 3){
+    } else if (filter.selectedIndex == 2){
         onClickContent1030();
-    } else if (filter.selectedIndex == 4){
+    } else if (filter.selectedIndex == 3){
         onClickContent10();
     } else if (filter.selectedIndex == 0){
         onClickContentAll();
