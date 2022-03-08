@@ -58,6 +58,10 @@ const strings = {
   "cart": {
     en: "   Cart",
     sv: "   Vagn",
+  },
+  "non-alcohol": {
+    en: "   Non-Alcoholic",
+    sv: "   Alkoholfritt"
   }
 };
 
