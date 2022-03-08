@@ -4,6 +4,10 @@ findOneOrFail("#button-is-customer").addEventListener("click", () =>
   setMainView("customer-home")
 );
 
+findOneOrFail("#button-is-bartender").addEventListener("click", () =>
+  setMainView("bartender")
+);
+
 window.changeLanguage = function(){
     const swe = document.getElementById('swedish-button');
     const eng = document.getElementById('english-button');

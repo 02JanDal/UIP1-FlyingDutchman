@@ -9,6 +9,7 @@ window.addEventListener("load", async () => {
     loadView("menu", "#menu"),
     loadView("product", "#product"),
     loadView("cart", "#cart"),
+    loadView("bartender", "#bartender"),
   ]);
   updateUILocale();
   setMainView("home");

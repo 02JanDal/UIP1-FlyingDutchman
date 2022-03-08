@@ -17,11 +17,11 @@ const strings = {
   },
   "i-am-customer": {
     en: "I am a Customer",
-    sv: "Jag är Kund",
+    sv: "Jag är en Kund",
   },
   "i-am-bartender": {
     en: "I am a Bartender",
-    sv: "Jag är Bartender",
+    sv: "Jag är en Bartender",
   },
   "vip-customer": {
     en: "VIP Customer",
@@ -53,12 +53,25 @@ const strings = {
   },
   "log-out": {
     en: "   Log out",
-    sv: "   Logga ut"
+    sv: "   Logga ut",
   },
   "cart": {
     en: "   Cart",
     sv: "   Vagn",
+  },
+  "manage-stock": {
+    en: "   Manage stock",
+    sv: "   Hantera lager",
+  },
+  "table-orders": {
+    en: "   Table orders",
+    sv: "   Bordsbeställningar",
+  },
+  "security": {
+    en: "   Security",
+    sv: "   Säkerhet",
   }
+
 };
 
 /**
