@@ -70,6 +70,10 @@ const strings = {
   "security": {
     en: "   Security",
     sv: "   Säkerhet",
+  },
+  "search": {
+    en: "   Search",
+    sv: "   Sök",
   }
 
 };

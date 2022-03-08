@@ -33,6 +33,7 @@ function clickHandler(element) {
   if (!element.classList.contains("selected")) {
     element.classList.toggle("selected");
   }
+
 }
 window.clickHandler = clickHandler;
 
@@ -86,6 +87,26 @@ for (var i = 0; i < beverages.length; i++){
         </div>`;
   menu.insertAdjacentHTML('beforeend', html);
 }
+
+const table = document.getElementById('insertMenuBartender');
+
+// for (var i = 0; i < beverages.length; i++){
+//   let name = beverages[i]['namn'];
+//   let price = beverages[i]['prisinklmoms'];
+//   let html = `
+//     <div class="bartender-card">
+//     <a href="#" id="to-product-page">
+//           <div class="card-container">
+//             <h4 class="item-title">${name}
+//             </h4>
+//             <p class="item-price">
+//               ${price} SEK
+//             </p>
+//           </div>      
+//           </a>
+//         </div>`;
+//   menu.insertAdjacentHTML('beforeend', html);
+// }
 
 findOneOrFail('#to-product-page').addEventListener("click", () =>
     setMainView("product")
