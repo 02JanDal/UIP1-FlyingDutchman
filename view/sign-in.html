@@ -22,14 +22,15 @@
             <input type="password" id="password" name="password" class="login"><br>
         </label>
     </form>
+    <!-- Error message -->
+    <div id="signin-error" class="error-message display-none" data-i18n="signin-error"></div>
     <!--- Sign in button -->
     <div class="elements-container">
-        <a href="#" id="login"><button class="button-style" id="sign-in-button" type="button" data-i18n="signin"></button>
-        </a>
+        <button class="button-style" id="sign-in-button" type="button" data-i18n="signin"></button>
     </div>
     <!---- Language switching buttons --->
     <div class="language-container">
-        <input type="image" id="swedish-button" class="language-button" src="/images/sweden.png" onclick="setLanguage('sv')">
-        <input type="image" id="english-button" class="language-button" src="/images/united-kingdom.png" onclick="setLanguage('en')">
+        <input type="image" class="language-button swedish-button" src="/images/sweden.png" onclick="changeLanguage('sv')">
+        <input type="image" class="language-button english-button" src="/images/united-kingdom.png" onclick="changeLanguage('en')">
     </div>
 </div>

@@ -412,7 +412,7 @@ li:not(:last-child) {
 a {
   /*display: block;*/
   color: #000;
-  text-decoration: none;
+  /*text-decoration: none;*/
 }
 
 li {
@@ -720,4 +720,18 @@ input[type=number]::-webkit-outer-spin-button {
   display:flex;
   justify-content:center;
   line-height:200px;
+}
+
+.error-message {
+  margin-left: auto;
+  margin-right: auto;
+  width: 200px;
+  min-width: 50%;
+  padding: 10px;
+  background: rgba(180,24,0,0.30);
+  border: 1px solid rgba(180,24,0,1);
+  color: rgba(180,24,0,1);
+  border-radius: 10px;
+  margin-bottom: 20px;
+  text-align: center;
 }
