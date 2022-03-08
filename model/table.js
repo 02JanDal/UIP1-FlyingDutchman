@@ -3,7 +3,11 @@ import Party from "./party.js";
 
 export default class Table extends AbstractModel {
   static type = "table";
-  static fields = ["name"];
+  static fields = [
+    "status",
+    "party_id",
+  ];
+  
 
   /**
    * @property {string} name
