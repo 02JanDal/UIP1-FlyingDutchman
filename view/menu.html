@@ -12,8 +12,6 @@
         <li><a href="#cocktail"><i class="fa fa-glass" aria-hidden="true"></i><span data-i18n="cocktail"></span></a></li>
         <li><a href="#cartl" id="to-cart"><i class="fa fa-shopping-cart" aria-hidden="true"></i><span data-i18n="cart"></span></a></li>
         <li><a href="#" id="sign-out-button"><i class="fa fa-sign-out" aria-hidden="true"></i><span data-i18n="log-out"></span></a></li>
-        <!--- BROKEN ->
-        <li class="menu-language-li"><a href="#" onclick="menuLanguage()"><img class="img-language" src="\images\united-kingdom.png"><span class="menu-language-text"> English</span></a></li>-->
       </ul>
     </div>
     <!---- Language switching buttons --->
@@ -38,30 +36,10 @@
         <option value="gluten-free">Gluten-free</option>
       </select>
     </div>
-
-<!--    <div class="card"><img src="../images/Beer.png" draggable="true" ondragstart="drag(event)"></div>-->
-<!--    <div class="card"><img src="../images/Wine.png" draggable="true" ondragstart="drag(event)"></div>-->
-<!--    <div class="card"><img src="../images/Wine.png" draggable="true" ondragstart="drag(event)"></div>-->
-<!--    <div class="card"><img src="../images/Cocktail.png" draggable="true" ondragstart="drag(event)"></div>-->
-<!--    <div class="card"><img src="../images/Cocktail.png" draggable="true" ondragstart="drag(event)"></div>-->
-<!--    <div class="card"><img src="../images/Cocktail.png" draggable="true" ondragstart="drag(event)"></div>-->
-<!--    <div class="card"><img src="../images/Cocktail.png" draggable="true" ondragstart="drag(event)"></div>-->
-<!--    <div class="card"><img src="../images/Cocktail.png" draggable="true" ondragstart="drag(event)"></div>-->
-<!--    <div class="card"><img src="../images/Cocktail.png" draggable="true" ondragstart="drag(event)"></div>-->
-<!--    <div class="card"><img src="../images/Cocktail.png" draggable="true" ondragstart="drag(event)"></div>-->
-<!--    <div class="card"><img src="../images/Cocktail.png" draggable="true" ondragstart="drag(event)"></div>-->
-<!--    <div class="card"><img src="../images/Cocktail.png" draggable="true" ondragstart="drag(event)"></div>-->
-<!--    <div class="card"><img src="../images/Cocktail.png" draggable="true" ondragstart="drag(event)"></div>-->
-<!--    <div class="card"><img src="../images/Cocktail.png" draggable="true" ondragstart="drag(event)"></div>-->
-<!--    <div class="card"><img src="../images/Cocktail.png" draggable="true" ondragstart="drag(event)"></div>-->
-<!--    <div class="card"><img src="../images/Cocktail.png" draggable="true" ondragstart="drag(event)"></div>-->
-<!--    <div class="card"><img src="../images/Cocktail.png" draggable="true" ondragstart="drag(event)"></div>-->
-<!--    <div class="card"><img src="../images/Cocktail.png" draggable="true" ondragstart="drag(event)"></div>-->
-<!--    <div class="card"><img src="../images/Cocktail.png" draggable="true" ondragstart="drag(event)"></div>-->
   </div>
 </div>
 <div class="footer">
-  <div class="cart">
-    <p class="cart-title">Cart</p>
+  <div class="cart" ondrop="drop(event)" ondragover="allowDrop(event)">
+    <p id="cart-title">Cart</p>
   </div>
 </div>
