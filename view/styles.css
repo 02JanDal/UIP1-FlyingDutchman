@@ -231,7 +231,7 @@ MENU PAGE
   font-size: 250%;
 }
 
-.cart-title{
+#cart-title{
   font-weight:700;
   font-size:20px;
   margin:0;
@@ -317,6 +317,13 @@ button {
   background-color: rgba(202, 202, 202, 0.938);
   /* margin-top: 275%; */
   width: 75%;
+}
+
+.cart-dnd{
+  background: white;
+  color: #291509;
+  border: 2px dashed #291509;
+  border-radius:12px;
 }
 
 /* Commenting on this now due to styling problem, but will fix later. */
@@ -696,5 +703,8 @@ input[type=number]::-webkit-outer-spin-button {
   width:20%;
 }
 
+.cart-over {
+  border: 10px dotted #000000;
+}
 
 
