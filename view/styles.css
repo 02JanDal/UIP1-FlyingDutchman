@@ -237,6 +237,81 @@ MENU PAGE
   margin:0;
 }
 
+/***************************
+Bartender PAGE
+ ***************************/
+
+ .bartender-sidebar {
+  float: left;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  background-color: #F6F6F6;
+  height: 100%;
+  width: 15%;
+  position: fixed;
+}
+
+.bartender-content {
+  overflow: auto;
+  background-color: rgba(230, 230, 230, 0.938);
+  height: 100%;
+  width: 85%;
+  float: right;
+  display: inline-grid;
+  grid-template-columns: 1fr 1fr 1fr 1fr;
+  /*grid-template-rows: 1fr 1fr;*/
+  grid-gap: 3px;
+  align-self: center;
+  justify-self: center;
+  font-size: 325%;
+  text-align: center;
+}
+
+.bartender-card {
+  background-color: #fff;
+  border: 2px black;
+  margin-left: 20%;
+  margin-right: 20%;
+  margin-top: 20%;
+  height: 50%;
+  padding: 5%;
+  border-radius: 5%;
+  display:flex;
+  flex-direction:column;
+  position:relative;
+  width:auto;
+  height:auto;
+  overflow:hidden;
+  justify-content:center;
+  box-shadow: 0px 4px 15px rgba(0, 0, 0, 0.25);
+}
+
+.bartender-footer {
+  position: fixed;
+  height: 8%;
+  width: 100%;
+  background-color: white;
+  bottom: 0;
+  box-shadow: 0px 4px 25px rgba(0, 0, 0, 0.25);
+}
+
+.bartender-cart {
+  position: fixed;
+  height: 5%;
+  width: 96%;
+  /*margin: 2%;*/
+  border-radius: 12px;
+  margin-top: 1%;
+  margin-left: 2.5%;
+  background-color: #42251C;
+  text-align: center;
+  vertical-align: middle;
+  line-height: 140%;
+  color: white;
+  font-size: 250%;
+}
+
 button {
   border: 0;
   background-color: rgba(202, 202, 202, 0.938);
@@ -285,7 +360,7 @@ input {
   margin-top: 20%;
   height: 50%;
   padding: 5%;
-  border-radius: 20%;
+  border-radius: 5%;
   display:flex;
   flex-direction:column;
   position:relative;
