@@ -90,7 +90,8 @@ export class AbstractModel {
    * @param {{[p: string]: RegExp | string | number | boolean }} filters
    */
   static findFirst(filters) {
-    return this.find(filters)[0];
+    const items = this.find(filters);
+    return items.length > 0 ? items[0] : undefined;
   }
 
   /**

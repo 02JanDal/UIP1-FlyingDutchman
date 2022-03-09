@@ -39,29 +39,25 @@ const strings = {
     en: "   All items",
     sv: "   Alla objekt",
   },
-  "beer": {
+  beer: {
     en: "   Beer",
     sv: "   Öl",
   },
-  "wine": {
+  wine: {
     en: "   Wine",
     sv: "   Vin",
   },
-  "cocktail": {
-    en: "   Cocktail",
-    sv: "   Cocktail",
+  "non-alcohol": {
+    en: "   Non-alcoholic",
+    sv: "   Alkoholfritt",
   },
   "log-out": {
     en: "   Log out",
     sv: "   Logga ut",
   },
-  "cart": {
+  cart: {
     en: "   Cart",
     sv: "   Vagn",
-  },
-  "non-alcohol": {
-    en: "   Non-Alcoholic",
-    sv: "   Alkoholfritt",
   },
   "manage-stock": {
     en: "   Manage stock",
@@ -71,11 +67,14 @@ const strings = {
     en: "   Table orders",
     sv: "   Bordsbeställningar",
   },
-  "security": {
+  security: {
     en: "   Security",
     sv: "   Säkerhet",
-  }
-
+  },
+  "signin-error": {
+    en: "No user found for this username/password",
+    sv: "Ingen användare hittad för detta användarnamn/lösenord",
+  },
 };
 
 /**
@@ -83,15 +82,27 @@ const strings = {
  */
 export function updateUILocale() {
   const locale = getCurrentLocale();
-  const swe = document.getElementById('swedish-button');
-  const eng = document.getElementById('english-button');
-  if (locale == "sv"){
-    swe.src = "/images/sweden-activated.png";
-    eng.src = "/images/united-kingdom.png";
+
+  // update the buttons
+  const swe = document.getElementsByClassName("swedish-button");
+  const eng = document.getElementsByClassName("english-button");
+  if (locale === "sv") {
+    for (const el of swe) {
+      el.src = "/images/sweden-activated.png";
+    }
+    for (const el of eng) {
+      el.src = "/images/united-kingdom.png";
+    }
   } else {
-    swe.src = "/images/sweden.png";
-    eng.src = "/images/united-kingdom-activated.png";
+    for (const el of swe) {
+      el.src = "/images/sweden.png";
+    }
+    for (const el of eng) {
+      el.src = "/images/united-kingdom-activated.png";
+    }
   }
+
+  // update the strings
   for (const el of document.querySelectorAll("[data-i18n]")) {
     const key = el.attributes.getNamedItem("data-i18n").value;
     if (!strings.hasOwnProperty(key)) {
@@ -121,16 +132,6 @@ export function getCurrentLocale() {
  * @param {"en"|"sv"} locale
  */
 export function setCurrentLocale(locale) {
-  localStorage.setItem("flyingdutchman_locale", locale);
-  updateUILocale();
-}
-
-/***
- * Change locale whatever
- * This works better for some weird reason!
- *
- */
-window.setLanguage = function(locale){
   localStorage.setItem("flyingdutchman_locale", locale);
   updateUILocale();
 }

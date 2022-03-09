@@ -6,16 +6,13 @@ findOneOrFail("#button-sign-in").addEventListener("click", () =>
 findOneOrFail("#link-guest").addEventListener("click", () =>
   setMainView("menu")
 );
-findOneOrFail('#back-home').addEventListener("click", () =>
-setMainView("home")
+findOneOrFail("#back-home").addEventListener("click", () =>
+  setMainView("home")
 );
-findOneOrFail('#back-customer-home').addEventListener("click", () =>
-    setMainView("customer-home")
+findOneOrFail("#back-customer-home").addEventListener("click", () =>
+  setMainView("customer-home")
 );
 
-findOneOrFail("#login").addEventListener("click", () =>
-    setMainView("menu")
-);
-findOneOrFail('#sign-out-button').addEventListener("click", () =>
-    setMainView("customer-home")
+findOneOrFail("#sign-out-button").addEventListener("click", () =>
+  setMainView("customer-home")
 );
