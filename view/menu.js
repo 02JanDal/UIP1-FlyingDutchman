@@ -117,7 +117,11 @@ function getProducts(beveragesList){
     for (var i = 0; i < 500; i++){
         let name = beveragesList[i]['namn'];
         let price = beveragesList[i]['prisinklmoms'];
-        let html = `<div class="card" draggable="true" ondragstart="drag(event)">
+        let producer = beveragesList[i]['producent'];
+        let country = beveragesList[i]['ursprunglandnamn'];
+        let type = beveragesList[i]['varugrupp'];
+        let strength = beveragesList[i]['alkoholhalt'];
+        let html = `<div class="card" draggable="true" ondragstart="drag(event)" onclick="onClickProductPage('${name}', ${price}, '${producer}', '${country}', '${type}', ${strength})">
         <a href="#" id="to-product-page">
           <div class="card-container">
             <h4 class="item-title">${name}
@@ -174,6 +178,11 @@ function show(elementId, style){
 window.onClickAllMenu = () => {
     show('insertMenu', "inline-grid");
     dontShow('menu-home');
+    dontShow('product-page');
+    show('cart-footer', "block");
+    dontShow('add-to-cart-footer');
+    dontShow('cart-page');
+    dontShow('place-order-footer');
     replaceMenuList();
     replaceMenuTitle("All items");
     getProducts(beverages);
@@ -185,6 +194,11 @@ window.onClickAllMenu = () => {
 window.onClickBeer = () => {
     show('insertMenu', "inline-grid");
     dontShow('menu-home');
+    dontShow('product-page');
+    show('cart-footer', "block");
+    dontShow('add-to-cart-footer');
+    dontShow('cart-page');
+    dontShow('place-order-footer');
     replaceMenuList();
     replaceMenuTitle("Beers");
     menuController.setFilterCategory("beer");
@@ -197,6 +211,11 @@ window.onClickBeer = () => {
 window.onClickWine = () => {
     show('insertMenu', "inline-grid");
     dontShow('menu-home');
+    dontShow('product-page');
+    show('cart-footer', "block");
+    dontShow('add-to-cart-footer');
+    dontShow('cart-page');
+    dontShow('place-order-footer');
     replaceMenuList();
     replaceMenuTitle("Wine");
     menuController.setFilterCategory("wine");
@@ -209,6 +228,11 @@ window.onClickWine = () => {
 window.onClickNonAlcohol= () => {
     show('insertMenu', "inline-grid");
     dontShow('menu-home');
+    dontShow('product-page');
+    show('cart-footer', "block");
+    dontShow('add-to-cart-footer');
+    dontShow('cart-page');
+    dontShow('place-order-footer');
     replaceMenuList();
     replaceMenuTitle("Non Alcoholic");
     menuController.setFilterCategory("non-alcoholic");
@@ -221,6 +245,11 @@ window.onClickNonAlcohol= () => {
 window.onClickContentAll = () => {
     show('insertMenu', "inline-grid");
     dontShow('menu-home');
+    dontShow('product-page');
+    show('cart-footer', "block");
+    dontShow('add-to-cart-footer');
+    dontShow('cart-page');
+    dontShow('place-order-footer');
     replaceMenuList();
     menuController.setFilterAlcoholRange([0,100]);
     getProducts(menuController.products);
@@ -232,6 +261,11 @@ window.onClickContentAll = () => {
 window.onClickContent50 = () => {
     show('insertMenu', "inline-grid");
     dontShow('menu-home');
+    dontShow('product-page');
+    show('cart-footer', "block");
+    dontShow('add-to-cart-footer');
+    dontShow('cart-page');
+    dontShow('place-order-footer');
     replaceMenuList();
     menuController.setFilterAlcoholRange([50,100]);
     getProducts(menuController.products);
@@ -243,6 +277,11 @@ window.onClickContent50 = () => {
 window.onClickContent3050 = () => {
     show('insertMenu', "inline-grid");
     dontShow('menu-home');
+    dontShow('product-page');
+    show('cart-footer', "block");
+    dontShow('add-to-cart-footer');
+    dontShow('cart-page');
+    dontShow('place-order-footer');
     replaceMenuList();
     menuController.setFilterAlcoholRange([30,50]);
     getProducts(menuController.products);
@@ -254,6 +293,11 @@ window.onClickContent3050 = () => {
 window.onClickContent1030 = () => {
     show('insertMenu', "inline-grid");
     dontShow('menu-home');
+    dontShow('product-page');
+    show('cart-footer', "block");
+    dontShow('add-to-cart-footer');
+    dontShow('cart-page');
+    dontShow('place-order-footer');
     replaceMenuList();
     menuController.setFilterAlcoholRange([10,30]);
     getProducts(menuController.products);
@@ -265,6 +309,11 @@ window.onClickContent1030 = () => {
 window.onClickContent10 = () => {
     show('insertMenu', "inline-grid");
     dontShow('menu-home');
+    dontShow('product-page');
+    show('cart-footer', "block");
+    dontShow('add-to-cart-footer');
+    dontShow('cart-page');
+    dontShow('place-order-footer');
     replaceMenuList();
     menuController.setFilterAlcoholRange([0,10]);
     getProducts(menuController.products);
@@ -286,9 +335,95 @@ window.changeFilter = () => {
     }
 }
 
-// findOneOrFail('#to-product-page').addEventListener("click", () =>
-//     setMainView("product")
-// );
+/**
+ * Backwards button in menu page to go back to menu
+ */
+window.onClickBackToMenu = () => {
+    show('insertMenu', "inline-grid");
+    dontShow('menu-home');
+    dontShow('product-page');
+    show('cart-footer', "block");
+    dontShow('add-to-cart-footer');
+    dontShow('cart-page');
+    dontShow('place-order-footer');
+    document.getElementById('cart-title').innerHTML = ("Cart ("+itemCount+")");
+}
+
+/**
+ * Remove all first child
+ * @param id Document ID
+ */
+function removeChild(id){
+    while (id.firstChild){
+        id.firstChild.remove();
+    }
+}
+
+/**
+ * To Product Page -- currently very messy
+ */
+window.onClickProductPage = (name, price, producer, country, type, strength) => {
+    show('product-page', "block");
+    dontShow('menu-home');
+    dontShow('insertMenu');
+    dontShow('cart-footer');
+    show('add-to-cart-footer', "block");
+    dontShow('cart-page');
+    dontShow('place-order-footer');
+    const main = document.getElementById("main-info");
+    removeChild(main);
+    let mainHTML = `<h1 class="product-title">${name}</h1>
+      <h1>${price} SEK</h1>`
+    main.insertAdjacentHTML('beforeend', mainHTML);
+    const info = document.getElementById("additional-info");
+    removeChild(info);
+    let infoHTML = `<li class="li-list">Producer: ${producer}</li>
+        <li class="li-list">Country: ${country}</li>
+        <li class="li-list">Type: ${type}</li>
+        <li class="li-list">Strength: ${strength}</li>`;
+    info.insertAdjacentHTML('beforeend', infoHTML);
+}
+
+/**
+ * To Cart
+ */
+window.onClickCart = () => {
+    dontShow('product-page');
+    dontShow('menu-home');
+    dontShow('insertMenu');
+    dontShow('cart-footer');
+    dontShow('add-to-cart-footer');
+    show('cart-page', "block");
+    show('place-order-footer', "block");
+}
+
+/**
+ * Function to trigger the modal pop up
+ */
+window.onClickPlaceOrder = () => {
+    var modal = document.getElementById("successful-payment");
+    modal.style.display = "block";
+}
+
+/**
+ * Function to close the modal pop up
+ */
+window.onClickButtonClose = () => {
+    var modal = document.getElementById("successful-payment");
+    modal.style.display = "none";
+    setMainView("customer-home");
+}
+
+/**
+ * Function to close the modal pop up
+ */
+window.onClickOutsideClose = () => {
+    var modal = document.getElementById("successful-payment");
+    if (event.target == modal){
+        modal.style.display = "none";
+    }
+    setMainView("customer-home");
+}
 
 findOneOrFail("#to-cart").addEventListener("click", () =>
     setMainView("cart")

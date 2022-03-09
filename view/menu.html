@@ -14,7 +14,7 @@
         <li><a href="#beer" onclick="onClickBeer()"><i class="fa fa-beer" aria-hidden="true"></i><span data-i18n="beer"></span></a></li>
         <li><a href="#wine" onclick="onClickWine()"><i class="fa fa-glass" aria-hidden="true"></i><span data-i18n="wine"></span></a></li>
         <li><a href="#nonalcohol" onclick="onClickNonAlcohol()"><i class="fa fa-coffee" aria-hidden="true"></i><span data-i18n="non-alcohol"></span></a></li>
-        <li><a href="#cartl" id="to-cart"><i class="fa fa-shopping-cart" aria-hidden="true"></i><span data-i18n="cart"></span></a></li>
+        <li><a href="#cartl" onclick="onClickCart()"><i class="fa fa-shopping-cart" aria-hidden="true"></i><span data-i18n="cart"></span></a></li>
         <li><a href="#" id="sign-out-button"><i class="fa fa-sign-out" aria-hidden="true"></i><span data-i18n="log-out"></span></a></li>
       </ul>
     </div>
@@ -27,7 +27,7 @@
         <input type="image" id="english-button" class="language-button" src="/images/united-kingdom.png" onclick="setLanguage('en')">
       </div>
     </div>
-</div>
+  </div>
   <!-- Content Menu Home -->
   <div class="content-container"id="menu-home">
     <h4> Click on the menu to see the menu and start ordering!</h4>
@@ -48,10 +48,101 @@
       </select>
     </div>
   </div>
+  <!-- Content Product Page -->
+  <div class="product-content display-none" id="product-page">
+    <div class="parent-navbar product-image" style="background-image: url('/images/wine-real.jpeg');">
+      <div class="child-navbar left-navbar" onclick="onClickBackToMenu()">
+        <a href="#"><i class="menu-back fa fa-arrow-left backward-logo"></i></a>
+      </div>
+    </div>
+    <div class="product-title-container" id="main-info">
+<!--      <h1 class="product-title">Braastad XO</h1>-->
+<!--      <h1>442 SEK</h1>-->
+    </div>
+    <div class="product-information">
+      <h3>Stock available: 1</h3>
+      <p>Additional information:</p>
+      <ul class="ul-list" id="additional-info">
+<!--        <li class="li-list">Producer: Tiffon</li>-->
+<!--        <li class="li-list">Country: Frankrike</li>-->
+<!--        <li class="li-list">Type: Cognac</li>-->
+<!--        <li class="li-list">Strength: 40%</li>-->
+      </ul>
+    </div>
+    <form class="increase-decrease-container">
+      <div class="value-button" id="decrease" onclick="decreaseValue()" value="Decrease Value">-</div>
+      <input type="number" id="number" value="0" />
+      <div class="value-button" id="increase" onclick="increaseValue()" value="Increase Value">+</div>
+    </form>
+  </div>
+  <!---Cart---->
+  <div class="product-content display-none" id="cart-page">
+    <div class="parent-navbar">
+      <div class="child-navbar left-navbar" onclick="onClickBackToMenu()">
+        <a href="#"><i class="backward-color fa fa-arrow-left backward-logo"></i></a>
+      </div>
+    </div>
+    <div class="product-title-container">
+      <h1>Order summary</h1>
+    </div>
+    <div class="split-bill-links">
+      <a class="split-bill-link-left">Edit split bills</a>
+      <a>Cancel split bills</a>
+    </div>
+    <div class="order-table">
+      <table class="full-table-width">
+        <tr>
+          <th class="order-product-title table-header">Products</th>
+          <th class="order-product-price table-header">Price</th>
+        </tr>
+        <tr>
+          <td class="order-product-title"><i class="fa fa-times" aria-hidden="true"></i>  Braastad XO</td>
+          <td class="order-product-price">442 SEK</td>
+        </tr>
+        <tr>
+          <td class="order-product-title"><i class="fa fa-times" aria-hidden="true"></i>  Vanlig Vodka</td>
+          <td class="order-product-price">100 SEK</td>
+        </tr>
+        <tr>
+          <td class="order-product-title"><i class="fa fa-times" aria-hidden="true"></i>  Dworek Vodka</td>
+          <td class="order-product-price">190 SEK</td>
+        </tr>
+        <tr>
+          <td class="order-product-title"><i class="fa fa-times" aria-hidden="true"></i>  Rhum J. M</td>
+          <td class="order-product-price">729 SEK</td>
+        </tr>
+      </table>
+    </div>
+    <div>
+      <p class="total-counter">Total: 1461 SEK</p>
+    </div>
+  </div>
 </div>
+<!--THE MODAL-->
+<div id="successful-payment" class="modal" onclick="onClickOutsideClose()">
+  <!-- Modal content -->
+  <div class="modal-content">
+    <span id="close" onclick="onClickButtonClose()">&times;</span>
+    <h3>Order successful!</h3>
+    <p>Our bartender will come to you shortly.</p>
+  </div>
+</div>
+
 <!--- FOOTER/CART --->
-<div class="footer">
-  <div class="cart" ondrop="drop(event)" ondragover="allowDrop(event)">
-    <p id="cart-title">Cart</p>
+<div class="footer" id="cart-footer">
+  <div class="cart" ondrop="drop(event)" ondragover="allowDrop(event)" onclick="onClickCart()">
+    <p class="footer-title" id="cart-title">Cart</p>
+  </div>
+</div>
+<!--- FOOTER/ADD TO CART --->
+<div class="footer display-none" id="add-to-cart-footer">
+  <div class="cart">
+    <p class="footer-title" id="add-to-cart-title">Add to cart</p>
+  </div>
+</div>
+<!--- FOOTER PLACE ORDER--->
+<div class="footer display-none" id="place-order-footer" onclick="onClickPlaceOrder()">
+  <div class="cart">
+    <p class="footer-title" id="place-order-title">Place order</p>
   </div>
 </div>
