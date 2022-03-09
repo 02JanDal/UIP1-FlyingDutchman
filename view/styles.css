@@ -544,6 +544,8 @@ li.menu-language-li:hover{
 .filter-box{
   display:flex;
   grid-column: span 2;
+  align-items: center;
+  justify-content: right;
 }
 
 .filter-dropdown{

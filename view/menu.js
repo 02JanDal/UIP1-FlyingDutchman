@@ -177,8 +177,8 @@ function replaceMenuTitle(title) {
 function replaceMenuList() {
   const menu = document.getElementById("insertMenu");
   const children = menu.children;
-  while (children.item(3)) {
-    children.item(3).remove();
+  while (children.item(2)) {
+    children.item(2).remove();
   }
 }
 
