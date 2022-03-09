@@ -75,6 +75,14 @@ const strings = {
     en: "No user found for this username/password",
     sv: "Ingen användare hittad för detta användarnamn/lösenord",
   },
+  undo: {
+    en: "Undo",
+    sv: "Ångra",
+  },
+  redo: {
+    en: "Redo",
+    sv: "Upprepa",
+  },
 };
 
 /**

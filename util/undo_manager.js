@@ -129,11 +129,11 @@ class _UndoManager {
    * Reverse the current command on the stack, if possible
    */
   undo() {
-    if (this.#index < 0 || !this.#stack[this.#index - 1].canUndo()) {
+    if (this.#index < 0 || !this.#stack[this.#index].canUndo()) {
       return;
     }
-    this.#index -= 1;
     this.#stack[this.#index].undo();
+    this.#index -= 1;
   }
 }
 

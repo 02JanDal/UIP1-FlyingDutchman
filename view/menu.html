@@ -18,6 +18,12 @@
         <li><a href="#" id="sign-out-button"><i class="fa fa-sign-out" aria-hidden="true"></i><span data-i18n="log-out"></span></a></li>
       </ul>
     </div>
+    <div>
+      <ul>
+        <li><a onclick="doUndo()"><i class="fa fa-undo" aria-hidden="true"></i><span data-i18n="undo"></span></a></li>
+        <li><a onclick="doRedo()"><i class="fa fa-repeat" aria-hidden="true"></i><span data-i18n="redo"></span></a></li>
+      </ul>
+    </div>
     <!---- Language switching buttons --->
     <div class="menu-language-container">
       <div class="language-left">
@@ -36,7 +42,6 @@
   <div class="content display-none" id="insertMenu">
     <!-- Title -->
     <div id="menu-title">All items</div>
-    <div></div>
     <!---Filter--->
     <div class="filter-box">
       <label for="filter" class="filter-text-style">Filter:</label>
