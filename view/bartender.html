@@ -1,46 +1,97 @@
 <div class="container">
-    <div class="bartender-sidebar">
-      <div class="logo-sidebar">
-        <img src="/images/flying-dutchman-logo.png" class="logo-img-sidebar">
-      </div>
-      <div class="searchbar"><input id="searchbar" type="search" placeholder="Search.."><span><button id="searchbutton"><i id="searchglass" class="fa fa-search"></i></button></span></div>
-      <div>
-        <ul>
-          <li><a href="#manage-stock"><i class="fa fa-book" aria-hidden="true"></i><span data-i18n="manage-stock"></span></a></li>
-          <li><a href="#table-orders"><i class="fa fa-table" aria-hidden="true"></i><span data-i18n="table-orders"></span></a></li>
-          <li><a href="#security"><i class="fa fa-shield" aria-hidden="true"></i><span data-i18n="security"></span></a></li>
+  <!--- SIDEBAR --->
+  <div class="sidebar">
+    <!---- Logo --->
+    <div class="logo-sidebar">
+      <img src="/images/flying-dutchman-logo.png" class="logo-img-sidebar">
+    </div>
+    <!---- Search Bar --->
+    <div class="searchbar"><input id="searchbar" type="search" placeholder="Search.."><span><button id="searchbutton"><i id="searchglass" class="fa fa-search"></i></button></span></div>
+    <!---- Menu Selection --->
+    <div>
+      <ul>
+          <li><a href="#manage-stock" onclick="onClickManage()"><i class="fa fa-book" aria-hidden="true"></i><span data-i18n="manage-stock"></span></a></li>
+          <li><a href="#table-orders" onclick="onClickTables()"><i class="fa fa-table" aria-hidden="true"></i><span data-i18n="table-orders"></span></a></li>
+          <li><a href="#security" onclick="onClickSecurity()"><i class="fa fa-shield" aria-hidden="true"></i><span data-i18n="security"></span></a></li>
           <li><a href="#" id="bartender-sign-out-button"><i class="fa fa-sign-out" aria-hidden="true"></i><span data-i18n="log-out"></span></a></li>
-          <!--- BROKEN ->
-          <li class="menu-language-li"><a href="#" onclick="menuLanguage()"><img class="img-language" src="\images\united-kingdom.png"><span class="menu-language-text"> English</span></a></li>-->
         </ul>
+    </div>
+    <div>
+      <ul>
+        <li><a onclick="doUndo()"><i class="fa fa-undo" aria-hidden="true"></i><span data-i18n="undo"></span></a></li>
+        <li><a onclick="doRedo()"><i class="fa fa-repeat" aria-hidden="true"></i><span data-i18n="redo"></span></a></li>
+      </ul>
+    </div>
+    <!---- Language switching buttons --->
+    <div class="menu-language-container">
+      <div class="language-left">
+        <input type="image" class="language-button swedish-button" src="/images/sweden.png" onclick="changeLanguage('sv')">
       </div>
-      <!---- Language switching buttons --->
-      <div class="menu-language-container">
-        <div class="language-left">
-          <input type="image" class="language-button swedish-button" src="/images/sweden.png" onclick="changeLanguage('sv')">
-        </div>
-        <div>
-          <input type="image" class="language-button english-button" src="/images/united-kingdom.png" onclick="changeLanguage('en')">
-        </div>
-      </div>
-  </div>
-    <div class="bartender-content" id="insertMenuBartender">
-      <div class="menu-title">All items</div>
-      <div></div>
-      <div id="4column"></div>
-      <div class="filter-box">
-        <label for="filter" class="filter-text-style">Filter:</label>
-        <select name="filter" id="filter" class="filter-dropdown">
-          <option value="none">None</option>
-          <option value="content-50">Alcohol content <50%</option>
-          <option value="content-30">Alcohol content <30%</option>
-          <option value="gluten-free">Gluten-free</option>
-        </select>
+      <div>
+        <input type="image" class="language-button english-button" src="/images/united-kingdom.png" onclick="changeLanguage('en')">
       </div>
     </div>
   </div>
-  <div class="bartender-footer">
-    <div class="bartender-cart">
-      <p class="cart-title">Cart</p>
+  <!-- Content Menu Home -->
+  <div class="content-container"id="menu-home-bt"></div>
+  <!-- Content Products List -->
+  <div class="content display-none" id="insertMenuBt">
+    <!-- Title -->
+    <div id="menu-title-bt">All items</div>
+    <!---Filter--->
+    <div id="filter-bt" class="filter-box">
+      <label for="filter" class="filter-text-style">Filter:</label>
+      <select name="filter" id="filter" class="filter-dropdown" onchange="changeFilter()">
+        <option value="none">None</option>
+        <option value="content-30-50">Alcohol content 30-50%</option>
+        <option value="content-10-30">Alcohol content 10-30%</option>
+        <option value="content-10">Alcohol content 10%</option>
+      </select>
     </div>
   </div>
+  <!-- Content Product Page -->
+  <div class="product-content display-none" id="product-page-bt">
+    <div class="parent-navbar product-image" style="background-image: url('/images/wine-real.jpeg');">
+      <div class="child-navbar left-navbar" onclick="onClickBackToMenu()">
+        <a href="#"><i class="menu-back fa fa-arrow-left backward-logo"></i></a>
+      </div>
+    </div>
+    <div class="product-title-container" id="main-info-bt">
+<!--      <h1 class="product-title">Braastad XO</h1>-->
+<!--      <h1>442 SEK</h1>-->
+    </div>
+    <div class="product-information">
+      <h3>Stock available: 1</h3>
+      <p>Additional information:</p>
+      <ul class="ul-list" id="additional-info-bt">
+<!--        <li class="li-list">Producer: Tiffon</li>-->
+<!--        <li class="li-list">Country: Frankrike</li>-->
+<!--        <li class="li-list">Type: Cognac</li>-->
+<!--        <li class="li-list">Strength: 40%</li>-->
+      </ul>
+    </div>
+    <form class="increase-decrease-container">
+      <div class="value-button" id="decrease" onclick="decreaseValue()" value="Decrease Value">-</div>
+      <input type="number" id="number" value="0" />
+      <div class="value-button" id="increase" onclick="increaseValue()" value="Increase Value">+</div>
+    </form>
+  </div>
+
+<!--- FOOTER/CART --->
+<!-- <div class="footer" id="cart-footer-bt">
+  <div class="cart" ondrop="drop(event)" ondragover="allowDrop(event)" onclick="onClickCart()">
+    <p class="footer-title" id="cart-title">Cart</p>
+  </div>
+</div> -->
+<!--- FOOTER/ADD TO CART --->
+<!-- <div class="footer display-none" id="add-to-cart-footer-bartender">
+  <div class="cart">
+    <p class="footer-title" id="add-to-cart-title">Add to cart</p>
+  </div>
+</div> -->
+<!--- FOOTER PLACE ORDER--->
+<!-- <div class="footer display-none" id="place-order-footer" onclick="onClickPlaceOrder()">
+  <div class="cart">
+    <p class="footer-title" id="place-order-title">Place order</p>
+  </div>
+</div> -->

@@ -1265,6 +1265,24 @@ const table =
     status: "Vacant",
     party_id: "",
       
+  },
+  {
+    table_id: "13",
+    status: "Vacant",
+    party_id: "",
+      
+  },
+  {
+    table_id: "14",
+    status: "Vacant",
+    party_id: "",
+      
+  },
+  {
+    table_id: "15",
+    status: "Vacant",
+    party_id: "",
+      
   }
   ];
 
