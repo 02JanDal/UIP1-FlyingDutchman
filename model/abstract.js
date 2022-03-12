@@ -11,6 +11,7 @@ export class AbstractModel {
       for (const field of this.constructor.fields) {
         this[field] = data[field];
       }
+      this.#id = data.id;
     } else {
       for (const field of this.constructor.fields) {
         this[field] = null;

@@ -61,8 +61,16 @@ class _Database {
    */
   upsert(type, data) {
     if (!data.id) {
-      // assign the next largest number
-      data.id = Math.max(...this.list(type).map((item) => item.id)) + 1;
+      const existing = this.list(type);
+      if (existing.length > 0) {
+        // assign the next largest number
+        data.id = Math.max(...existing.map((item) => item.id)) + 1;
+      } else {
+        data.id = 1;
+      }
+    }
+    if (!this.#items[type]) {
+      this.#items[type] = {};
     }
     this.#items[type][data.id] = data;
     this.#save();

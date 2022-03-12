@@ -52,7 +52,7 @@ export default class Product {
 
   constructor(data) {
     Object.assign(this, data);
-    this.#id = data.nr;
+    this.#id = parseInt(data.nr);
   }
 
   /** @type number|null */
@@ -71,7 +71,7 @@ export default class Product {
    * @returns {Product|null} - The instance or null if no instance exists for the given ID
    */
   static get(id) {
-    const raw = beverages.find((item) => item.id === id);
+    const raw = beverages.find((item) => parseInt(item.nr) === id);
     return raw ? new this(raw) : null;
   }
 

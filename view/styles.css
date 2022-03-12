@@ -776,6 +776,7 @@ input[type=number]::-webkit-outer-spin-button {
   color: #000;
   text-decoration: none;
   cursor: pointer;
+}
 .error-message {
   margin-left: auto;
   margin-right: auto;
