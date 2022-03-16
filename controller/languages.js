@@ -263,6 +263,14 @@ const strings = {
     en: "Report",
     sv: "Rapportera",
   },
+  back: {
+    en: "Back",
+    sv: "Tillbaka",
+  },
+  continue: {
+    en: "Continue",
+    sv: "Fortsätta",
+  },
 };
 
 /**
