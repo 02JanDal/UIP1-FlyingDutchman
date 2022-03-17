@@ -1,7 +1,7 @@
 import undo, { UndoCommand } from "../util/undo_manager";
 import {OrderBill} from "../model";
 
-export default class SplitBillController{
+class SplitBillController{
 
     /***
      * Creating the split bill
@@ -19,6 +19,8 @@ export default class SplitBillController{
                         let bill = new OrderBill();
                         bill.party_id = theID;
                         bill.save();
+                        localStorage.setItem("flyingdutchman_currentOrder_"+i, bill.id);
+                        console.log(bill);
                     }
                 }, undefined
             )
@@ -82,3 +84,6 @@ export default class SplitBillController{
     }
 
 }
+
+const splitBillController = new SplitBillController();
+export default splitBillController;

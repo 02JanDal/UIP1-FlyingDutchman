@@ -36,40 +36,40 @@ const strings = {
     sv: "Lösenord",
   },
   "all-items": {
-    en: "   All items",
+    en: "All items",
     sv: "   Alla objekt",
   },
   beer: {
-    en: "   Beer",
-    sv: "   Öl",
+    en: "Beer",
+    sv: "Öl",
   },
   wine: {
-    en: "   Wine",
-    sv: "   Vin",
+    en: "Wine",
+    sv: "Vin",
   },
   "non-alcohol": {
-    en: "   Non-alcoholic",
-    sv: "   Alkoholfritt",
+    en: "Non-alcoholic",
+    sv: "Alkoholfritt",
   },
   "log-out": {
-    en: "   Log out",
-    sv: "   Logga ut",
+    en: "Log out",
+    sv: "Logga ut",
   },
   cart: {
-    en: "   Cart",
-    sv: "   Vagn",
+    en: "Cart",
+    sv: "Vagn",
   },
   "manage-stock": {
-    en: "   Manage stock",
-    sv: "   Hantera lager",
+    en: "Manage stock",
+    sv: "Hantera lager",
   },
   "table-orders": {
-    en: "   Table orders",
-    sv: "   Bordsbeställningar",
+    en: "Table orders",
+    sv: "Bordsbeställningar",
   },
   security: {
-    en: "   Security",
-    sv: "   Säkerhet",
+    en: "Security",
+    sv: "Säkerhet",
   },
   "signin-error": {
     en: "No user found for this username/password",
@@ -123,6 +123,10 @@ const strings = {
     en: "Stock available",
     sv: "Lager tillgänglig",
   },
+  "additional-info":{
+    en: "Additional information:",
+    sv: "Ytterligare information:",
+  },
   producer: {
     en: "Producer:",
     sv: "Producent:",
@@ -140,16 +144,16 @@ const strings = {
     sv: "Styrka:",
   },
   filter: {
-    en: "Filter by:",
-    sv: "Filtera efter:",
+    en: "Filter:",
+    sv: "Filtera:",
   },
   "how-many-split":{
     en: "How many people are splitting the bill?",
     sv: "Hur många delar på notan?",
   },
   "items-basket":{
-    en: "Items in the basket",
-    sv: "Artiklar i korgen",
+    en: "Choose items in the basket",
+    sv: "Välj varor i korgen",
   },
   "person": {
     en: "Person",
@@ -159,7 +163,11 @@ const strings = {
     en: "Order no:",
     sv: "Beställningsnr:",
   },
-  "order-successful": {
+  "order-successful":{
+    en: "Order successful!",
+    sv: "Beställningen lyckades",
+  },
+  "bartender-come": {
     en: "Our bartender will come to you shortly.",
     sv: "Vår bartender kommer till dig inom kort.",
   },
@@ -271,6 +279,34 @@ const strings = {
     en: "Continue",
     sv: "Fortsätta",
   },
+  "place-order": {
+    en: "Place order",
+    sv: "Beställa",
+  },
+  "add-to-cart": {
+    en: "Add to cart",
+    sv: "Lägg till i kundvagn",
+  },
+  none: {
+    en: "None",
+    sv: "Ingen",
+  },
+  "50-content": {
+    en: "Alcohol content 30-50%",
+    sv: "Alkoholhalt 30-50%",
+  },
+  "30-content": {
+    en: "Alcohol content 10-30%",
+    sv: "Alkoholhalt 10-30%",
+  },
+  "10-content": {
+    en: "Alcohol content <10%",
+    sv: "Alkoholhalt <10%",
+  },
+  "select-splitbill": {
+    en: "Selecting for:",
+    sv: "Välja for:"
+  }
 };
 
 /**

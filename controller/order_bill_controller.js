@@ -58,6 +58,19 @@ class OrderBillController extends EventTarget {
       );
   }
 
+  removeProduct(order, product){
+    if (order.status === "pending")
+      undo.push(
+          new UndoCommand(
+              () => {
+                order.product_ids.splice(order.product_ids.indexOf(product.id), 1);
+                order.save();
+                this.dispatchEvent(new OrderBillChangedEvent(order));
+              },undefined
+          )
+      );
+  }
+
   /**
    * Changes the status of an order to "placed"
    *
