@@ -53,6 +53,16 @@ export class AbstractModel {
   }
 
   /**
+   * Check if an instance with the given ID exists
+   *
+   * @param {number} id
+   * @return {boolean}
+   */
+  static exists(id) {
+    return db.get(this.type, id) !== null;
+  }
+
+  /**
    * Find all instances that match the given filter
    *
    * Values in the filter that are RegExp instances are matched as regular

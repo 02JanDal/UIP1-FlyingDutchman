@@ -2,7 +2,7 @@ import { findOneOrFail, setMainView } from "./helpers.js";
 import menuController from "../controller/menu_controller.js";
 import Product from "../model/product.js";
 import orderBillController from "../controller/order_bill_controller.js";
-// import splitBillController from "../controller/split_bill_controller.js";
+import splitBillController from "../controller/split_bill_controller.js";
 
 //region Drag and drop to cart
 
@@ -131,7 +131,7 @@ document.addEventListener(
  * Show all passed products
  * @param {Product[]} products
  */
-function displayProducts(products,id) {
+function displayProducts(products, id) {
   const menu = document.getElementById(id);
   for (const product of products) {
     const name = product.namn;
@@ -418,7 +418,7 @@ window.onClickProductPage = (
   country,
   type,
   strength,
-  productID,
+  productID
 ) => {
   show("product-page", "block");
   dontShow("menu-home");
@@ -452,11 +452,11 @@ window.addItem = () => {
   const product = Product.get(parseInt(productID));
   const order = orderBillController.getOrCreateOrder();
   const totalItem = document.getElementById("number-product").value;
-  for (let i = 0; i < totalItem; i++){
+  for (let i = 0; i < totalItem; i++) {
     orderBillController.addProduct(order, product);
   }
   onClickBackToMenu();
-}
+};
 
 /**
  * To Cart
@@ -478,11 +478,11 @@ window.onClickCart = () => {
   while (children.item(1)) {
     children.item(1).remove();
   }
-  var counter = 0;
+  let counter = 0;
   for (const product of products) {
     const name = product.namn;
     const price = product.prisinklmoms;
-    var counter = counter + price;
+    counter = counter + price;
     const orders = `<tr>
           <td class="order-product-title"><span class="remove" onclick="removeItem(${product.id})">&times;</span>${name}</td>
           <td class="order-product-price">${price} SEK</td>
@@ -493,7 +493,7 @@ window.onClickCart = () => {
   removeChild(totalBill);
   const bill = `<p class="total-counter">Total: ${counter} SEK</p>
                 <div class="end-gap"></div>`;
-  totalBill.insertAdjacentHTML("beforeend", bill)
+  totalBill.insertAdjacentHTML("beforeend", bill);
 };
 
 /**
@@ -503,9 +503,9 @@ window.onClickCart = () => {
 window.removeItem = (productId) => {
   const product = Product.get(parseInt(productId));
   const order = orderBillController.getOrCreateOrder();
-  orderBillController.removeProduct(order,product);
+  orderBillController.removeProduct(order, product);
   onClickCart();
-}
+};
 
 /**
  * Function to trigger the modal pop up
@@ -547,7 +547,7 @@ window.onClickSplitBills = () => {
   dontShow("split-bill-choose");
   show("split-bill", "block");
   show("continue-footer", "block");
-}
+};
 
 /**
  * Function to continue
@@ -568,7 +568,7 @@ window.onClickContinue = () => {
   const totalSplitBills = document.getElementById("number-splitbill").value;
   const parentPerson = document.getElementById("filter-splitbill");
   removeChild(parentPerson);
-  for (let i = 0; i < totalSplitBills;i++){
+  for (let i = 0; i < totalSplitBills; i++) {
     const newPerson = `<option value="person-${i}">Person ${i}</option>`;
     parentPerson.insertAdjacentHTML("beforeend", newPerson);
   }
@@ -591,19 +591,16 @@ window.onClickContinue = () => {
     menuList.insertAdjacentHTML("beforeend", html);
   }
   // Not working
-  // const order = orderBillController.getOrCreateOrder();
-  // splitBillController.splitBill(order, order.party);
-  // console.log(order);
-}
-
+  const order = orderBillController.getOrCreateOrder();
+  splitBillController.splitBill(totalSplitBills, order);
+  console.log(order);
+};
 
 /**
  * Select item for Split bills
  */
 
-window.itemSelected = () => {
-
-}
+window.itemSelected = () => {};
 
 /**
  * Backwards to split bill menu
@@ -619,7 +616,7 @@ window.onClickBackToSplitBillHome = () => {
   dontShow("place-order-footer");
   show("continue-footer", "block");
   dontShow("split-bill-choose");
-}
+};
 
 //endregion
 

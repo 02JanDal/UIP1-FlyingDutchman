@@ -17,7 +17,7 @@ export default class OrderBill extends AbstractModel {
     return Party.get(this.party_id);
   }
   /** @param {Party} party */
-  set table(party) {
+  set party(party) {
     this.party_id = party.id;
   }
 

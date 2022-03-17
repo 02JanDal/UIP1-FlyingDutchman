@@ -9,6 +9,10 @@ import { baseData } from "./data/baseData.js";
 class _Database {
   static #LOCALSTORAGE_KEY = "flyingdutchman_database";
 
+  static clear() {
+    localStorage.removeItem(this.#LOCALSTORAGE_KEY);
+  }
+
   /**
    * @typedef {{ id: number, [key: string]: string | number | boolean | any }} RawModelInstance
    */
@@ -87,6 +91,14 @@ class _Database {
     this.#save();
   }
 }
+
+/**
+ * To be called from DevTools, clears the database so that it can be re-created
+ */
+window.reloadDatabase = () => {
+  _Database.clear();
+  location.reload();
+};
 
 /**
  * @package

@@ -1,5 +1,6 @@
 import undo, { UndoCommand } from "../util/undo_manager.js";
 import OrderBill from "../model/order_bill.js";
+import Party from "../model/party.js";
 
 class OrderBillChangedEvent extends Event {
   /** @type OrderBill */
@@ -20,14 +21,27 @@ class OrderBillChangedEvent extends Event {
 }
 
 class OrderBillController extends EventTarget {
+  getOrCreateParty() {
+    const id = localStorage.getItem("flyingdutchman_currentParty");
+    if (id && Party.exists(parseInt(id))) {
+      return Party.get(parseInt(id));
+    } else {
+      const party = new Party();
+      party.save();
+      localStorage.setItem("flyingdutchman_currentParty", party.id);
+      return party;
+    }
+  }
+
   getOrCreateOrder() {
     const id = localStorage.getItem("flyingdutchman_currentOrder");
-    if (id) {
+    if (id && OrderBill.exists(parseInt(id))) {
       return OrderBill.get(parseInt(id));
     } else {
       const order = new OrderBill();
       order.status = "pending";
-      order.product_ids = [];
+      order.products = [];
+      order.party = this.getOrCreateParty();
       order.save();
       localStorage.setItem("flyingdutchman_currentOrder", order.id);
       return order;
@@ -58,16 +72,14 @@ class OrderBillController extends EventTarget {
       );
   }
 
-  removeProduct(order, product){
+  removeProduct(order, product) {
     if (order.status === "pending")
       undo.push(
-          new UndoCommand(
-              () => {
-                order.product_ids.splice(order.product_ids.indexOf(product.id), 1);
-                order.save();
-                this.dispatchEvent(new OrderBillChangedEvent(order));
-              },undefined
-          )
+        new UndoCommand(() => {
+          order.product_ids.splice(order.product_ids.indexOf(product.id), 1);
+          order.save();
+          this.dispatchEvent(new OrderBillChangedEvent(order));
+        }, undefined)
       );
   }
 
