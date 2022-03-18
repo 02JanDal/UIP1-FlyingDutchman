@@ -65,7 +65,7 @@ function getSecurity() {
             <div id="security">
             <p><strong>Non-urgent matters</strong></p>
             <p id="reporttxt">Report the situation</p>
-              <textarea id="non-urgent" placeholder="Write here..." onclick="onSubmitSecurity(document.getElementById('non-urgent').value)></textarea>
+              <textarea id="non-urgent" onclick="on<ClickReport>(document.getElementById('non-urgent').value) placeholder="Write here..."></textarea>
               <button id="report" onclick="onClickReport()">Report</button>
           </div>`;
     menu.insertAdjacentHTML("beforeend", html);
@@ -77,7 +77,7 @@ function onClickCallSecurity() {
 
 }
 
-function onSubmitSecurity(message) {
+function onClickReport(message) {
   securityController.sendReport(message)
 }
 
