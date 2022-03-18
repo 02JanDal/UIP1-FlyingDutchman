@@ -11,6 +11,7 @@ export class AbstractModel {
       for (const field of this.constructor.fields) {
         this[field] = data[field];
       }
+      this.#id = data.id;
     } else {
       for (const field of this.constructor.fields) {
         this[field] = null;
@@ -49,6 +50,16 @@ export class AbstractModel {
   static get(id) {
     const raw = db.get(this.type, id);
     return raw ? new this(raw) : null;
+  }
+
+  /**
+   * Check if an instance with the given ID exists
+   *
+   * @param {number} id
+   * @return {boolean}
+   */
+  static exists(id) {
+    return db.get(this.type, id) !== null;
   }
 
   /**

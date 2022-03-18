@@ -640,11 +640,11 @@ form {
   cursor: pointer;
 }
 
-form #decrease {
+.decrease {
   margin-right: 5px;
 }
 
-form #increase {
+.increase {
   margin-left: 5px;
 }
 
@@ -653,7 +653,7 @@ form #input-wrap {
   padding: 0px;
 }
 
-input#number {
+input#number-product, input#number-splitbill {
   text-align: center;
   border: none;
   border-top: 1px solid #ddd;
@@ -685,6 +685,10 @@ input[type=number]::-webkit-outer-spin-button {
 
 .split-bill-link-left{
   padding-right:20px;
+}
+
+.split-bill-link-left:hover{
+  text-decoration: underline;
 }
 
 .backward-color{
@@ -732,9 +736,14 @@ input[type=number]::-webkit-outer-spin-button {
 }
 
 .total-counter{
+  font-size:25px;
   padding-right:40px;
   text-align:right;
   font-weight:bold;
+}
+
+.end-gap{
+  height:100px;
 }
 
 /* The Modal (background) */
@@ -771,11 +780,22 @@ input[type=number]::-webkit-outer-spin-button {
   font-weight: bold;
 }
 
+.remove{
+  color: #000000;
+  font-size: 28px;
+  font-weight: bold;
+}
+
+.remove:hover{
+  color: #ffffff;
+}
+
 .close:hover,
 .close:focus {
   color: #000;
   text-decoration: none;
   cursor: pointer;
+}
 .error-message {
   margin-left: auto;
   margin-right: auto;
@@ -787,5 +807,31 @@ input[type=number]::-webkit-outer-spin-button {
   color: rgba(180,24,0,1);
   border-radius: 10px;
   margin-bottom: 20px;
+  text-align: center;
+}
+
+.split-bill-filter {
+  margin-top:3px;
+}
+
+.split-bill-onchange{
+  margin-top:0px;
+}
+
+.split-bill-display{
+  display: block;
+}
+
+.split-bill-filter-box{
+  float:right;
+  align-items:start;
+}
+
+#split-bill-products{
+  display: inline-grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  overflow: auto;
+  grid-gap: 20px;
+  padding: 0 20px;
   text-align: center;
 }

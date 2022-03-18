@@ -137,5 +137,8 @@ class _UndoManager {
   }
 }
 
+window.doUndo = () => undo.undo();
+window.doRedo = () => undo.redo();
+
 const undo = new _UndoManager();
 export default undo;

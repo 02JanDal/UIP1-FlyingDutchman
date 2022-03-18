@@ -1,38 +1,16 @@
-import { beverages } from "../model/data/beverages.js";
 import { findOneOrFail, setMainView } from "./helpers.js";
 import menuController from "../controller/menu_controller.js";
-import undo, { UndoCommand } from "../util/undo_manager.js";
+import Product from "../model/product.js";
+import orderBillController from "../controller/order_bill_controller.js";
+import splitBillController from "../controller/split_bill_controller.js";
 
-/***
- * Set the language in the menu
- * This should be moved to controller, I believe!
- */
-window.menuLanguage = function () {
-  const menulang = document.getElementsByClassName("menu-language-li");
-  const langimg = document.getElementsByClassName("img-language");
-  menulang.addEventListener("click", () => {
-    if (langimg.src === '"/images/sweden.png"') {
-      return (langimg.src = "/images/united-kingdom.png");
-      setLanguage("en");
-    } else {
-      return (langimg.src = "/images/sweden.png");
-      setLanguage("sv");
-    }
-  });
-};
-
-/**
- * Itemcount to test the number of items added
- * Will be removed when we're triggering creation of OrderBill instead!
- * @type {number}
- */
-var itemCount = 0;
+//region Drag and drop to cart
 
 /***
  * Function to add a class for drag and drop
  */
 function addDnDClass() {
-  var element = document.getElementById("cart-title");
+  const element = document.getElementById("cart-title");
   element.classList.add("cart-dnd");
 }
 
@@ -40,9 +18,20 @@ function addDnDClass() {
  * Function to remove a class for drag and drop
  */
 function removeDnDClass() {
-  var element = document.getElementById("cart-title");
+  const element = document.getElementById("cart-title");
   element.classList.remove("cart-dnd");
 }
+
+function updateCartCount() {
+  document.getElementById("cart-title").innerHTML =
+    "Cart (" +
+    orderBillController.totalItem(orderBillController.getOrCreateOrder()) +
+    ")";
+}
+orderBillController.addEventListener("OrderBillChanged", () => {
+  updateCartCount();
+});
+updateCartCount();
 
 /***
  * AllowDrop function
@@ -53,31 +42,31 @@ window.allowDrop = (ev) => {
 
 /***
  * Drag function
+ * @param {DragEvent} ev
  */
 window.drag = (ev) => {
-  ev.dataTransfer.setData("Item", ev.target.id);
+  let target = ev.target;
+  // if the target itself does not have the product id we need to find the child that has it
+  if (!target.hasAttribute("data-product-id")) {
+    target = target.querySelector("[data-product-id]");
+  }
+  const productId = target.getAttribute("data-product-id");
+  ev.dataTransfer.setData("item", productId);
 };
 
 /***
  * Drop function
+ * @param {DragEvent} ev
  */
 window.drop = (ev) => {
-  undo.push(
-    new UndoCommand(
-      () => {
-        itemCount++;
-        document.getElementById("cart-title").innerHTML =
-          "Cart (" + itemCount + ")";
-      },
-      () => {
-        itemCount--;
-        document.getElementById("cart-title").innerHTML =
-          "Cart (" + itemCount + ")";
-      }
-    )
-  );
-  event.preventDefault();
-  var data = event.dataTransfer.getData("Item");
+  const productId = ev.dataTransfer.getData("item");
+  if (!productId) {
+    return;
+  }
+  const product = Product.get(parseInt(productId));
+  const order = orderBillController.getOrCreateOrder();
+  orderBillController.addProduct(order, product);
+  ev.preventDefault();
 };
 
 /***
@@ -113,7 +102,7 @@ document.addEventListener(
   "dragenter",
   function (event) {
     // make it half transparent
-    if (event.target.id == "cart-title") {
+    if (event.target.id === "cart-title") {
       removeDnDClass();
     }
   },
@@ -127,38 +116,41 @@ document.addEventListener(
   "dragleave",
   function (event) {
     // make it half transparent
-    if (event.target.id == "cart-title") {
+    if (event.target.id === "cart-title") {
       addDnDClass();
     }
   },
   false
 );
 
+//endregion
+
+//region Menu search and products list
+
 /***
- * getProducts to get all the products list
- * The menu item for now is set to 500 for easier loading of the products list
- * @param beveragesList
+ * Show all passed products
+ * @param {Product[]} products
  */
-function getProducts(beveragesList) {
-  const menu = document.getElementById("insertMenu");
-  for (var i = 0; i < 500; i++) {
-    let name = beveragesList[i]["namn"];
-    let price = beveragesList[i]["prisinklmoms"];
-    let producer = beveragesList[i]["producent"];
-    let country = beveragesList[i]["ursprunglandnamn"];
-    let type = beveragesList[i]["varugrupp"];
-    let strength = beveragesList[i]["alkoholhalt"];
-    let html = `<div class="card" draggable="true" ondragstart="drag(event)" onclick="onClickProductPage('${name}', ${price}, '${producer}', '${country}', '${type}', ${strength})">
-        <a href="#" id="to-product-page">
-          <div class="card-container">
-            <h4 class="item-title">${name}
-            </h4>
-            <p class="item-price">
-              ${price}0 SEK
-            </p>
-          </div>      
-          </a>
-        </div>`;
+function displayProducts(products, id) {
+  const menu = document.getElementById(id);
+  for (const product of products) {
+    const name = product.namn;
+    const price = product.prisinklmoms;
+    const producer = product.producent;
+    const country = product.ursprunglandnamn;
+    const type = product.varugrupp;
+    const strength = product.alkoholhalt;
+    const html = `
+<div class="card" draggable="true" ondragstart="drag(event)" onclick="onClickProductPage('${name}', ${price}, '${producer}', '${country}', '${type}', ${strength}, ${product.id})">
+  <a href="#" id="to-product-page" data-product-id="${product.id}">
+    <div class="card-container">
+      <h4 class="item-title">${name}</h4>
+      <p class="item-price">
+        ${price}0 SEK
+      </p>
+    </div>      
+  </a>
+</div>`;
     menu.insertAdjacentHTML("beforeend", html);
   }
 }
@@ -174,7 +166,7 @@ function replaceMenuTitle(title) {
 /***
  * Removing all the previous menu list in the same page
  */
-function replaceMenuList() {
+function clearMenuList() {
   const menu = document.getElementById("insertMenu");
   const children = menu.children;
   while (children.item(2)) {
@@ -184,7 +176,7 @@ function replaceMenuList() {
 
 /***
  * Set the display of certain divs to none
- * @param elementId
+ * @param {string} elementId
  */
 function dontShow(elementId) {
   document.getElementById(elementId).style.display = "none";
@@ -192,8 +184,8 @@ function dontShow(elementId) {
 
 /**
  * Set the display of certain divs to be shown on screen
- * @param elementId
- * @param style
+ * @param {string} elementId
+ * @param {string} style
  */
 function show(elementId, style) {
   document.getElementById(elementId).style.display = style;
@@ -210,9 +202,12 @@ window.onClickAllMenu = () => {
   dontShow("add-to-cart-footer");
   dontShow("cart-page");
   dontShow("place-order-footer");
-  replaceMenuList();
+  dontShow("split-bill");
+  dontShow("continue-footer");
+  dontShow("split-bill-choose");
+  clearMenuList();
   replaceMenuTitle("All items");
-  getProducts(beverages);
+  displayProducts(menuController.products, "insertMenu");
 };
 
 /**
@@ -226,10 +221,13 @@ window.onClickBeer = () => {
   dontShow("add-to-cart-footer");
   dontShow("cart-page");
   dontShow("place-order-footer");
-  replaceMenuList();
+  dontShow("split-bill");
+  dontShow("continue-footer");
+  dontShow("split-bill-choose");
+  clearMenuList();
   replaceMenuTitle("Beers");
   menuController.setFilterCategory("beer");
-  getProducts(menuController.products);
+  displayProducts(menuController.products, "insertMenu");
 };
 
 /**
@@ -243,10 +241,13 @@ window.onClickWine = () => {
   dontShow("add-to-cart-footer");
   dontShow("cart-page");
   dontShow("place-order-footer");
-  replaceMenuList();
+  dontShow("split-bill");
+  dontShow("continue-footer");
+  dontShow("split-bill-choose");
+  clearMenuList();
   replaceMenuTitle("Wine");
   menuController.setFilterCategory("wine");
-  getProducts(menuController.products);
+  displayProducts(menuController.products, "insertMenu");
 };
 
 /**
@@ -260,10 +261,13 @@ window.onClickNonAlcohol = () => {
   dontShow("add-to-cart-footer");
   dontShow("cart-page");
   dontShow("place-order-footer");
-  replaceMenuList();
+  dontShow("split-bill");
+  dontShow("continue-footer");
+  dontShow("split-bill-choose");
+  clearMenuList();
   replaceMenuTitle("Non Alcoholic");
   menuController.setFilterCategory("non-alcoholic");
-  getProducts(menuController.products);
+  displayProducts(menuController.products, "insertMenu");
 };
 
 /**
@@ -277,9 +281,12 @@ window.onClickContentAll = () => {
   dontShow("add-to-cart-footer");
   dontShow("cart-page");
   dontShow("place-order-footer");
-  replaceMenuList();
+  dontShow("split-bill");
+  dontShow("continue-footer");
+  dontShow("split-bill-choose");
+  clearMenuList();
   menuController.setFilterAlcoholRange([0, 100]);
-  getProducts(menuController.products);
+  displayProducts(menuController.products, "insertMenu");
 };
 
 /**
@@ -293,9 +300,12 @@ window.onClickContent50 = () => {
   dontShow("add-to-cart-footer");
   dontShow("cart-page");
   dontShow("place-order-footer");
-  replaceMenuList();
+  dontShow("split-bill");
+  dontShow("continue-footer");
+  dontShow("split-bill-choose");
+  clearMenuList();
   menuController.setFilterAlcoholRange([50, 100]);
-  getProducts(menuController.products);
+  displayProducts(menuController.products, "insertMenu");
 };
 
 /**
@@ -309,9 +319,12 @@ window.onClickContent3050 = () => {
   dontShow("add-to-cart-footer");
   dontShow("cart-page");
   dontShow("place-order-footer");
-  replaceMenuList();
+  dontShow("split-bill");
+  dontShow("split-bill-choose");
+  dontShow("continue-footer");
+  clearMenuList();
   menuController.setFilterAlcoholRange([30, 50]);
-  getProducts(menuController.products);
+  displayProducts(menuController.products, "insertMenu");
 };
 
 /**
@@ -325,9 +338,12 @@ window.onClickContent1030 = () => {
   dontShow("add-to-cart-footer");
   dontShow("cart-page");
   dontShow("place-order-footer");
-  replaceMenuList();
+  dontShow("split-bill");
+  dontShow("split-bill-choose");
+  dontShow("continue-footer");
+  clearMenuList();
   menuController.setFilterAlcoholRange([10, 30]);
-  getProducts(menuController.products);
+  displayProducts(menuController.products, "insertMenu");
 };
 
 /**
@@ -341,23 +357,26 @@ window.onClickContent10 = () => {
   dontShow("add-to-cart-footer");
   dontShow("cart-page");
   dontShow("place-order-footer");
-  replaceMenuList();
+  dontShow("split-bill");
+  dontShow("continue-footer");
+  dontShow("split-bill-choose");
+  clearMenuList();
   menuController.setFilterAlcoholRange([0, 10]);
-  getProducts(menuController.products);
+  displayProducts(menuController.products, "insertMenu");
 };
 
 /**
  * Change alcohol content filter
  */
 window.changeFilter = () => {
-  var filter = document.getElementById("filter");
-  if (filter.selectedIndex == 1) {
+  const filter = document.getElementById("filter");
+  if (filter.selectedIndex === 1) {
     onClickContent3050();
-  } else if (filter.selectedIndex == 2) {
+  } else if (filter.selectedIndex === 2) {
     onClickContent1030();
-  } else if (filter.selectedIndex == 3) {
+  } else if (filter.selectedIndex === 3) {
     onClickContent10();
-  } else if (filter.selectedIndex == 0) {
+  } else if (filter.selectedIndex === 0) {
     onClickContentAll();
   }
 };
@@ -369,11 +388,14 @@ window.onClickBackToMenu = () => {
   show("insertMenu", "inline-grid");
   dontShow("menu-home");
   dontShow("product-page");
+  dontShow("split-bill");
   show("cart-footer", "block");
   dontShow("add-to-cart-footer");
   dontShow("cart-page");
   dontShow("place-order-footer");
-  document.getElementById("cart-title").innerHTML = "Cart (" + itemCount + ")";
+  dontShow("continue-footer");
+  dontShow("split-bill-choose");
+  updateCartCount();
 };
 
 /**
@@ -395,27 +417,45 @@ window.onClickProductPage = (
   producer,
   country,
   type,
-  strength
+  strength,
+  productID
 ) => {
   show("product-page", "block");
   dontShow("menu-home");
   dontShow("insertMenu");
   dontShow("cart-footer");
+  dontShow("split-bill");
+  dontShow("split-bill-choose");
   show("add-to-cart-footer", "block");
   dontShow("cart-page");
   dontShow("place-order-footer");
   const main = document.getElementById("main-info");
   removeChild(main);
-  let mainHTML = `<h1 class="product-title">${name}</h1>
+  const mainHTML = `<h1 class="product-title" data-product-id="${productID}">${name}</h1>
       <h1>${price} SEK</h1>`;
   main.insertAdjacentHTML("beforeend", mainHTML);
   const info = document.getElementById("additional-info");
   removeChild(info);
-  let infoHTML = `<li class="li-list">Producer: ${producer}</li>
-        <li class="li-list">Country: ${country}</li>
-        <li class="li-list">Type: ${type}</li>
-        <li class="li-list">Strength: ${strength}</li>`;
+  const infoHTML = `<li class="li-list"><span data-i18n="producer"></span> ${producer}</li>
+        <li class="li-list"><span data-i18n="country"></span> ${country}</li>
+        <li class="li-list"><span data-i18n="type"></span> ${type}</li>
+        <li class="li-list"><span data-i18n="strength"></span> ${strength}</li>`;
   info.insertAdjacentHTML("beforeend", infoHTML);
+};
+
+/**
+ * Adding items directly from the product page
+ */
+window.addItem = () => {
+  const target = document.getElementsByClassName("product-title")[0];
+  const productID = target.getAttribute("data-product-id");
+  const product = Product.get(parseInt(productID));
+  const order = orderBillController.getOrCreateOrder();
+  const totalItem = document.getElementById("number-product").value;
+  for (let i = 0; i < totalItem; i++) {
+    orderBillController.addProduct(order, product);
+  }
+  onClickBackToMenu();
 };
 
 /**
@@ -427,41 +467,157 @@ window.onClickCart = () => {
   dontShow("insertMenu");
   dontShow("cart-footer");
   dontShow("add-to-cart-footer");
+  dontShow("split-bill");
+  dontShow("continue-footer");
+  dontShow("split-bill-choose");
   show("cart-page", "block");
   show("place-order-footer", "block");
+  const products = orderBillController.getOrCreateOrder().products;
+  const order = document.getElementById("order-list");
+  const children = order.children;
+  while (children.item(1)) {
+    children.item(1).remove();
+  }
+  let counter = 0;
+  for (const product of products) {
+    const name = product.namn;
+    const price = product.prisinklmoms;
+    counter = counter + price;
+    const orders = `<tr>
+          <td class="order-product-title"><span class="remove" onclick="removeItem(${product.id})">&times;</span>${name}</td>
+          <td class="order-product-price">${price} SEK</td>
+        </tr>`;
+    order.insertAdjacentHTML("beforeend", orders);
+  }
+  const totalBill = document.getElementById("total-bill");
+  removeChild(totalBill);
+  const bill = `<p class="total-counter">Total: ${counter} SEK</p>
+                <div class="end-gap"></div>`;
+  totalBill.insertAdjacentHTML("beforeend", bill);
+};
+
+/**
+ * Function view to remove item
+ * @param productId
+ */
+window.removeItem = (productId) => {
+  const product = Product.get(parseInt(productId));
+  const order = orderBillController.getOrCreateOrder();
+  orderBillController.removeProduct(order, product);
+  onClickCart();
 };
 
 /**
  * Function to trigger the modal pop up
  */
 window.onClickPlaceOrder = () => {
-  var modal = document.getElementById("successful-payment");
-  modal.style.display = "block";
+  show("successful-payment", "block");
 };
 
 /**
  * Function to close the modal pop up
  */
 window.onClickButtonClose = () => {
-  var modal = document.getElementById("successful-payment");
-  modal.style.display = "none";
+  dontShow("successful-payment");
   setMainView("customer-home");
 };
 
 /**
  * Function to close the modal pop up
  */
-window.onClickOutsideClose = () => {
-  var modal = document.getElementById("successful-payment");
-  if (event.target == modal) {
+window.onClickOutsideClose = (ev) => {
+  const modal = document.getElementById("successful-payment");
+  if (ev.target === modal) {
     modal.style.display = "none";
   }
   setMainView("customer-home");
 };
 
+/**
+ * Function to add split bills
+ */
+window.onClickSplitBills = () => {
+  dontShow("product-page");
+  dontShow("menu-home");
+  dontShow("insertMenu");
+  dontShow("cart-footer");
+  dontShow("add-to-cart-footer");
+  dontShow("cart-page");
+  dontShow("place-order-footer");
+  dontShow("split-bill-choose");
+  show("split-bill", "block");
+  show("continue-footer", "block");
+};
+
+/**
+ * Function to continue
+ */
+window.onClickContinue = () => {
+  dontShow("product-page");
+  dontShow("menu-home");
+  dontShow("insertMenu");
+  dontShow("cart-footer");
+  dontShow("add-to-cart-footer");
+  dontShow("cart-page");
+  dontShow("place-order-footer");
+  dontShow("split-bill");
+  show("split-bill-choose", "block");
+  dontShow("continue-footer");
+  const splitBillList = document.getElementById("split-bill-list");
+  removeChild(splitBillList);
+  const totalSplitBills = document.getElementById("number-splitbill").value;
+  const parentPerson = document.getElementById("filter-splitbill");
+  removeChild(parentPerson);
+  for (let i = 0; i < totalSplitBills; i++) {
+    const newPerson = `<option value="person-${i}">Person ${i}</option>`;
+    parentPerson.insertAdjacentHTML("beforeend", newPerson);
+  }
+  const products = orderBillController.getOrCreateOrder().products;
+  const menuList = document.getElementById("split-bill-products");
+  for (const product of products) {
+    const name = product.namn;
+    const price = product.prisinklmoms;
+    const html = `
+    <div class="card" onclick="itemSelected()">
+    <a href="#" id="to-product-page" data-product-id="${product.id}">
+    <div class="card-container">
+      <h4 class="item-title">${name}</h4>
+      <p class="item-price">
+        ${price}0 SEK
+      </p>
+    </div>      
+    </a>
+    </div>`;
+    menuList.insertAdjacentHTML("beforeend", html);
+  }
+  // Not working
+  const order = orderBillController.getOrCreateOrder();
+  splitBillController.splitBill(totalSplitBills, order);
+  console.log(order);
+};
+
+/**
+ * Select item for Split bills
+ */
+
+window.itemSelected = () => {};
+
+/**
+ * Backwards to split bill menu
+ */
+window.onClickBackToSplitBillHome = () => {
+  dontShow("insertMenu");
+  dontShow("menu-home");
+  dontShow("product-page");
+  show("split-bill", "block");
+  dontShow("cart-footer");
+  dontShow("add-to-cart-footer");
+  dontShow("cart-page");
+  dontShow("place-order-footer");
+  show("continue-footer", "block");
+  dontShow("split-bill-choose");
+};
+
+//endregion
+
 findOneOrFail("#to-cart").addEventListener("click", () => setMainView("cart"));
-
-window.doUndo = () => undo.undo();
-window.doRedo = () => undo.redo();
-
-export {}; // needed so that we can import as a module

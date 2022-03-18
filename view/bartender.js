@@ -2,25 +2,6 @@ import { beverages } from "../model/data/beverages.js";
 import { table } from "../model/data/baseData.js";
 import { findOneOrFail, setMainView } from "./helpers.js";
 import menuController from "../controller/menu_controller.js";
-import undo, { UndoCommand } from "../util/undo_manager.js";
-
-/***
- * Set the language in the menu
- * This should be moved to controller, I believe!
- */
-window.menuLanguage = function () {
-  const menulang = document.getElementsByClassName("menu-language-li");
-  const langimg = document.getElementsByClassName("img-language");
-  menulang.addEventListener("click", () => {
-    if (langimg.src === '"/images/sweden.png"') {
-      return (langimg.src = "/images/united-kingdom.png");
-      setLanguage("en");
-    } else {
-      return (langimg.src = "/images/sweden.png");
-      setLanguage("sv");
-    }
-  });
-};
 
 /***
  * getProducts to get all the products list
@@ -52,11 +33,11 @@ function getProducts(beveragesList) {
 }
 
 function getTables() {
-    const menu = document.getElementById("insertMenuBt");
-    for (var i = 0; i < table.length; i++){
-        let table_id = table[i]['table_id'];
-        let status = table[i]['status'];
-        let html = `
+  const menu = document.getElementById("insertMenuBt");
+  for (var i = 0; i < table.length; i++) {
+    let table_id = table[i]["table_id"];
+    let status = table[i]["status"];
+    let html = `
           <div class="bartender-card">
           <a href="#" id="to-product-page">
                 <div class="card-container">
@@ -68,11 +49,9 @@ function getTables() {
                 </div>      
                 </a>
               </div>`;
-        menu.insertAdjacentHTML('beforeend', html);
-    }
+    menu.insertAdjacentHTML("beforeend", html);
   }
-
-
+}
 
 /***
  * Function to replace the title of the menu selection
@@ -144,8 +123,6 @@ window.onClickSecurity = () => {
   replaceMenuList();
   replaceMenuTitle("Notify security");
 };
-
-
 
 /**
  * Show beverages (within selected menu section) with alcohol content 0-100%
@@ -286,7 +263,6 @@ window.onClickCart = () => {
   show("cart-page", "block");
   show("place-order-footer", "block");
 };
-
 
 findOneOrFail("#to-cart").addEventListener("click", () => setMainView("cart"));
 

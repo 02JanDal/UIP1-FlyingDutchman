@@ -78,7 +78,7 @@ class MenuController {
     } else if (this.sorting === "price") {
       products = products.sort((a, b) => a - b);
     }
-    return products;
+    return products.slice(0, 500); // return at most 500 products
   }
 }
 

@@ -9,6 +9,10 @@ import { baseData } from "./data/baseData.js";
 class _Database {
   static #LOCALSTORAGE_KEY = "flyingdutchman_database";
 
+  static clear() {
+    localStorage.removeItem(this.#LOCALSTORAGE_KEY);
+  }
+
   /**
    * @typedef {{ id: number, [key: string]: string | number | boolean | any }} RawModelInstance
    */
@@ -61,8 +65,16 @@ class _Database {
    */
   upsert(type, data) {
     if (!data.id) {
-      // assign the next largest number
-      data.id = Math.max(...this.list(type).map((item) => item.id)) + 1;
+      const existing = this.list(type);
+      if (existing.length > 0) {
+        // assign the next largest number
+        data.id = Math.max(...existing.map((item) => item.id)) + 1;
+      } else {
+        data.id = 1;
+      }
+    }
+    if (!this.#items[type]) {
+      this.#items[type] = {};
     }
     this.#items[type][data.id] = data;
     this.#save();
@@ -79,6 +91,14 @@ class _Database {
     this.#save();
   }
 }
+
+/**
+ * To be called from DevTools, clears the database so that it can be re-created
+ */
+window.reloadDatabase = () => {
+  _Database.clear();
+  location.reload();
+};
 
 /**
  * @package
