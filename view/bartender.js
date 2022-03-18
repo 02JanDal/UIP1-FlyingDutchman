@@ -142,7 +142,7 @@ window.onClickSecurity = () => {
   dontShow("menu-home-bt");
   dontShow("product-page-bt");
   replaceMenuList();
-  replaceMenuTitle("Security");
+  replaceMenuTitle("Notify security");
 };
 
 
