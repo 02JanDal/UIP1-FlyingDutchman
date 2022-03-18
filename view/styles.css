@@ -274,6 +274,70 @@ Bartender PAGE
   text-align: center;
 }
 
+.bartender-security {
+  overflow: auto;
+  background-color: rgba(230, 230, 230, 0.938);
+  height: 100%;
+  width: 85%;
+  float: left;
+  text-align: left;
+  clear: left;
+  grid-gap: 3px;
+  font-size: 50%;
+  padding-left: 5%;
+}
+
+#security {
+  margin-bottom: 200%;
+}
+
+#urgent {
+  margin-top: 30%;
+  font-size: 150%;
+  margin-bottom: 30%;
+}
+
+#security-button {
+  width: 40%;
+  height: 40px;
+  margin-left: 2%;
+  background: rgb(187, 28, 0);
+  color: white;
+  font-size: 20px;
+}
+
+#security-button:hover {
+  background-color:rgb(122, 18, 0);
+}
+
+#reporttxt{
+  font-size: 75%;
+}
+
+textarea {
+  width: 100%;
+  height: 200px;
+  box-sizing: border-box;
+  border: 2px solid #ccc;
+  border-radius: 4px;
+  background-color: #f8f8f8;
+  font-size: 16px;
+  resize: none;
+  float: left;
+}
+
+#report {
+  width: 20%;
+  height: 30px;
+  margin-left: 2%;
+  background: #42251C;
+  color: white;
+}
+
+#report:hover {
+  background-color:#583125;
+}
+
 .bartender-card {
   background-color: #fff;
   border: 2px black;

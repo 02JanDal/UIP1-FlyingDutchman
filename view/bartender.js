@@ -2,6 +2,7 @@ import { beverages } from "../model/data/beverages.js";
 import { table } from "../model/data/baseData.js";
 import { findOneOrFail, setMainView } from "./helpers.js";
 import menuController from "../controller/menu_controller.js";
+import securityController from "../controller/menu_controller.js";
 
 /***
  * getProducts to get all the products list
@@ -51,6 +52,33 @@ function getTables() {
               </div>`;
     menu.insertAdjacentHTML("beforeend", html);
   }
+}
+
+function getSecurity() {
+  const menu = document.getElementById("insertMenuBt");
+    let html = `
+          <div class="bartender-security">
+            <div id="urgent">
+              <p><strong>Urgent matters</strong></p>
+              <button id="security-button" onclick="onClickCallSecurity()">Call security</button>
+            </div>
+            <div id="security">
+            <p><strong>Non-urgent matters</strong></p>
+            <p id="reporttxt">Report the situation</p>
+              <textarea id="non-urgent" placeholder="Write here..." onclick="onSubmitSecurity(document.getElementById('non-urgent').value)></textarea>
+              <button id="report" onclick="onClickReport()">Report</button>
+          </div>`;
+    menu.insertAdjacentHTML("beforeend", html);
+}
+
+function onClickCallSecurity() {
+  securityController.callSecurity()
+  console.log("Test")
+
+}
+
+function onSubmitSecurity(message) {
+  securityController.sendReport(message)
 }
 
 /***
@@ -122,6 +150,7 @@ window.onClickSecurity = () => {
   dontShow("product-page-bt");
   replaceMenuList();
   replaceMenuTitle("Notify security");
+  getSecurity()
 };
 
 /**
