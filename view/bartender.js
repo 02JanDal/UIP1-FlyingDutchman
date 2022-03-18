@@ -2,7 +2,7 @@ import { beverages } from "../model/data/beverages.js";
 import { table } from "../model/data/baseData.js";
 import { findOneOrFail, setMainView } from "./helpers.js";
 import menuController from "../controller/menu_controller.js";
-import securityController from "../controller/menu_controller.js";
+import securityController from "../controller/security_controller.js";
 
 /***
  * getProducts to get all the products list
@@ -71,15 +71,14 @@ function getSecurity() {
     menu.insertAdjacentHTML("beforeend", html);
 }
 
-function onClickCallSecurity() {
+window.onClickCallSecurity = () => {
   securityController.callSecurity()
   console.log("Test")
+};
 
-}
-
-function onClickReport(message) {
+window.onClickReport = (message) => {
   securityController.sendReport(message)
-}
+};
 
 /***
  * Function to replace the title of the menu selection
