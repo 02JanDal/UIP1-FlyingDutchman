@@ -10,11 +10,11 @@
     <!---- Menu Selection --->
     <div>
       <ul>
-        <li><a href="#all" onclick="onClickAllMenu()"><i class="fa fa-book" aria-hidden="true"></i><span data-i18n="all-items"></span></a></li>
-        <li><a href="#beer" onclick="onClickBeer()"><i class="fa fa-beer" aria-hidden="true"></i><span data-i18n="beer"></span></a></li>
-        <li><a href="#wine" onclick="onClickWine()"><i class="fa fa-glass" aria-hidden="true"></i><span data-i18n="wine"></span></a></li>
-        <li><a href="#nonalcohol" onclick="onClickNonAlcohol()"><i class="fa fa-coffee" aria-hidden="true"></i><span data-i18n="non-alcohol"></span></a></li>
-        <li><a href="#cartl" data-link="cart"><i class="fa fa-shopping-cart" aria-hidden="true"></i><span data-i18n="cart"></span></a></li>
+        <li><a href="#" onclick="onClickAllMenu()"><i class="fa fa-book" aria-hidden="true"></i><span data-i18n="all-items"></span></a></li>
+        <li><a href="#" onclick="onClickBeer()"><i class="fa fa-beer" aria-hidden="true"></i><span data-i18n="beer"></span></a></li>
+        <li><a href="#" onclick="onClickWine()"><i class="fa fa-glass" aria-hidden="true"></i><span data-i18n="wine"></span></a></li>
+        <li><a href="#" onclick="onClickNonAlcohol()"><i class="fa fa-coffee" aria-hidden="true"></i><span data-i18n="non-alcohol"></span></a></li>
+        <li><a href="#" data-link="cart"><i class="fa fa-shopping-cart" aria-hidden="true"></i><span data-i18n="cart"></span></a></li>
         <li><a href="#" data-link="home"><i class="fa fa-sign-out" aria-hidden="true"></i><span data-i18n="log-out"></span></a></li>
       </ul>
     </div>
@@ -35,7 +35,7 @@
     </div>
   </div>
   <!-- Content Menu Home -->
-  <div class="content-container"id="menu-home">
+  <div class="content-container" id="menu-home">
     <h4><span data-i18n="instructions"></span></h4>
   </div>
   <!-- Content Products List -->
@@ -75,53 +75,6 @@
     </form>
   </div>
 </div>
-<!--THE MODAL-->
-<div id="successful-payment" class="modal" onclick="onClickOutsideClose()">
-  <!-- Modal content -->
-  <div class="modal-content">
-    <span id="close" onclick="onClickButtonClose()">&times;</span>
-    <h3><span data-i18n="order-successful"></span></h3>
-    <p><span data-i18n="bartender-come"></span></p>
-  </div>
-</div>
-<!----- SPLIT BILL ----->
-<div class="product-content display-none" id="split-bill">
-  <div class="parent-navbar">
-    <div class="child-navbar left-navbar" onclick="onClickBackToMenu()">
-      <a href="#"><i class="backward-color fa fa-arrow-left backward-logo"></i></a>
-    </div>
-  </div>
-  <div class="product-title-container" id ="split-bill-title">
-    <h1><span data-i18n="how-many-split"></span></h1>
-  </div>
-  <div>
-    <form class="increase-decrease-container">
-      <div class="value-button decrease" onclick="decreaseValue('number-splitbill')" value="Decrease Value">-</div>
-      <input type="number" id="number-splitbill" value="0" />
-      <div class="value-button increase" onclick="increaseValue('number-splitbill')" value="Increase Value">+</div>
-    </form>
-  </div>
-</div>
-<!---- SPLIT BILL CHOOSE ITEMS ---->
-<div class="product-content display-none" id="split-bill-choose">
-  <div class="parent-navbar">
-    <div class="child-navbar left-navbar" onclick="onClickBackToSplitBillHome()">
-      <a href="#"><i class="backward-color fa fa-arrow-left backward-logo"></i></a>
-    </div>
-  </div>
-  <div class="product-title-container split-bill-display">
-    <div class="filter-box split-bill-filter-box">
-      <label for="filter-splitbill" class="filter-text-style split-bill-filter"><span data-i18n="select-splitbill"></span> </label>
-      <select name="filter-splitbill" id="filter-splitbill" class="filter-dropdown split-bill-onchange" onchange="">
-      </select>
-    </div>
-    <h1><span data-i18n="items-basket"></span></h1>
-  </div>
-  <div id="split-bill-list">
-  </div>
-  <div id="split-bill-products"></div>
-</div>
-
 
 <!--- FOOTER/CART --->
 <div class="footer" id="cart-footer">
@@ -133,23 +86,5 @@
 <div class="footer display-none" id="add-to-cart-footer">
   <div class="cart" onclick="addItem()">
     <p class="footer-title" id="add-to-cart-title"><span data-i18n="add-to-cart"></span></p>
-  </div>
-</div>
-<!--- FOOTER PLACE ORDER--->
-<div class="footer display-none" id="place-order-footer" onclick="onClickPlaceOrder()">
-  <div class="cart">
-    <p class="footer-title" id="place-order-title"><span data-i18n="place-order"></span></p>
-  </div>
-</div>
-<!--- FOOTER CONTINUE PART 1--->
-<div class="footer display-none" id="continue-footer">
-  <div class="cart">
-    <p class="footer-title" id="continue-title" onclick="onClickContinue()"><span data-i18n="continue"></span></p>
-  </div>
-</div>
-<!--- FOOTER CONTINUE PART 2--->
-<div class="footer display-none" id="continue-footer-2">
-  <div class="cart">
-    <p class="footer-title" id="continue-title-2" onclick=""><span data-i18n="continue"></span></p>
   </div>
 </div>

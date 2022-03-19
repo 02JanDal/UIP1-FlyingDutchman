@@ -1,8 +1,7 @@
-import { findOneOrFail, setMainView } from "./helpers.js";
+import { dontShow, setMainView, show } from "./helpers.js";
 import menuController from "../controller/menu_controller.js";
 import Product from "../model/product.js";
 import orderBillController from "../controller/order_bill_controller.js";
-import splitBillController from "../controller/split_bill_controller.js";
 
 //region Drag and drop to cart
 
@@ -130,6 +129,7 @@ document.addEventListener(
 /***
  * Show all passed products
  * @param {Product[]} products
+ * @param {string} id - ID of menu element
  */
 function displayProducts(products, id) {
   const menu = document.getElementById(id);
@@ -174,96 +174,84 @@ function clearMenuList() {
   }
 }
 
-/***
- * Set the display of certain divs to none
- * @param {string} elementId
- */
-function dontShow(elementId) {
-  document.getElementById(elementId).style.display = "none";
-}
-
-/**
- * Set the display of certain divs to be shown on screen
- * @param {string} elementId
- * @param {string} style
- */
-function show(elementId, style) {
-  document.getElementById(elementId).style.display = style;
-}
-
 /**
  * Show all items
  */
+export function showAll() {
+  clearMenuList();
+  replaceMenuTitle("All items");
+  menuController.setFilterCategory(undefined);
+  displayProducts(menuController.products, "insertMenu");
+}
+
 window.onClickAllMenu = () => {
   show("insertMenu", "inline-grid");
   dontShow("menu-home");
   dontShow("product-page");
   show("cart-footer", "block");
   dontShow("add-to-cart-footer");
-  dontShow("place-order-footer");
-  dontShow("split-bill");
-  dontShow("continue-footer");
-  dontShow("split-bill-choose");
-  clearMenuList();
-  replaceMenuTitle("All items");
-  displayProducts(menuController.products, "insertMenu");
+  showAll();
+  setMainView("menu"); // in case this method gets called from another view
 };
 
 /**
  * Show beers only
  */
+export function showBeer() {
+  clearMenuList();
+  replaceMenuTitle("Beers");
+  menuController.setFilterCategory("beer");
+  displayProducts(menuController.products, "insertMenu");
+}
+
 window.onClickBeer = () => {
   show("insertMenu", "inline-grid");
   dontShow("menu-home");
   dontShow("product-page");
   show("cart-footer", "block");
   dontShow("add-to-cart-footer");
-  dontShow("place-order-footer");
-  dontShow("split-bill");
-  dontShow("continue-footer");
-  dontShow("split-bill-choose");
-  clearMenuList();
-  replaceMenuTitle("Beers");
-  menuController.setFilterCategory("beer");
-  displayProducts(menuController.products, "insertMenu");
+  showBeer();
+  setMainView("menu"); // in case this method gets called from another view
 };
 
 /**
  * Show wine only
  */
+export function showWine() {
+  clearMenuList();
+  replaceMenuTitle("Wine");
+  menuController.setFilterCategory("wine");
+  displayProducts(menuController.products, "insertMenu");
+}
+
 window.onClickWine = () => {
   show("insertMenu", "inline-grid");
   dontShow("menu-home");
   dontShow("product-page");
   show("cart-footer", "block");
   dontShow("add-to-cart-footer");
-  dontShow("place-order-footer");
-  dontShow("split-bill");
-  dontShow("continue-footer");
-  dontShow("split-bill-choose");
-  clearMenuList();
-  replaceMenuTitle("Wine");
-  menuController.setFilterCategory("wine");
-  displayProducts(menuController.products, "insertMenu");
+  showWine();
+  setMainView("menu"); // in case this method gets called from another view
 };
 
 /**
  * Show non-alcoholic drinks only
  */
+export function showNonAlcohol() {
+  clearMenuList();
+  replaceMenuTitle("Non Alcoholic");
+  menuController.setFilterCategory("non-alcoholic");
+  displayProducts(menuController.products, "insertMenu");
+}
+
 window.onClickNonAlcohol = () => {
   show("insertMenu", "inline-grid");
   dontShow("menu-home");
   dontShow("product-page");
   show("cart-footer", "block");
   dontShow("add-to-cart-footer");
-  dontShow("place-order-footer");
-  dontShow("split-bill");
-  dontShow("continue-footer");
-  dontShow("split-bill-choose");
-  clearMenuList();
-  replaceMenuTitle("Non Alcoholic");
-  menuController.setFilterCategory("non-alcoholic");
-  displayProducts(menuController.products, "insertMenu");
+  showNonAlcohol();
+  setMainView("menu"); // in case this method gets called from another view
 };
 
 /**
@@ -275,13 +263,10 @@ window.onClickContentAll = () => {
   dontShow("product-page");
   show("cart-footer", "block");
   dontShow("add-to-cart-footer");
-  dontShow("place-order-footer");
-  dontShow("split-bill");
-  dontShow("continue-footer");
-  dontShow("split-bill-choose");
   clearMenuList();
   menuController.setFilterAlcoholRange([0, 100]);
   displayProducts(menuController.products, "insertMenu");
+  setMainView("menu"); // in case this method gets called from another view
 };
 
 /**
@@ -293,13 +278,10 @@ window.onClickContent50 = () => {
   dontShow("product-page");
   show("cart-footer", "block");
   dontShow("add-to-cart-footer");
-  dontShow("place-order-footer");
-  dontShow("split-bill");
-  dontShow("continue-footer");
-  dontShow("split-bill-choose");
   clearMenuList();
   menuController.setFilterAlcoholRange([50, 100]);
   displayProducts(menuController.products, "insertMenu");
+  setMainView("menu"); // in case this method gets called from another view
 };
 
 /**
@@ -311,13 +293,10 @@ window.onClickContent3050 = () => {
   dontShow("product-page");
   show("cart-footer", "block");
   dontShow("add-to-cart-footer");
-  dontShow("place-order-footer");
-  dontShow("split-bill");
-  dontShow("split-bill-choose");
-  dontShow("continue-footer");
   clearMenuList();
   menuController.setFilterAlcoholRange([30, 50]);
   displayProducts(menuController.products, "insertMenu");
+  setMainView("menu"); // in case this method gets called from another view
 };
 
 /**
@@ -329,13 +308,10 @@ window.onClickContent1030 = () => {
   dontShow("product-page");
   show("cart-footer", "block");
   dontShow("add-to-cart-footer");
-  dontShow("place-order-footer");
-  dontShow("split-bill");
-  dontShow("split-bill-choose");
-  dontShow("continue-footer");
   clearMenuList();
   menuController.setFilterAlcoholRange([10, 30]);
   displayProducts(menuController.products, "insertMenu");
+  setMainView("menu"); // in case this method gets called from another view
 };
 
 /**
@@ -347,13 +323,10 @@ window.onClickContent10 = () => {
   dontShow("product-page");
   show("cart-footer", "block");
   dontShow("add-to-cart-footer");
-  dontShow("place-order-footer");
-  dontShow("split-bill");
-  dontShow("continue-footer");
-  dontShow("split-bill-choose");
   clearMenuList();
   menuController.setFilterAlcoholRange([0, 10]);
   displayProducts(menuController.products, "insertMenu");
+  setMainView("menu"); // in case this method gets called from another view
 };
 
 /**
@@ -379,12 +352,8 @@ window.onClickBackToMenu = () => {
   show("insertMenu", "inline-grid");
   dontShow("menu-home");
   dontShow("product-page");
-  dontShow("split-bill");
   show("cart-footer", "block");
   dontShow("add-to-cart-footer");
-  dontShow("place-order-footer");
-  dontShow("continue-footer");
-  dontShow("split-bill-choose");
   updateCartCount();
 };
 
@@ -414,10 +383,7 @@ window.onClickProductPage = (
   dontShow("menu-home");
   dontShow("insertMenu");
   dontShow("cart-footer");
-  dontShow("split-bill");
-  dontShow("split-bill-choose");
   show("add-to-cart-footer", "block");
-  dontShow("place-order-footer");
   const main = document.getElementById("main-info");
   removeChild(main);
   const mainHTML = `<h1 class="product-title" data-product-id="${productID}">${name}</h1>
@@ -445,114 +411,6 @@ window.addItem = () => {
     orderBillController.addProduct(order, product);
   }
   onClickBackToMenu();
-};
-
-/**
- * Function to trigger the modal pop up
- */
-window.onClickPlaceOrder = () => {
-  show("successful-payment", "block");
-};
-
-/**
- * Function to close the modal pop up
- */
-window.onClickButtonClose = () => {
-  dontShow("successful-payment");
-  setMainView("customer-home");
-};
-
-/**
- * Function to close the modal pop up
- */
-window.onClickOutsideClose = (ev) => {
-  const modal = document.getElementById("successful-payment");
-  if (ev.target === modal) {
-    modal.style.display = "none";
-  }
-  setMainView("customer-home");
-};
-
-/**
- * Function to add split bills
- */
-window.onClickSplitBills = () => {
-  dontShow("product-page");
-  dontShow("menu-home");
-  dontShow("insertMenu");
-  dontShow("cart-footer");
-  dontShow("add-to-cart-footer");
-  dontShow("place-order-footer");
-  dontShow("split-bill-choose");
-  show("split-bill", "block");
-  show("continue-footer", "block");
-};
-
-/**
- * Function to continue
- */
-window.onClickContinue = () => {
-  dontShow("product-page");
-  dontShow("menu-home");
-  dontShow("insertMenu");
-  dontShow("cart-footer");
-  dontShow("add-to-cart-footer");
-  dontShow("place-order-footer");
-  dontShow("split-bill");
-  show("split-bill-choose", "block");
-  dontShow("continue-footer");
-  const splitBillList = document.getElementById("split-bill-list");
-  removeChild(splitBillList);
-  const totalSplitBills = document.getElementById("number-splitbill").value;
-  const parentPerson = document.getElementById("filter-splitbill");
-  removeChild(parentPerson);
-  for (let i = 0; i < totalSplitBills; i++) {
-    const newPerson = `<option value="person-${i}">Person ${i}</option>`;
-    parentPerson.insertAdjacentHTML("beforeend", newPerson);
-  }
-  const products = orderBillController.getOrCreateOrder().products;
-  const menuList = document.getElementById("split-bill-products");
-  for (const product of products) {
-    const name = product.namn;
-    const price = product.prisinklmoms;
-    const html = `
-    <div class="card" onclick="itemSelected()">
-    <a href="#" id="to-product-page" data-product-id="${product.id}">
-    <div class="card-container">
-      <h4 class="item-title">${name}</h4>
-      <p class="item-price">
-        ${price}0 SEK
-      </p>
-    </div>      
-    </a>
-    </div>`;
-    menuList.insertAdjacentHTML("beforeend", html);
-  }
-  // Not working
-  const order = orderBillController.getOrCreateOrder();
-  splitBillController.splitBill(totalSplitBills, order);
-  console.log(order);
-};
-
-/**
- * Select item for Split bills
- */
-
-window.itemSelected = () => {};
-
-/**
- * Backwards to split bill menu
- */
-window.onClickBackToSplitBillHome = () => {
-  dontShow("insertMenu");
-  dontShow("menu-home");
-  dontShow("product-page");
-  show("split-bill", "block");
-  dontShow("cart-footer");
-  dontShow("add-to-cart-footer");
-  dontShow("place-order-footer");
-  show("continue-footer", "block");
-  dontShow("split-bill-choose");
 };
 
 //endregion

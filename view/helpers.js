@@ -81,3 +81,20 @@ export function findOneOrFail(selector) {
   }
   return el;
 }
+
+/***
+ * Set the display of certain divs to none
+ * @param {string} elementId
+ */
+export function dontShow(elementId) {
+  document.getElementById(elementId).style.display = "none";
+}
+
+/**
+ * Set the display of certain divs to be shown on screen
+ * @param {string} elementId
+ * @param {string} style
+ */
+export function show(elementId, style) {
+  document.getElementById(elementId).style.display = style;
+}
