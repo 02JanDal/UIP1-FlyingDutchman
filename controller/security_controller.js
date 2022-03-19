@@ -1,5 +1,5 @@
-import undo, { UndoCommand } from "../util/undo_manager";
-import security from "../model/security";
+import undo, { UndoCommand } from "../util/undo_manager.js";
+import security from "../model/security.js";
 
 export default class SecurityController {
   /**
