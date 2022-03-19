@@ -5,7 +5,7 @@ findOneOrFail("#bartender-sign-in-button").addEventListener("click", () => {
   const elUsername = document.getElementById("bartender-uname");
   const elPassword = document.getElementById("bartender-password");
   if (signInController.trySignIn(elUsername.value, elPassword.value)) {
-    setMainView("menu");
+    setMainView("bartender");
     elUsername.value = "";
     elPassword.value = "";
   } else {

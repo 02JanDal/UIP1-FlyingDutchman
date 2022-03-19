@@ -27,6 +27,10 @@ const strings = {
     en: "VIP Customer",
     sv: "VIP Kund",
   },
+  "bartender": {
+    en: "Bartender",
+    sv: "Bartender",
+  },
   username: {
     en: "Username",
     sv: "Användarnamn",

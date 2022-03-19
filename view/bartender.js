@@ -74,7 +74,6 @@ function getSecurity() {
 
 window.onClickCallSecurity = () => {
   securityController.callSecurity();
-  console.log("Test");
 };
 
 window.onClickReport = (message) => {
