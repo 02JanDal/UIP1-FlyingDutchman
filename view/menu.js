@@ -200,7 +200,6 @@ window.onClickAllMenu = () => {
   dontShow("product-page");
   show("cart-footer", "block");
   dontShow("add-to-cart-footer");
-  dontShow("cart-page");
   dontShow("place-order-footer");
   dontShow("split-bill");
   dontShow("continue-footer");
@@ -219,7 +218,6 @@ window.onClickBeer = () => {
   dontShow("product-page");
   show("cart-footer", "block");
   dontShow("add-to-cart-footer");
-  dontShow("cart-page");
   dontShow("place-order-footer");
   dontShow("split-bill");
   dontShow("continue-footer");
@@ -239,7 +237,6 @@ window.onClickWine = () => {
   dontShow("product-page");
   show("cart-footer", "block");
   dontShow("add-to-cart-footer");
-  dontShow("cart-page");
   dontShow("place-order-footer");
   dontShow("split-bill");
   dontShow("continue-footer");
@@ -259,7 +256,6 @@ window.onClickNonAlcohol = () => {
   dontShow("product-page");
   show("cart-footer", "block");
   dontShow("add-to-cart-footer");
-  dontShow("cart-page");
   dontShow("place-order-footer");
   dontShow("split-bill");
   dontShow("continue-footer");
@@ -279,7 +275,6 @@ window.onClickContentAll = () => {
   dontShow("product-page");
   show("cart-footer", "block");
   dontShow("add-to-cart-footer");
-  dontShow("cart-page");
   dontShow("place-order-footer");
   dontShow("split-bill");
   dontShow("continue-footer");
@@ -298,7 +293,6 @@ window.onClickContent50 = () => {
   dontShow("product-page");
   show("cart-footer", "block");
   dontShow("add-to-cart-footer");
-  dontShow("cart-page");
   dontShow("place-order-footer");
   dontShow("split-bill");
   dontShow("continue-footer");
@@ -317,7 +311,6 @@ window.onClickContent3050 = () => {
   dontShow("product-page");
   show("cart-footer", "block");
   dontShow("add-to-cart-footer");
-  dontShow("cart-page");
   dontShow("place-order-footer");
   dontShow("split-bill");
   dontShow("split-bill-choose");
@@ -336,7 +329,6 @@ window.onClickContent1030 = () => {
   dontShow("product-page");
   show("cart-footer", "block");
   dontShow("add-to-cart-footer");
-  dontShow("cart-page");
   dontShow("place-order-footer");
   dontShow("split-bill");
   dontShow("split-bill-choose");
@@ -355,7 +347,6 @@ window.onClickContent10 = () => {
   dontShow("product-page");
   show("cart-footer", "block");
   dontShow("add-to-cart-footer");
-  dontShow("cart-page");
   dontShow("place-order-footer");
   dontShow("split-bill");
   dontShow("continue-footer");
@@ -391,7 +382,6 @@ window.onClickBackToMenu = () => {
   dontShow("split-bill");
   show("cart-footer", "block");
   dontShow("add-to-cart-footer");
-  dontShow("cart-page");
   dontShow("place-order-footer");
   dontShow("continue-footer");
   dontShow("split-bill-choose");
@@ -402,7 +392,7 @@ window.onClickBackToMenu = () => {
  * Remove all first child
  * @param id Document ID
  */
-function removeChild(id) {
+export function removeChild(id) {
   while (id.firstChild) {
     id.firstChild.remove();
   }
@@ -427,7 +417,6 @@ window.onClickProductPage = (
   dontShow("split-bill");
   dontShow("split-bill-choose");
   show("add-to-cart-footer", "block");
-  dontShow("cart-page");
   dontShow("place-order-footer");
   const main = document.getElementById("main-info");
   removeChild(main);
@@ -456,55 +445,6 @@ window.addItem = () => {
     orderBillController.addProduct(order, product);
   }
   onClickBackToMenu();
-};
-
-/**
- * To Cart
- */
-window.onClickCart = () => {
-  dontShow("product-page");
-  dontShow("menu-home");
-  dontShow("insertMenu");
-  dontShow("cart-footer");
-  dontShow("add-to-cart-footer");
-  dontShow("split-bill");
-  dontShow("continue-footer");
-  dontShow("split-bill-choose");
-  show("cart-page", "block");
-  show("place-order-footer", "block");
-  const products = orderBillController.getOrCreateOrder().products;
-  const order = document.getElementById("order-list");
-  const children = order.children;
-  while (children.item(1)) {
-    children.item(1).remove();
-  }
-  let counter = 0;
-  for (const product of products) {
-    const name = product.namn;
-    const price = product.prisinklmoms;
-    counter = counter + price;
-    const orders = `<tr>
-          <td class="order-product-title"><span class="remove" onclick="removeItem(${product.id})">&times;</span>${name}</td>
-          <td class="order-product-price">${price} SEK</td>
-        </tr>`;
-    order.insertAdjacentHTML("beforeend", orders);
-  }
-  const totalBill = document.getElementById("total-bill");
-  removeChild(totalBill);
-  const bill = `<p class="total-counter">Total: ${counter} SEK</p>
-                <div class="end-gap"></div>`;
-  totalBill.insertAdjacentHTML("beforeend", bill);
-};
-
-/**
- * Function view to remove item
- * @param productId
- */
-window.removeItem = (productId) => {
-  const product = Product.get(parseInt(productId));
-  const order = orderBillController.getOrCreateOrder();
-  orderBillController.removeProduct(order, product);
-  onClickCart();
 };
 
 /**
@@ -542,7 +482,6 @@ window.onClickSplitBills = () => {
   dontShow("insertMenu");
   dontShow("cart-footer");
   dontShow("add-to-cart-footer");
-  dontShow("cart-page");
   dontShow("place-order-footer");
   dontShow("split-bill-choose");
   show("split-bill", "block");
@@ -558,7 +497,6 @@ window.onClickContinue = () => {
   dontShow("insertMenu");
   dontShow("cart-footer");
   dontShow("add-to-cart-footer");
-  dontShow("cart-page");
   dontShow("place-order-footer");
   dontShow("split-bill");
   show("split-bill-choose", "block");
@@ -612,12 +550,9 @@ window.onClickBackToSplitBillHome = () => {
   show("split-bill", "block");
   dontShow("cart-footer");
   dontShow("add-to-cart-footer");
-  dontShow("cart-page");
   dontShow("place-order-footer");
   show("continue-footer", "block");
   dontShow("split-bill-choose");
 };
 
 //endregion
-
-findOneOrFail("#to-cart").addEventListener("click", () => setMainView("cart"));

@@ -43,6 +43,18 @@ export async function loadView(name, target) {
 }
 
 /**
+ * Set all links (elements with data-link attribute) up.
+ *
+ * @param {HTMLElement} within
+ */
+export function setupLinks(within) {
+  within.querySelectorAll("[data-link]").forEach((el) => {
+    const view = el.attributes.getNamedItem("data-link").value;
+    el.addEventListener("click", () => setMainView(view));
+  });
+}
+
+/**
  * Sets which primary view is visible to the user. The currently visible
  * view gets hidden.
  *

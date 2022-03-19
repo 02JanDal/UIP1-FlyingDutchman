@@ -1,7 +1,7 @@
 import undo, { UndoCommand } from "../util/undo_manager.js";
 import security from "../model/security.js";
 
-export default class SecurityController {
+class SecurityController {
   /**
    * Call security urgently
    */
@@ -40,3 +40,6 @@ export default class SecurityController {
     );
   }
 }
+
+const securityController = new SecurityController();
+export default securityController;
