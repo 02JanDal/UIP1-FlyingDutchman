@@ -14,8 +14,8 @@
         <li><a href="#beer" onclick="onClickBeer()"><i class="fa fa-beer" aria-hidden="true"></i><span data-i18n="beer"></span></a></li>
         <li><a href="#wine" onclick="onClickWine()"><i class="fa fa-glass" aria-hidden="true"></i><span data-i18n="wine"></span></a></li>
         <li><a href="#nonalcohol" onclick="onClickNonAlcohol()"><i class="fa fa-coffee" aria-hidden="true"></i><span data-i18n="non-alcohol"></span></a></li>
-        <li><a href="#cartl" onclick="onClickCart()"><i class="fa fa-shopping-cart" aria-hidden="true"></i><span data-i18n="cart"></span></a></li>
-        <li><a href="#" id="sign-out-button"><i class="fa fa-sign-out" aria-hidden="true"></i><span data-i18n="log-out"></span></a></li>
+        <li><a href="#cartl" data-link="cart"><i class="fa fa-shopping-cart" aria-hidden="true"></i><span data-i18n="cart"></span></a></li>
+        <li><a href="#" data-link="home"><i class="fa fa-sign-out" aria-hidden="true"></i><span data-i18n="log-out"></span></a></li>
       </ul>
     </div>
     <div>
@@ -74,32 +74,6 @@
       <div class="value-button increase" onclick="increaseValue('number-product')" value="Increase Value">+</div>
     </form>
   </div>
-  <!---Cart---->
-  <div class="product-content display-none" id="cart-page">
-    <div class="parent-navbar">
-      <div class="child-navbar left-navbar" onclick="onClickBackToMenu()">
-        <a href="#"><i class="backward-color fa fa-arrow-left backward-logo"></i></a>
-      </div>
-    </div>
-    <div class="product-title-container">
-      <h1><span data-i18n="invoice"></span></h1>
-    </div>
-    <div class="split-bill-links">
-      <a class="split-bill-link-left"><span data-i18n="edit-split" onclick="onClickSplitBills()"></span></a>
-      <a><span data-i18n="cancel-split"></span></a>
-    </div>
-    <div class="order-table">
-      <table class="full-table-width" id="order-list">
-        <tr>
-          <th class="order-product-title table-header"><span data-i18n="products"></span></th>
-          <th class="order-product-price table-header"><span data-i18n="price"></span></th>
-        </tr>
-      </table>
-    </div>
-    <div id="total-bill">
-      <p class="total-counter"><span data-i18n="total"></span></p>
-    </div>
-  </div>
 </div>
 <!--THE MODAL-->
 <div id="successful-payment" class="modal" onclick="onClickOutsideClose()">
@@ -151,7 +125,7 @@
 
 <!--- FOOTER/CART --->
 <div class="footer" id="cart-footer">
-  <div class="cart" ondrop="drop(event)" ondragover="allowDrop(event)" onclick="onClickCart()">
+  <div class="cart" ondrop="drop(event)" ondragover="allowDrop(event)" data-link="cart">
     <p class="footer-title" id="cart-title"><span data-i18n="cart"></span></p>
   </div>
 </div>

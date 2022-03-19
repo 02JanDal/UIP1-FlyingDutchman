@@ -1,0 +1,36 @@
+<!--- Sign in page -->
+<div class="main-container">
+    <!--- Nav bar -->
+    <div class="parent-navbar">
+        <div class="child-navbar left-navbar">
+            <a href="#" data-link="customer-home"><i class="fa fa-chevron-left backward-logo"></i></a>
+        </div>
+        <div class="child-navbar right-navbar">
+            <img src="/images/flying-dutchman-logo.png" class="logo-right-navbar" />
+        </div>
+    </div>
+    <!---VIP Customer title--->
+    <div class="title-container title-navbar-container">
+        <h4 id="customer-title" data-i18n="vip-customer"></h4>
+    </div>
+    <!--- Username and password input -->
+    <form class="form-container">
+        <label for="bartender-uname"><span data-i18n="username"></span>:
+            <input type="text" id="bartender-uname" name="uname" class="login" autocomplete="none"><br><br>
+        </label>
+        <label for="bartender-password"><span data-i18n="password"></span>:
+            <input type="password" id="bartender-password" name="password" class="login" autocomplete="none"><br>
+        </label>
+    </form>
+    <!-- Error message -->
+    <div id="bartender-signin-error" class="error-message display-none" data-i18n="signin-error"></div>
+    <!--- Sign in button -->
+    <div class="elements-container">
+        <button class="button-style" id="bartender-sign-in-button" type="button" data-i18n="signin"></button>
+    </div>
+    <!---- Language switching buttons --->
+    <div class="language-container">
+        <input type="image" class="language-button swedish-button" src="/images/sweden.png" onclick="changeLanguage('sv')">
+        <input type="image" class="language-button english-button" src="/images/united-kingdom.png" onclick="changeLanguage('en')">
+    </div>
+</div>

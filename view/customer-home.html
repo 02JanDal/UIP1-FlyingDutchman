@@ -1,7 +1,7 @@
 <!--- Nav bar -->
 <div class="parent-navbar">
     <div class="child-navbar left-navbar">
-        <a href="#" id="back-home"><i class="fa fa-chevron-left backward-logo"></i></a>
+        <a href="#" data-link="home"><i class="fa fa-chevron-left backward-logo"></i></a>
     </div>
     <div class="child-navbar right-navbar">
         <img src="/images/flying-dutchman-logo.png" class="logo-right-navbar">
@@ -14,10 +14,10 @@
 <!--- Buttons -->
 <div class="elements-container">
     <!--TODO: To put the onclick function on a javascript file.-->
-    <button class="button-style" id="button-sign-in" type="button" data-i18n="signin"></button>
+    <button class="button-style" data-link="customer-sign-in" type="button" data-i18n="signin"></button>
 </div>
 <div class="elements-container" id="guest-container">
-    <p><span data-i18n="or"></span> <a href="#" id="link-guest" data-i18n="continue-as-guest"></a></p>
+    <p><span data-i18n="or"></span> <a href="#" data-link="menu" data-i18n="continue-as-guest"></a></p>
 </div>
 <!---- Language switching buttons --->
 <div class="language-container">

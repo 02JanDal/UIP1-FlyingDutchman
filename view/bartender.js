@@ -3,6 +3,7 @@ import { table } from "../model/data/baseData.js";
 import { findOneOrFail, setMainView } from "./helpers.js";
 import menuController from "../controller/menu_controller.js";
 import securityController from "../controller/security_controller.js";
+import { removeChild } from "./menu.js";
 
 /***
  * getProducts to get all the products list
@@ -56,7 +57,7 @@ function getTables() {
 
 function getSecurity() {
   const menu = document.getElementById("insertMenuBt");
-    let html = `
+  let html = `
           <div class="bartender-security">
             <div id="urgent">
               <p><strong>Urgent matters</strong></p>
@@ -65,19 +66,19 @@ function getSecurity() {
             <div id="security">
             <p><strong>Non-urgent matters</strong></p>
             <p id="reporttxt">Report the situation</p>
-              <textarea id="non-urgent" onclick="on<ClickReport>(document.getElementById('non-urgent').value) placeholder="Write here..."></textarea>
-              <button id="report" onclick="onClickReport()">Report</button>
+              <textarea id="non-urgent" placeholder="Write here..."></textarea>
+              <button id="report" onclick="onClickReport(document.getElementById('non-urgent').value)">Report</button>
           </div>`;
-    menu.insertAdjacentHTML("beforeend", html);
+  menu.insertAdjacentHTML("beforeend", html);
 }
 
 window.onClickCallSecurity = () => {
-  securityController.callSecurity()
-  console.log("Test")
+  securityController.callSecurity();
+  console.log("Test");
 };
 
 window.onClickReport = (message) => {
-  securityController.sendReport(message)
+  securityController.sendReport(message);
 };
 
 /***
@@ -149,7 +150,7 @@ window.onClickSecurity = () => {
   dontShow("product-page-bt");
   replaceMenuList();
   replaceMenuTitle("Notify security");
-  getSecurity()
+  getSecurity();
 };
 
 /**
@@ -238,16 +239,6 @@ window.onClickBackToMenu = () => {
 };
 
 /**
- * Remove all first child
- * @param id Document ID
- */
-function removeChild(id) {
-  while (id.firstChild) {
-    id.firstChild.remove();
-  }
-}
-
-/**
  * To Product Page -- currently very messy
  */
 window.onClickProductPage = (
@@ -263,7 +254,6 @@ window.onClickProductPage = (
   dontShow("insertMenu");
   dontShow("cart-footer");
   show("add-to-cart-footer", "block");
-  dontShow("cart-page");
   dontShow("place-order-footer");
   const main = document.getElementById("main-info");
   removeChild(main);
@@ -278,20 +268,5 @@ window.onClickProductPage = (
         <li class="li-list">Strength: ${strength}</li>`;
   info.insertAdjacentHTML("beforeend", infoHTML);
 };
-
-/**
- * To Cart
- */
-window.onClickCart = () => {
-  dontShow("product-page");
-  dontShow("menu-home");
-  dontShow("insertMenu");
-  dontShow("cart-footer");
-  dontShow("add-to-cart-footer");
-  show("cart-page", "block");
-  show("place-order-footer", "block");
-};
-
-findOneOrFail("#to-cart").addEventListener("click", () => setMainView("cart"));
 
 export {}; // needed so that we can import as a module
