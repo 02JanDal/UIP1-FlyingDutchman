@@ -9,12 +9,13 @@ class SplitBillController {
    * @param {number} n -- number of people
    * @param {OrderBill} order
    */
-  splitBill(n, order) {
+  splitBill(n, order, party) {
     undo.push(
       new UndoCommand(() => {
+        order.party = party;
         for (let i = 0; i < n - 1; i++) {
           const bill = new OrderBill();
-          bill.party = order.party;
+          bill.party = party;
           bill.save();
           localStorage.setItem("flyingdutchman_currentOrder_" + i, bill.id);
           console.log(bill);

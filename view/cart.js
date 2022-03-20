@@ -67,70 +67,70 @@ window.onClickOutsideClose = (ev) => {
   dontShow("successful-payment");
   setMainView("customer-home");
 };
-
-/**
- * Function to add split bills
- */
-window.onClickSplitBills = () => {
-  dontShow("place-order-footer");
-  dontShow("split-bill-choose");
-  show("split-bill", "block");
-  show("continue-footer", "block");
-};
-
-/**
- * Function to continue
- */
-window.onClickContinue = () => {
-  dontShow("place-order-footer");
-  dontShow("split-bill");
-  show("split-bill-choose", "block");
-  dontShow("continue-footer");
-
-  const splitBillList = document.getElementById("split-bill-list");
-  removeChild(splitBillList);
-  const totalSplitBills = document.getElementById("number-splitbill").value;
-  const parentPerson = document.getElementById("filter-splitbill");
-  removeChild(parentPerson);
-  for (let i = 0; i < totalSplitBills; i++) {
-    const newPerson = `<option value="person-${i}">Person ${i}</option>`;
-    parentPerson.insertAdjacentHTML("beforeend", newPerson);
-  }
-  const products = orderBillController.getOrCreateOrder().products;
-  const menuList = document.getElementById("split-bill-products");
-  for (const product of products) {
-    const name = product.namn;
-    const price = product.prisinklmoms;
-    const html = `
-    <div class="card" onclick="itemSelected()">
-    <a href="#" id="to-product-page" data-product-id="${product.id}">
-    <div class="card-container">
-      <h4 class="item-title">${name}</h4>
-      <p class="item-price">
-        ${price}0 SEK
-      </p>
-    </div>      
-    </a>
-    </div>`;
-    menuList.insertAdjacentHTML("beforeend", html);
-  }
-  // Not working
-  const order = orderBillController.getOrCreateOrder();
-  splitBillController.splitBill(totalSplitBills, order);
-  console.log(order);
-};
-
-/**
- * Select item for Split bills
- */
-window.itemSelected = () => {};
-
-/**
- * Backwards to split bill menu
- */
-window.onClickBackToSplitBillHome = () => {
-  show("split-bill", "block");
-  dontShow("place-order-footer");
-  show("continue-footer", "block");
-  dontShow("split-bill-choose");
-};
+//
+// /**
+//  * Function to add split bills
+//  */
+// window.onClickSplitBills = () => {
+//   dontShow("place-order-footer");
+//   dontShow("split-bill-choose");
+//   show("split-bill", "block");
+//   show("continue-footer", "block");
+// };
+//
+// /**
+//  * Function to continue
+//  */
+// window.onClickContinue = () => {
+//   dontShow("place-order-footer");
+//   dontShow("split-bill");
+//   show("split-bill-choose", "block");
+//   dontShow("continue-footer");
+//
+//   const splitBillList = document.getElementById("split-bill-list");
+//   removeChild(splitBillList);
+//   const totalSplitBills = document.getElementById("number-splitbill").value;
+//   const parentPerson = document.getElementById("filter-splitbill");
+//   removeChild(parentPerson);
+//   for (let i = 0; i < totalSplitBills; i++) {
+//     const newPerson = `<option value="person-${i}">Person ${i}</option>`;
+//     parentPerson.insertAdjacentHTML("beforeend", newPerson);
+//   }
+//   const products = orderBillController.getOrCreateOrder().products;
+//   const menuList = document.getElementById("split-bill-products");
+//   for (const product of products) {
+//     const name = product.namn;
+//     const price = product.prisinklmoms;
+//     const html = `
+//     <div class="card" onclick="itemSelected()">
+//     <a href="#" id="to-product-page" data-product-id="${product.id}">
+//     <div class="card-container">
+//       <h4 class="item-title">${name}</h4>
+//       <p class="item-price">
+//         ${price}0 SEK
+//       </p>
+//     </div>
+//     </a>
+//     </div>`;
+//     menuList.insertAdjacentHTML("beforeend", html);
+//   }
+//   // Not working
+//   const order = orderBillController.getOrCreateOrder();
+//   splitBillController.splitBill(totalSplitBills, order);
+//   console.log(order);
+// };
+//
+// /**
+//  * Select item for Split bills
+//  */
+// window.itemSelected = () => {};
+//
+// /**
+//  * Backwards to split bill menu
+//  */
+// window.onClickBackToSplitBillHome = () => {
+//   show("split-bill", "block");
+//   dontShow("place-order-footer");
+//   show("continue-footer", "block");
+//   dontShow("split-bill-choose");
+// };

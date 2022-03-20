@@ -1,0 +1,86 @@
+<div class="container">
+    <div class="sidebar">
+        <div class="logo-sidebar">
+            <img src="/images/flying-dutchman-logo.png" class="logo-img-sidebar">
+        </div>
+        <div class="searchbar"><input id="searchbar" type="search" placeholder="Search.."><span><button id="searchbutton"><i id="searchglass" class="fa fa-search"></i></button></span></div>
+        <div>
+            <ul>
+                <li><a href="#all" onclick="onClickAllMenu()"><i class="fa fa-book" aria-hidden="true"></i><span data-i18n="all-items"></span></a></li>
+                <li><a href="#beer" onclick="onClickBeer()"><i class="fa fa-beer" aria-hidden="true"></i><span data-i18n="beer"></span></a></li>
+                <li><a href="#wine" onclick="onClickWine()"><i class="fa fa-glass" aria-hidden="true"></i><span data-i18n="wine"></span></a></li>
+                <li><a href="#nonalcohol" onclick="onClickNonAlcohol()"><i class="fa fa-coffee" aria-hidden="true"></i><span data-i18n="non-alcohol"></span></a></li>
+                <li><a href="#cartl" data-link="cart"><i class="fa fa-shopping-cart" aria-hidden="true"></i><span data-i18n="cart"></span></a></li>
+                <li><a href="#" data-link="home"><i class="fa fa-sign-out" aria-hidden="true"></i><span data-i18n="log-out"></span></a></li>
+            </ul>
+        </div>
+        <div>
+            <ul>
+                <li><a onclick="doUndo()"><i class="fa fa-undo" aria-hidden="true"></i><span data-i18n="undo"></span></a></li>
+                <li><a onclick="doRedo()"><i class="fa fa-repeat" aria-hidden="true"></i><span data-i18n="redo"></span></a></li>
+            </ul>
+        </div>
+        <!---- Language switching buttons --->
+        <div class="menu-language-container">
+            <div class="language-left">
+                <input type="image" class="language-button swedish-button" src="/images/sweden.png" onclick="changeLanguage('sv')">
+            </div>
+            <div>
+                <input type="image" class="language-button english-button" src="/images/united-kingdom.png" onclick="changeLanguage('en')">
+            </div>
+        </div>
+    </div>
+    <!----- SPLIT BILL PAGE 1----->
+    <div class="product-content" id="split-bill-1">
+        <div class="parent-navbar">
+            <div class="child-navbar left-navbar">
+                <a href="#"><i class="backward-color fa fa-arrow-left backward-logo"></i></a>
+            </div>
+        </div>
+        <div class="product-title-container" id ="split-bill-title">
+            <h1><span data-i18n="how-many-split"></span></h1>
+        </div>
+        <div>
+            <form class="increase-decrease-container">
+                <div class="value-button decrease" onclick="decreaseValue('number-splitbill')" value="Decrease Value">-</div>
+                <input type="number" id="number-splitbill" value="0" />
+                <div class="value-button increase" onclick="increaseValue('number-splitbill')" value="Increase Value">+</div>
+            </form>
+        </div>
+    </div>
+    <!----- SPLIT BILL PAGE 2----->
+    <div class="product-content display-none" id="split-bill-2">
+        <div class="parent-navbar">
+            <div class="child-navbar left-navbar" onclick="toSplitBillPage1()">
+                <a href="#"><i class="backward-color fa fa-arrow-left backward-logo"></i></a>
+            </div>
+        </div>
+        <div class="product-title-container split-bill-display">
+            <div class="filter-box split-bill-filter-box">
+                <label for="filter-splitbill" class="filter-text-style split-bill-filter"><span data-i18n="select-splitbill"></span> </label>
+                <select name="filter-splitbill" id="filter-splitbill" class="filter-dropdown split-bill-onchange" onchange="">
+                </select>
+            </div>
+            <h1><span data-i18n="items-basket"></span></h1>
+        </div>
+        <div id="split-bill-products"></div>
+    </div>
+    <!----- SPLIT BILL PAGE 3----->
+
+</div>
+
+<!--- FOOTER CONTINUE SPLIT BILL PAGE 1--->
+<div class="footer" id="footer-split-bill-1">
+    <div class="cart">
+        <p class="footer-title" onclick="toSplitBillPage2()"><span data-i18n="continue"></span></p>
+    </div>
+</div>
+
+<!--- FOOTER CONTINUE SPLIT BILL PAGE 2--->
+<div class="footer display-none" id="footer-split-bill-2">
+    <div class="cart">
+        <p class="footer-title" onclick="tester()"><span data-i18n="continue"></span></p>
+    </div>
+</div>
+
+
