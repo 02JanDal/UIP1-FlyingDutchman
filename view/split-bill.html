@@ -36,9 +36,9 @@
         </div>
         <div>
             <form class="increase-decrease-container">
-                <div class="value-button decrease" onclick="decreaseValue('number-splitbill')" value="Decrease Value">-</div>
+                <div class="value-button decrease" onclick="decreaseValue('number-splitbill')">-</div>
                 <input type="number" id="number-splitbill" value="0" />
-                <div class="value-button increase" onclick="increaseValue('number-splitbill')" value="Increase Value">+</div>
+                <div class="value-button increase" onclick="increaseValue('number-splitbill')">+</div>
             </form>
         </div>
     </div>
@@ -52,12 +52,21 @@
         <div class="product-title-container split-bill-display">
             <div class="filter-box split-bill-filter-box">
                 <label for="filter-splitbill" class="filter-text-style split-bill-filter"><span data-i18n="select-splitbill"></span> </label>
-                <select name="filter-splitbill" id="filter-splitbill" class="filter-dropdown split-bill-onchange" onchange="">
+                <select name="filter-splitbill" id="filter-splitbill" class="filter-dropdown split-bill-onchange">
                 </select>
             </div>
             <h1><span data-i18n="items-basket"></span></h1>
         </div>
-        <div id="split-bill-products"></div>
+        <div class="split-left-right">
+            <div>
+                <p data-i18n="products-left-to-distribute"></p>
+                <div id="split-bill-products-left"></div>
+            </div>
+            <div>
+                <p data-i18n="products-in-current-bill"></p>
+                <div id="split-bill-products"></div>
+            </div>
+        </div>
     </div>
     <!----- SPLIT BILL PAGE 3----->
 
@@ -73,7 +82,7 @@
 <!--- FOOTER CONTINUE SPLIT BILL PAGE 2--->
 <div class="footer display-none" id="footer-split-bill-2">
     <div class="cart">
-        <p class="footer-title" onclick="tester()"><span data-i18n="continue"></span></p>
+        <p class="footer-title" onclick="onClickPaySplit()"><span data-i18n="continue"></span></p>
     </div>
 </div>
 

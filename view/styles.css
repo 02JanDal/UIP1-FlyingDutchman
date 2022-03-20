@@ -891,9 +891,9 @@ input[type=number]::-webkit-outer-spin-button {
   align-items:start;
 }
 
-#split-bill-products{
+#split-bill-products, #split-bill-products-left {
   display: inline-grid;
-  grid-template-columns: 1fr 1fr 1fr;
+  grid-template-columns: 1fr;
   overflow: auto;
   grid-gap: 20px;
   padding: 0 20px;
@@ -959,4 +959,15 @@ input[type=number]::-webkit-outer-spin-button {
     width:80%;
   }
 
+}
+
+.split-left-right {
+  display: flex;
+  flex-direction: row;
+}
+.split-left-right > div {
+  width: 50%;
+}
+.split-left-right > div > div {
+  width: 100%;
 }

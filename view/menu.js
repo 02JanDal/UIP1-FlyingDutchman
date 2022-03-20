@@ -359,7 +359,7 @@ window.onClickBackToMenu = () => {
 
 /**
  * Remove all first child
- * @param id Document ID
+ * @param {HTMLElement} id Document ID
  */
 export function removeChild(id) {
   while (id.firstChild) {
@@ -415,4 +415,4 @@ window.addItem = () => {
 
 //endregion
 
-export {show, dontShow}
+export { show, dontShow };

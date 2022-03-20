@@ -35,7 +35,11 @@ class OrderBillController extends EventTarget {
 
   getOrCreateOrder() {
     const id = localStorage.getItem("flyingdutchman_currentOrder");
-    if (id && OrderBill.exists(parseInt(id))) {
+    if (
+      id &&
+      OrderBill.exists(parseInt(id)) &&
+      OrderBill.get(parseInt(id)).status === "pending"
+    ) {
       return OrderBill.get(parseInt(id));
     } else {
       const order = new OrderBill();

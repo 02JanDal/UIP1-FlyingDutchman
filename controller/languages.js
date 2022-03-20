@@ -27,7 +27,7 @@ const strings = {
     en: "VIP Customer",
     sv: "VIP Kund",
   },
-  "bartender": {
+  bartender: {
     en: "Bartender",
     sv: "Bartender",
   },
@@ -117,7 +117,7 @@ const strings = {
   },
   total: {
     en: "Total",
-    sv: "Total"
+    sv: "Total",
   },
   instructions: {
     en: "Click on the left sidebar to see the menu and start ordering!",
@@ -127,7 +127,7 @@ const strings = {
     en: "Stock available",
     sv: "Lager tillgänglig",
   },
-  "additional-info":{
+  "additional-info": {
     en: "Additional information:",
     sv: "Ytterligare information:",
   },
@@ -151,15 +151,15 @@ const strings = {
     en: "Filter:",
     sv: "Filtera:",
   },
-  "how-many-split":{
+  "how-many-split": {
     en: "How many people are splitting the bill?",
     sv: "Hur många delar på notan?",
   },
-  "items-basket":{
+  "items-basket": {
     en: "Choose items in the basket",
     sv: "Välj varor i korgen",
   },
-  "person": {
+  person: {
     en: "Person",
     sv: "Person",
   },
@@ -167,7 +167,7 @@ const strings = {
     en: "Order no:",
     sv: "Beställningsnr:",
   },
-  "order-successful":{
+  "order-successful": {
     en: "Order successful!",
     sv: "Beställningen lyckades",
   },
@@ -179,11 +179,11 @@ const strings = {
     en: "The following item(s) are running out:",
     sv: "Följande föremål håller på att ta slut:",
   },
-  "account": {
+  account: {
     en: "Account",
     sv: "Konto",
   },
-  "user-account":{
+  "user-account": {
     en: "User Account",
     sv: "Användarkonto",
   },
@@ -313,8 +313,16 @@ const strings = {
   },
   "select-splitbill": {
     en: "Selecting for:",
-    sv: "Välja for:"
-  }
+    sv: "Välja for:",
+  },
+  "products-in-current-bill": {
+    en: "Products in current bill:",
+    sv: "Produkter i aktuell nota:",
+  },
+  "products-left-to-distribute": {
+    en: "Products left to distribute:",
+    sv: "Proukter kvar att fördela:",
+  },
 };
 
 /**

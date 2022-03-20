@@ -14,7 +14,7 @@ class SplitBillController {
     if (order.splitInto.length > 0) {
       throw Error("Order is already split");
     }
-    if (order.splitFrom !== undefined) {
+    if (order.splitFrom !== null) {
       throw Error("Attempting to split a split bill");
     }
     undo.push(
@@ -22,9 +22,11 @@ class SplitBillController {
         for (let i = 0; i < n; i++) {
           const bill = new OrderBill();
           bill.party = order.party;
-          bill.splitForm = order;
+          bill.splitFrom = order;
           bill.status = "pending";
+          bill.products = [];
           bill.save();
+          console.log(bill);
         }
       }, undefined)
     );
@@ -94,7 +96,7 @@ class SplitBillController {
    * when moving between split bills.
    *
    * @param {OrderBill|null} from
-   * @param {OrderBill} to
+   * @param {OrderBill|null} to
    * @param {Product} product
    */
   move(from, to, product) {
@@ -111,8 +113,11 @@ class SplitBillController {
           from.product_ids.splice(idx, 1);
           from.save();
         }
-        // add to list of products for target split bill
-        to.products = [...to.products, product];
+        if (to !== null) {
+          // add to list of products for target split bill
+          to.products = [...to.products, product];
+          to.save();
+        }
       }, undefined)
     );
   }
