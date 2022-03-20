@@ -1,24 +1,30 @@
 import undo, { UndoCommand } from "../util/undo_manager.js";
 import OrderBill from "../model/order_bill.js";
+import orderBillController from "./order_bill_controller.js";
+import Product from "../model/product.js";
 
 class SplitBillController {
   /***
    * Creating the split bill
-   * PROBLEM: What if the split bill already exists and we only wanna add a new split bill?
    *
    * @param {number} n -- number of people
    * @param {OrderBill} order
    */
-  splitBill(n, order, party) {
+  splitBill(n, order) {
+    if (order.splitInto.length > 0) {
+      throw Error("Order is already split");
+    }
+    if (order.splitFrom !== undefined) {
+      throw Error("Attempting to split a split bill");
+    }
     undo.push(
       new UndoCommand(() => {
-        order.party = party;
-        for (let i = 0; i < n - 1; i++) {
+        for (let i = 0; i < n; i++) {
           const bill = new OrderBill();
-          bill.party = party;
+          bill.party = order.party;
+          bill.splitForm = order;
+          bill.status = "pending";
           bill.save();
-          localStorage.setItem("flyingdutchman_currentOrder_" + i, bill.id);
-          console.log(bill);
         }
       }, undefined)
     );
@@ -26,59 +32,88 @@ class SplitBillController {
 
   /***
    * Cancelling the split bills
-   * Cant undo this
    *
-   * @param party
+   * @param {OrderBill} order
    */
-  cancelSplitBill(party) {
+  cancelSplitBill(order) {
+    if (order.splitInto.length === 0) {
+      throw Error("Order is not split");
+    }
     undo.push(
       new UndoCommand(() => {
-        let bills = party.orders();
-        let singleOrder = bills[0];
-        for (let i = 1; i < bills.length - 1; i++) {
-          singleOrder.products.concat(bills[i].products);
-          this.empty(bills[i].products);
+        // removing split by deleting split bills
+        for (const bill of order.splitInto) {
+          bill.delete();
         }
-        party.save();
-        singleOrder.save();
       }, undefined)
     );
   }
 
-  /***
-   * Empty function
-   * @param arr
+  /**
+   * Get the list of split bills we're working with right now
+
+   * @return {OrderBill[]}
    */
-  empty(arr) {
-    arr.length = 0;
+  get currentSplitBills() {
+    return orderBillController.getOrCreateOrder().splitInto;
+  }
+
+  /**
+   * Return true if all products have been distributed into a bill
+   *
+   * @returns {boolean}
+   */
+  get isSplitComplete() {
+    return this.productsLeft.length === 0;
+  }
+
+  /**
+   * Get the list of products that still need to be distributed into a split bill
+   *
+   * @return {Product[]}
+   */
+  get productsLeft() {
+    const order = orderBillController.getOrCreateOrder();
+    // get all products in order...
+    const products = order.product_ids;
+    for (const bill of order.splitInto) {
+      // ...and remove those that are already distributed into a split bill
+      for (const p of bill.product_ids) {
+        products.splice(products.indexOf(p), 1);
+      }
+    }
+    // convert from numeric ids to Product objects
+    return products.map((p) => Product.get(p));
   }
 
   /****
-   * Choosing the products for each person in the split bill
-   * @param product
-   * @param groupOrder
-   * @param singleOrder
+   * Move a product to a split bill
+   *
+   * Use e.g. `move(null, targetBill, product)` when first moving a product (that is,
+   * moving it "from" the original bill) and e.g. `move(sourceBill, targetBill, product)`
+   * when moving between split bills.
+   *
+   * @param {OrderBill|null} from
+   * @param {OrderBill} to
+   * @param {Product} product
    */
-  chooseProductsSplitBill(product, groupOrder, singleOrder) {
+  move(from, to, product) {
     undo.push(
-      new UndoCommand(
-        () => {
-          groupOrder.product_ids.splice(
-            groupOrder.product_ids.indexOf(product.id)
-          );
-          singleOrder.products = [...singleOrder.products, product];
-          groupOrder.save();
-          singleOrder.save();
-        },
-        () => {
-          singleOrder.product_ids.splice(
-            singleOrder.product_ids.indexOf(product.id)
-          );
-          groupOrder.products = [...groupOrder.products, product];
-          groupOrder.save();
-          singleOrder.save();
+      new UndoCommand(() => {
+        if (from !== null) {
+          const idx = from.product_ids.indexOf(product.id);
+          if (idx === -1) {
+            throw Error(
+              "Attempting to move a product from a split bill which it isn't contained in"
+            );
+          }
+          // remove from source split bill
+          from.product_ids.splice(idx, 1);
+          from.save();
         }
-      )
+        // add to list of products for target split bill
+        to.products = [...to.products, product];
+      }, undefined)
     );
   }
 }
