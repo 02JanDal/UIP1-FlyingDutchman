@@ -180,8 +180,8 @@ const strings = {
     sv: "Följande föremål håller på att ta slut:",
   },
   "user-account": {
-    en: "User Account",
-    sv: "Användarkonto",
+    en: "Account",
+    sv: "Konto",
   },
   "personal-information": {
     en: "Personal Information",

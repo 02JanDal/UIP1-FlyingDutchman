@@ -472,7 +472,7 @@ ul {
 }
 
 li:not(:last-child) {
-  margin-bottom: 10%;
+  margin-bottom: 6%;
 }
 
 a {
@@ -898,4 +898,21 @@ input[type=number]::-webkit-outer-spin-button {
   grid-gap: 20px;
   padding: 0 20px;
   text-align: center;
+}
+
+@media (min-width: 1024px){
+  .sidebar{
+    width:20%;
+  }
+  .content{
+    width:80%;
+    grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
+  }
+  .filter-box{
+    grid-column:span 4;
+  }
+  .product-content{
+    width:80%;
+  }
+
 }
