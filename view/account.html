@@ -1,0 +1,72 @@
+<div class="container">
+    <!--- SIDEBAR --->
+    <div class="sidebar">
+        <!---- Logo --->
+        <div class="logo-sidebar">
+            <img src="/images/flying-dutchman-logo.png" class="logo-img-sidebar">
+        </div>
+        <!---- Search Bar --->
+        <div class="searchbar"><input id="searchbar" type="search" placeholder="Search.."><span><button id="searchbutton"><i id="searchglass" class="fa fa-search"></i></button></span></div>
+        <!---- Menu Selection --->
+        <div>
+            <ul>
+                <li><a href="#" onclick="onClickAllMenu()"><i class="fa fa-book" aria-hidden="true"></i><span data-i18n="all-items"></span></a></li>
+                <li><a href="#" onclick="onClickBeer()"><i class="fa fa-beer" aria-hidden="true"></i><span data-i18n="beer"></span></a></li>
+                <li><a href="#" onclick="onClickWine()"><i class="fa fa-glass" aria-hidden="true"></i><span data-i18n="wine"></span></a></li>
+                <li><a href="#" onclick="onClickNonAlcohol()"><i class="fa fa-coffee" aria-hidden="true"></i><span data-i18n="non-alcohol"></span></a></li>
+                <li><a href="#" data-link="cart"><i class="fa fa-shopping-cart" aria-hidden="true"></i><span data-i18n="cart"></span></a></li>
+                <li><a href="#"><i class="fa fa-user" aria-hidden="true"></i><span data-i18n="account"></span></a></li>
+                <li><a href="#" data-link="home"><i class="fa fa-sign-out" aria-hidden="true"></i><span data-i18n="log-out"></span></a></li>
+                <li><a onclick="doUndo()"><i class="fa fa-undo" aria-hidden="true"></i><span data-i18n="undo"></span></a></li>
+                <li><a onclick="doRedo()"><i class="fa fa-repeat" aria-hidden="true"></i><span data-i18n="redo"></span></a></li>
+            </ul>
+        </div>
+        <!---- Language switching buttons --->
+        <div class="menu-language-container">
+            <div class="language-left">
+                <input type="image" class="language-button swedish-button" src="/images/sweden.png" onclick="changeLanguage('sv')">
+            </div>
+            <div>
+                <input type="image" class="language-button english-button" src="/images/united-kingdom.png" onclick="changeLanguage('en')">
+            </div>
+        </div>
+    </div>
+    <!-- User Account Details -->
+    <div class="product-content" id="product-page">
+        <div class="product-title-container" id="main-info">
+            <h1 class="product-title"><span data-i18n="user-account"></span> </h1>
+        </div>
+        <div class="account-information">
+            <h4><span data-i18n="personal-information"></span><span class="edit-button" data-i18n="edit"></span></h4>
+            <p>Name: Hana</p>
+            <p>Username: Hanabilaf</p>
+            <p>Email: raihanahnabilah@gmail.com</p>
+        </div>
+        <div class="account-information">
+            <h4><span data-i18n="account-balance"></span></h4>
+            <h2>500 SEK</h2>
+            <button class="top-up-button" onclick="openTopUp()" type="button" data-i18n="top-up"></button>
+        </div>
+        <div class="account-information">
+            <h4><span data-i18n="credit-card-info"></span><span class="edit-button" data-i18n="edit"></span></h4>
+            <p>XXXXXXXXXXXXXX VISA</p>
+        </div>
+    </div>
+</div>
+
+<!--THE MODAL-->
+<div id="top-up" class="modal" onclick="">
+    <!-- Modal content -->
+    <div class="modal-content">
+        <span id="close" onclick="closeTopUp()">&times;</span>
+        <h2><span data-i18n="top-up-balance"></span></h2>
+        <p><span data-i18n="current-balance"></span></p>
+    </div>
+</div>
+
+<!--- FOOTER/BACK --->
+<div class="footer">
+    <div class="cart">
+        <p class="footer-title"><span data-i18n="back"></span></p>
+    </div>
+</div>

@@ -179,9 +179,13 @@ const strings = {
     en: "The following item(s) are running out:",
     sv: "Följande föremål håller på att ta slut:",
   },
-  "user-account": {
+  "account": {
     en: "Account",
     sv: "Konto",
+  },
+  "user-account":{
+    en: "User Account",
+    sv: "Användarkonto",
   },
   "personal-information": {
     en: "Personal Information",

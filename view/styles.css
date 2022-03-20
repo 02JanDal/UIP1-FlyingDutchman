@@ -900,6 +900,31 @@ input[type=number]::-webkit-outer-spin-button {
   text-align: center;
 }
 
+.account-information{
+  padding-left: 40px;
+  padding-right:40px;
+  padding-bottom:15px;
+}
+
+.edit-button{
+  padding-left: 10px;
+  font-weight: normal;
+  font-size: 13px;
+  color: #7F5E4B;
+}
+
+.top-up-button{
+  border-radius: 15px;
+  font-size: 20px;
+  color: #FFF;
+  background: #7F5E4B;
+  font-weight: 600;
+  border: 5px solid #7F5E4B;
+  box-sizing: border-box;
+  width:150px;
+  height:50px;
+}
+
 @media (min-width: 1024px){
   .sidebar{
     width:20%;

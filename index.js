@@ -9,7 +9,7 @@ window.addEventListener("load", async () => {
     loadView("menu", "#menu"),
     loadView("product", "#product"),
     loadView("cart", "#cart"),
-    loadView("account-page", "#account-page"),
+    loadView("account", "#account"),
     loadView("split-bill", "#split-bill"),
     loadView("bartender", "#bartender"),
     loadView("bartender-sign-in", "#bartender-sign-in"),
