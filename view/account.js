@@ -20,6 +20,9 @@ window.topUpAccount = () => {
 
 function addPersonalInformation() {
     const info = signInController.currentUser;
+    if (info == null) {
+        return
+    }
     const personal = document.getElementById("acc-info");
     const html = `<p>Username: ${info.username}</p>
     <p>Email: ${info.email}</p>`;
@@ -29,11 +32,17 @@ function addPersonalInformation() {
 addPersonalInformation();
 
 function credits() {
-    const credit = signInController.currentUser.account.creditSEK;
+    const info = signInController.currentUser;
+    if (info == null){
+        return
+    }
+    const account = info.account;
+    const credits = account.creditSEK;
+    console.log(credits);
     const creditContainer = document.getElementById("credits");
-    const html = `<h2>${credit} SEK</h2>`;
+    const html = `<h2>${credits} SEK</h2>`;
     creditContainer.insertAdjacentHTML("beforeend", html);
-    document.getElementById('current-balance').innerHTML = '<span data-i18n="current-balance"></span>: ' + credit + ' SEK';
+    document.getElementById('current-balance').innerHTML = '<span data-i18n="current-balance"></span>: ' + credits + ' SEK';
 }
 
 credits();
@@ -41,10 +50,24 @@ credits();
 // NOT WORKING YET
 // Need to figure out how to set new value on creditSEK
 function updateCredits() {
-    // const currentBalance = document.getElementById("top-up-value").value;
-    // const credit = signInController.currentUser.account.creditSEK;
-    // console.log(credit);
-    // signInController.currentUser.account.creditSEK(parseInt(currentBalance));
-    // const newResult = signInController.currentUser.account.creditSEK;
-    // credits();
+    const currentBalance = document.getElementById("top-up-value").value;
+    const info = signInController.currentUser
+    if (info == null){
+        return
+    }
+    const account = info.account;
+    // const credit = account.creditSEK;
+    console.log(account.creditSEK);
+    account.creditSEK = parseInt(account.creditSEK) + parseInt(currentBalance);
+    account.save();
+    console.log(account.creditSEK);
+    // console.log(newResult);
+    const creditContainer = document.getElementById("credits");
+    const children = creditContainer.children;
+    while (children.item(1)){
+        children.item(1).remove();
+    }
+    const html = `<h2>${account.creditSEK} SEK</h2>`;
+    creditContainer.insertAdjacentHTML("beforeend", html);
+    document.getElementById('current-balance').innerHTML = '<span data-i18n="current-balance"></span>: ' + account.creditSEK + ' SEK';
 }

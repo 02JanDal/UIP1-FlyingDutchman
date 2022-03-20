@@ -19,13 +19,4 @@ export default class Account extends AbstractModel {
   set user(user) {
     this.user_id = user.id;
   }
-
-  // NOT WORKING
-  // get creditSEK() {
-  //   return User.get(this.creditSEK);
-  // }
-  //
-  // set creditSEK(credits){
-  //   this.creditSEK = credits;
-  // }
 }
