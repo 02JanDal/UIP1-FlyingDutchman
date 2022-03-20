@@ -36,15 +36,13 @@
         <div class="product-title-container" id="main-info">
             <h1 class="product-title"><span data-i18n="user-account"></span> </h1>
         </div>
-        <div class="account-information">
+        <div class="account-information" id="acc-info">
             <h4><span data-i18n="personal-information"></span><span class="edit-button" data-i18n="edit"></span></h4>
-            <p>Name: Hana</p>
-            <p>Username: Hanabilaf</p>
-            <p>Email: raihanahnabilah@gmail.com</p>
         </div>
-        <div class="account-information">
+        <div class="account-information" id="credits">
             <h4><span data-i18n="account-balance"></span></h4>
-            <h2>500 SEK</h2>
+        </div>
+        <div class="top-up-button-container">
             <button class="top-up-button" onclick="openTopUp()" type="button" data-i18n="top-up"></button>
         </div>
         <div class="account-information">
@@ -57,10 +55,23 @@
 <!--THE MODAL-->
 <div id="top-up" class="modal" onclick="">
     <!-- Modal content -->
-    <div class="modal-content">
+    <div class="modal-content top-up-modal">
         <span id="close" onclick="closeTopUp()">&times;</span>
         <h2><span data-i18n="top-up-balance"></span></h2>
-        <p><span data-i18n="current-balance"></span></p>
+        <p id="current-balance"></p>
+        <form class="top-up-account">
+            <label for="top-up-value"><span data-i18n="top-up"></span>:
+                <input type="number" id="top-up-value" name="top-up-value" class="login" autocomplete="none"> <span>SEK</span><br><br>
+            </label>
+        </form>
+        <label for="payment-method" class="filter-text-style"><span data-i18n="payment-method"></span></label>
+        <select name="payment-method" id="payment-method">
+            <option value="credit-card">Credit Card</span></option>
+            <option value="content-30-50">Cash</option>
+        </select>
+    </div>
+    <div class="cart pay-button" onclick="topUpAccount()">
+        <p class="footer-title"><span data-i18n="pay"></span></p>
     </div>
 </div>
 

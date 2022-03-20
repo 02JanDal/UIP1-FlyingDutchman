@@ -903,7 +903,6 @@ input[type=number]::-webkit-outer-spin-button {
 .account-information{
   padding-left: 40px;
   padding-right:40px;
-  padding-bottom:15px;
 }
 
 .edit-button{
@@ -923,6 +922,26 @@ input[type=number]::-webkit-outer-spin-button {
   box-sizing: border-box;
   width:150px;
   height:50px;
+}
+
+.top-up-modal{
+  position: fixed;
+  bottom: 0;
+  width: 100%;
+  padding-bottom:90px;
+}
+
+.top-up-account{
+  padding:0px;
+}
+
+.pay-button{
+  bottom: 0;
+  margin-bottom: 10px;
+}
+
+.top-up-button-container{
+  padding-left:40px;
 }
 
 @media (min-width: 1024px){

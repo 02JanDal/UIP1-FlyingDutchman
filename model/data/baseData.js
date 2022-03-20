@@ -6,9 +6,9 @@ export const baseData = {
         credentials: "0",
         password: "hana",
         username: "hana",
-        first_name: "Jory",
-        last_name: "Assies",
-        email: "jory.assies@it.uu.se",
+        first_name: "Hana",
+        last_name: "Fatinah",
+        email: "hana.fatinah@it.uu.se",
         phone: "0704811411",
       },
       {
