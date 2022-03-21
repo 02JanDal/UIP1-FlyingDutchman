@@ -26,33 +26,40 @@
         </div>
     </div>
     <div class="product-content">
-    <div class="parent-navbar">
-      <div class="child-navbar left-navbar" onclick="onClickBackToMenu()">
-        <a href="#"><i class="backward-color fa fa-arrow-left backward-logo"></i></a>
-      </div>
-    </div>
-    <div class="product-title-container">
-      <h1><span data-i18n="invoice"></span></h1>
-    </div>
-    <div class="split-bill-links">
-      <a class="split-bill-link-left"><span data-i18n="edit-split" data-link="split-bill"></span></a>
-      <a><span data-i18n="cancel-split"></span></a>
-    </div>
-    <div class="order-table">
-      <table class="full-table-width" id="order-list">
-        <tr>
-          <th class="order-product-title table-header"><span data-i18n="products"></span></th>
-          <th class="order-product-price table-header"><span data-i18n="price"></span></th>
-        </tr>
-      </table>
-    </div>
-    <div id="total-bill">
-      <p class="total-counter"><span data-i18n="total"></span></p>
-    </div>
+        <div class="parent-navbar">
+          <div class="child-navbar left-navbar" onclick="onClickBackToMenu()">
+            <a href="#"><i class="backward-color fa fa-arrow-left backward-logo"></i></a>
+          </div>
+        </div>
+        <div class="product-title-container">
+          <h1><span data-i18n="invoice"></span></h1>
+        </div>
+        <div class="split-bill-links">
+          <a class="split-bill-link-left"><span data-i18n="edit-split" data-link="split-bill"></span></a>
+          <a><span data-i18n="cancel-split"></span></a>
+        </div>
+        <div class="order-table">
+          <table class="full-table-width" id="order-list">
+            <tr>
+              <th class="order-product-title table-header"><span data-i18n="products"></span></th>
+              <th class="order-product-price table-header"><span data-i18n="price"></span></th>
+            </tr>
+          </table>
+        </div>
+        <div id="payment-method">
+            <p class="payment-method"><span data-i18n="payment-method"></span></p>
+            <select name="payment-filter" id="payment-filter" class="payment-filter" onchange="updateBalance()">
+                <option value="cash">Cash</option>
+                <option value="account-balance">Account balance</option>
+            </select>
+        </div>
+        <div id="total-bill">
+          <p class="total-counter"><span data-i18n="total"></span></p>
+        </div>
     </div>
 </div>
 
-<!--THE MODAL-->
+<!--THE Successful Modal-->
 <div id="successful-payment" class="modal" onclick="onClickOutsideClose()">
   <!-- Modal content -->
   <div class="modal-content">
@@ -60,6 +67,18 @@
     <h3><span data-i18n="order-successful"></span></h3>
     <p><span data-i18n="bartender-come"></span></p>
   </div>
+</div>
+
+<!---- The account balance running low modal -->
+<div id="low-balance" class="modal" onclick="onClickOutsideClose()">
+    <!-- Modal content -->
+    <div class="modal-content">
+        <span id="close-low-balance" onclick="onClickButtonClose()">&times;</span>
+        <h3><span data-i18n="not-enough-balance"></span></h3>
+        <div class="top-up-button-container">
+            <button class="top-up-button" onclick="openTopUp()" type="button" data-i18n="top-up"></button>
+        </div>
+    </div>
 </div>
 
 

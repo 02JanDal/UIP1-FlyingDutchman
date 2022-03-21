@@ -2,6 +2,7 @@ import orderBillController from "../controller/order_bill_controller.js";
 import { removeChild } from "./menu.js";
 import Product from "../model/product.js";
 import { dontShow, setMainView, show } from "./helpers.js";
+import signInController from "../controller/sign_in_controller.js";
 
 const displayCart = () => {
   const products = orderBillController.getOrCreateOrder().products;
@@ -45,6 +46,8 @@ window.removeItem = (productId) => {
  */
 window.onClickPlaceOrder = () => {
   show("successful-payment", "block");
+  const order = orderBillController.getOrCreateOrder();
+  orderBillController.placeOrder(order);
 };
 
 /**
@@ -65,4 +68,28 @@ window.onClickOutsideClose = (ev) => {
   }
   dontShow("successful-payment");
   setMainView("customer-home");
+};
+
+// Buggy
+window.updateBalance = () => {
+  if (signInController.currentUser == null){
+    return
+  }
+  const products = orderBillController.getOrCreateOrder().products;
+  let counter = 0;
+  for (const product of products) {
+    const price = product.prisinklmoms;
+    counter = counter + price;
+  }
+  const account = orderBillController.getOrCreateOrder().account;
+  const filter = document.getElementById("payment-filter");
+  if (filter.selectedIndex === 0) {
+    return
+  } else if (filter.selectedIndex === 1) {
+    if (counter > account){
+      show("low-balance", "block");
+    } else {
+      return
+    }
+  }
 };

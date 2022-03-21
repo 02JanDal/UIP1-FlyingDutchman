@@ -971,3 +971,21 @@ input[type=number]::-webkit-outer-spin-button {
 .split-left-right > div > div {
   width: 100%;
 }
+
+.split-padding{
+  padding-left:40px;
+}
+
+.payment-method{
+  padding-left: 40px;
+  font-size: 25px;
+  padding-top: 20px;
+  font-weight:bold;
+}
+
+.payment-filter{
+  margin-left:40px;
+  border: 0px;
+  border-radius: 5px;
+  height: 30px;
+}

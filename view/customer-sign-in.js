@@ -18,14 +18,17 @@ function showAccount() {
     dontShow("vip-account");
     dontShow("vip-cart-account");
     dontShow("vip-splitbill-account");
+    dontShow("payment-method");
   } else if (signInController.currentUser.isVIP){
     show("vip-account", "block");
     show("vip-cart-account", "block");
     show("vip-splitbill-account", "block");
+    show("payment-method", "block");
   } else{
     dontShow("vip-account");
     dontShow("vip-cart-account");
     dontShow("vip-splitbill-account");
+    dontShow("payment-method");
   }
 }
 
