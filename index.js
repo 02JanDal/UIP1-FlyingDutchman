@@ -7,7 +7,6 @@ window.addEventListener("load", async () => {
     loadView("customer-home", "#customer-home"),
     loadView("customer-sign-in", "#customer-sign-in"),
     loadView("menu", "#menu"),
-    loadView("product", "#product"),
     loadView("cart", "#cart"),
     loadView("account", "#account"),
     loadView("split-bill", "#split-bill"),
