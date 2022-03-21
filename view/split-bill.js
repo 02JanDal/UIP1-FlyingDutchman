@@ -5,6 +5,10 @@ import Product from "../model/product.js";
 import OrderBill from "../model/order_bill.js";
 import { setMainView } from "./helpers.js";
 
+/**
+ * Connect to first page of split bill
+ * (The page where it asks "how many people are splitting the bill?")
+ */
 window.toSplitBillPage1 = () => {
   dontShow("footer-split-bill-2");
   dontShow("split-bill-2");
@@ -12,6 +16,9 @@ window.toSplitBillPage1 = () => {
   show("footer-split-bill-1", "block");
 };
 
+/**
+ * Displaying the products left to select
+ */
 function displayProductsLeft() {
   const menuList = document.getElementById("split-bill-products-left");
   removeChild(menuList);
@@ -31,6 +38,10 @@ function displayProductsLeft() {
   }
 }
 
+/**
+ * Displaying selected products
+ *
+ */
 function displayProductsInBill() {
   const order = OrderBill.get(
     parseInt(document.getElementById("filter-splitbill").value)
@@ -53,6 +64,10 @@ function displayProductsInBill() {
   }
 }
 
+/**
+ * Connect to second page of split bill
+ * (The page where it asks to select products for different people")
+ */
 window.toSplitBillPage2 = () => {
   dontShow("footer-split-bill-1");
   dontShow("split-bill-1");
@@ -77,6 +92,10 @@ window.toSplitBillPage2 = () => {
   displayProductsInBill();
 };
 
+/**
+ * Split items
+ * @param id
+ */
 window.onClickSplitItem = (id) => {
   const product = Product.get(id);
   const target = OrderBill.get(
@@ -86,6 +105,11 @@ window.onClickSplitItem = (id) => {
   displayProductsLeft();
   displayProductsInBill();
 };
+
+/**
+ * Unsplit items
+ * @param id
+ */
 window.onClickUnsplitItem = (id) => {
   const product = Product.get(id);
   const source = OrderBill.get(
@@ -96,12 +120,18 @@ window.onClickUnsplitItem = (id) => {
   displayProductsInBill();
 };
 
+/**
+ * Place order and reset the bill
+ */
 window.onClickPaySplit = () => {
   const order = orderBillController.getOrCreateOrder();
   orderBillController.placeOrder(order);
   setMainView("menu");
 };
 
+/**
+ * Dispaly products
+ */
 document.getElementById("filter-splitbill").addEventListener("change", (e) => {
   displayProductsInBill();
 });

@@ -1,23 +1,33 @@
 import {dontShow, setMainView, show} from "./helpers.js";
 import signInController from "../controller/sign_in_controller.js";
 
+/**
+ * Close top-up modal
+ */
 window.closeTopUp = () => {
     dontShow("top-up");
     setMainView("account");
 }
 
+/**
+ * Open top-up modal
+ */
 window.openTopUp = () => {
     show("top-up", "block");
 }
 
-//Should update the view on how much money they have as well
+/**
+ * When top up is successful
+ */
 window.topUpAccount = () => {
     dontShow("top-up");
     setMainView("account");
-    // call update function that updates the total account balance SEK view
     updateCredits();
 }
 
+/**
+ * Updating user info to view
+ */
 function addPersonalInformation() {
     const info = signInController.currentUser;
     if (info == null) {
@@ -31,6 +41,9 @@ function addPersonalInformation() {
 
 addPersonalInformation();
 
+/**
+ * Updating user credits to view
+ */
 function credits() {
     const info = signInController.currentUser;
     if (info == null){
@@ -46,7 +59,9 @@ function credits() {
 
 credits();
 
-
+/**
+ * Updating user credits when user top up credits to view
+ */
 function updateCredits() {
     const currentBalance = document.getElementById("top-up-value").value;
     const info = signInController.currentUser

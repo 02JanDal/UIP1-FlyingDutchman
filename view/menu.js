@@ -184,6 +184,7 @@ export function showAll() {
   displayProducts(menuController.products, "insertMenu");
 }
 
+
 window.onClickAllMenu = () => {
   show("insertMenu", "inline-grid");
   dontShow("menu-home");

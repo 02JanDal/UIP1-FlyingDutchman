@@ -19,6 +19,12 @@ class UserChangedEvent extends Event {
 }
 
 class SignInController extends EventTarget {
+  /**
+   * Function to check if the user sign in is registered in the database
+   * @param username
+   * @param password
+   * @returns {boolean}
+   */
   trySignIn(username, password) {
     const user = User.findFirst({ username, password });
     if (user !== undefined) {
@@ -28,6 +34,11 @@ class SignInController extends EventTarget {
     return false;
   }
 
+  /**
+   * Setting current user to null
+   * when the user doesnt have a VIP account
+   * (on Guest account)
+   */
   useGuest() {
     this.#setCurrentUser(null);
   }

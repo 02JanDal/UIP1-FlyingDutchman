@@ -21,6 +21,10 @@ class OrderBillChangedEvent extends Event {
 }
 
 class OrderBillController extends EventTarget {
+  /**
+   * A getter/setter for a Party
+   * @returns {Party|*|null}
+   */
   getOrCreateParty() {
     const id = localStorage.getItem("flyingdutchman_currentParty");
     if (id && Party.exists(parseInt(id))) {
@@ -33,6 +37,10 @@ class OrderBillController extends EventTarget {
     }
   }
 
+  /**
+   * A getter/setter for an Order Bill
+   * @returns {OrderBill|*|null}
+   */
   getOrCreateOrder() {
     const id = localStorage.getItem("flyingdutchman_currentOrder");
     if (
@@ -76,6 +84,11 @@ class OrderBillController extends EventTarget {
       );
   }
 
+  /**
+   * Function to remove product from product list
+   * @param {OrderBill} order
+   * @param {Product}product
+   */
   removeProduct(order, product) {
     if (order.status === "pending")
       undo.push(

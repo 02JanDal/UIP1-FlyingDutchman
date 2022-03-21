@@ -34,6 +34,9 @@ function getProducts(beveragesList) {
   }
 }
 
+/**
+ * To get the tables
+ */
 function getTables() {
   const menu = document.getElementById("insertMenuBt");
   for (var i = 0; i < table.length; i++) {
@@ -55,6 +58,9 @@ function getTables() {
   }
 }
 
+/**
+ * To get the security
+ */
 function getSecurity() {
   const menu = document.getElementById("insertMenuBt");
   let html = `
@@ -72,10 +78,17 @@ function getSecurity() {
   menu.insertAdjacentHTML("beforeend", html);
 }
 
+/**
+ * To call security
+ */
 window.onClickCallSecurity = () => {
   securityController.callSecurity();
 };
 
+/**
+ * To report to security
+ * @param message
+ */
 window.onClickReport = (message) => {
   securityController.sendReport(message);
 };

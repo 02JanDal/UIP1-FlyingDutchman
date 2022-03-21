@@ -4,6 +4,9 @@ import Product from "../model/product.js";
 import { dontShow, setMainView, show } from "./helpers.js";
 import signInController from "../controller/sign_in_controller.js";
 
+/**
+ * Function to display products to view
+ */
 const displayCart = () => {
   const products = orderBillController.getOrCreateOrder().products;
   const order = document.getElementById("order-list");
@@ -70,7 +73,10 @@ window.onClickOutsideClose = (ev) => {
   setMainView("customer-home");
 };
 
-// Buggy
+/**
+ * Function to use account balance for payment
+ * -- need to debug!
+ */
 window.updateBalance = () => {
   if (signInController.currentUser == null){
     return
@@ -92,4 +98,31 @@ window.updateBalance = () => {
       return
     }
   }
+};
+
+/**
+ * To increase number of products selected
+ * on product page
+ * @param id
+ */
+window.increaseValue = (id) => {
+  var value = parseInt(document.getElementById(id).value, 10);
+  value = isNaN(value) ? 0 : value;
+  if (value < 5) {
+    value++;
+  }
+  document.getElementById(id).value = value;
+};
+
+/**
+ * To decrease number of products selected
+ * on product page
+ * @param id
+ */
+window.decreaseValue = (id) => {
+  var value = parseInt(document.getElementById(id).value, 10);
+  value = isNaN(value) ? 0 : value;
+  value < 1 ? (value = 1) : "";
+  value--;
+  document.getElementById(id).value = value;
 };

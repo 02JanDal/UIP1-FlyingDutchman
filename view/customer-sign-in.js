@@ -1,6 +1,9 @@
 import {dontShow, findOneOrFail, setMainView, show} from "./helpers.js";
 import signInController from "../controller/sign_in_controller.js";
 
+/**
+ * Checking if the VIP user has an account to sign in
+ */
 findOneOrFail("#sign-in-button").addEventListener("click", () => {
   const elUsername = document.getElementById("uname");
   const elPassword = document.getElementById("password");
@@ -13,13 +16,11 @@ findOneOrFail("#sign-in-button").addEventListener("click", () => {
   }
 });
 
+/**
+ * Show VIP Account only for VIP users
+ */
 function showAccount() {
-  if (signInController.currentUser == null){
-    dontShow("vip-account");
-    dontShow("vip-cart-account");
-    dontShow("vip-splitbill-account");
-    dontShow("payment-method");
-  } else if (signInController.currentUser.isVIP){
+  if (signInController.currentUser != null && signInController.currentUser.isVIP){
     show("vip-account", "block");
     show("vip-cart-account", "block");
     show("vip-splitbill-account", "block");
@@ -31,7 +32,6 @@ function showAccount() {
     dontShow("payment-method");
   }
 }
-
 signInController.addEventListener("UserChanged", showAccount);
 
 export {showAccount};
